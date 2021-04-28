@@ -1,5 +1,6 @@
 body {
-    background-color: #fff5f5a1;
+    margin:0;
+    background-color: #f6f5ffa1;
 }
 
 #logo{
@@ -7,9 +8,21 @@ body {
 }
 
 
+.btnviolet {
+    background-color: #7d4aa8;
+    color: white;
+    height: 37px;
+}
+
+.btnorange {
+    background-color: #ff7e00;
+    color: white;
+}
+
 .btnvert {
     background-color: #5c9c18;
     color: white;
+    height: 37px;
 }
 
 .jaune {
@@ -57,7 +70,7 @@ color: #ff0959!important;
         z-index: 4;
         height: 100%;
         width: 100%;
-        background-color: #ff095b93;
+        background-color: #5c9c1893;
         -webkit-transform: skewX(
     -25deg
     ) translateX(-50%);
@@ -72,4 +85,12 @@ color: #ff0959!important;
     z-index: 6;
     height: 100%;
     width: 50%;
+}
+
+#carouselhome {
+max-height: 380px;
+}
+
+.carousel-item {
+    max-height: 380px;
 }
