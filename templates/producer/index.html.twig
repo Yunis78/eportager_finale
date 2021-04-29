@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Producer index{% endblock %}
+
+{% block body %}
+    <h1>Producer index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Siret</th>
+                <th>Phone</th>
+                <th>Active</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for producer in producers %}
+            <tr>
+                <td>{{ producer.id }}</td>
+                <td>{{ producer.name }}</td>
+                <td>{{ producer.description }}</td>
+                <td>{{ producer.siret }}</td>
+                <td>{{ producer.phone }}</td>
+                <td>{{ producer.active ? 'Yes' : 'No' }}</td>
+                <td>
+                    <a href="{{ path('producer_show', {'id': producer.id}) }}">show</a>
+                    <a href="{{ path('producer_edit', {'id': producer.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('producer_new') }}">Create new</a>
+{% endblock %}

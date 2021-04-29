@@ -2,13 +2,13 @@
 
 namespace App\Entity;
 
-use App\Repository\CommmandeProductRepository;
+use App\Repository\CommandeProductRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass=CommmandeProductRepository::class)
+ * @ORM\Entity(repositoryClass=CommandeProductRepository::class)
  */
-class CommmandeProduct
+class CommandeProduct
 {
     /**
      * @ORM\Id
@@ -18,12 +18,12 @@ class CommmandeProduct
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Commande::class, inversedBy="commmandeProducts")
+     * @ORM\ManyToOne(targetEntity=Commande::class, inversedBy="commandeProducts")
      */
     private $commande;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Product::class, inversedBy="commmandeProducts")
+     * @ORM\ManyToOne(targetEntity=Product::class, inversedBy="commandeProducts")
      */
     private $product;
 
