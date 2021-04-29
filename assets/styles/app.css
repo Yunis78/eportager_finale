@@ -3,6 +3,8 @@ body {
     background-color: #f6f5ffa1;
 }
 
+/* Home page bannière */
+
 #logo{
     height: 70px;
 }
@@ -25,7 +27,8 @@ body {
     height: 37px;
 }
 
-/* navbar */
+/* home page navbar */
+
 .jaune {
     background-color: white;
     border-top: 1px solid #adb5bd;
@@ -67,7 +70,8 @@ color: #ff0959!important;
 }
 
 
-/* carousel */
+/* home page carousel */
+
 .carouOver{
         position: absolute;
         z-index: 4;
@@ -79,6 +83,11 @@ color: #ff0959!important;
 }
 
 .textCarou{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    
     position: absolute;
     z-index: 6;
     height: 100%;
@@ -106,6 +115,18 @@ max-height: 380px;
 
     .textCarou{
 
+        margin-left: 50px;
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
         width: 50%;
     }
+}
+
+/* cards home page */
+
+.bouton {
+    display: flex;
+    justify-content: space-around;
+margin: 30px;
 }
