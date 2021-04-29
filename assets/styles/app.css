@@ -7,7 +7,7 @@ body {
     height: 70px;
 }
 
-
+/* boutons */
 .btnviolet {
     background-color: #7d4aa8;
     color: white;
@@ -25,6 +25,7 @@ body {
     height: 37px;
 }
 
+/* navbar */
 .jaune {
     background-color: white;
     border-top: 1px solid #adb5bd;
@@ -39,7 +40,7 @@ body {
     color: #5c9c18!important;
 }
 .vert:hover, .vert.active {
-    border-bottom: 0.5px solid #5c9c18;
+    border-bottom: 1px solid #5c9c18;
 }
 
 
@@ -47,7 +48,7 @@ body {
     color: #7d4aa8!important;
 }
 .violet:hover, .violet.active {
-    border-bottom: 0.5px solid #7d4aa8;
+    border-bottom: 1px solid #7d4aa8;
     /* border-radius: .25rem; */
 }
 
@@ -55,28 +56,25 @@ body {
 color: #ff0959!important;
 }
 .rouge:hover, .rouge.active {
-    border-bottom: 0.5px solid #ff0959;
+    border-bottom: 1px solid #ff0959;
 }
 
 .orange a{
     color: #ff7e00!important;
 }
 .orange:hover, .orange.active {
-    border-bottom: 0.5px solid #ff7e00;
+    border-bottom: 1px solid #ff7e00;
 }
 
-.craouOver{
+
+/* carousel */
+.carouOver{
         position: absolute;
         z-index: 4;
         height: 100%;
         width: 100%;
         background-color: #5c9c1893;
-        -webkit-transform: skewX(
-    -25deg
-    ) translateX(-50%);
-        transform: skewX(
-    -25deg
-    ) translateX(-50%);
+
         outline: 1px solid transparent;
 }
 
@@ -84,7 +82,7 @@ color: #ff0959!important;
     position: absolute;
     z-index: 6;
     height: 100%;
-    width: 50%;
+    width: 100%;
 }
 
 #carouselhome {
@@ -93,4 +91,21 @@ max-height: 380px;
 
 .carousel-item {
     max-height: 380px;
+}
+
+@media only screen and (min-width: 1000px) {
+
+    .carouOver{
+    -webkit-transform: skewX(
+        -25deg
+        ) translateX(-50%);
+            transform: skewX(
+        -25deg
+        ) translateX(-50%);
+    }
+
+    .textCarou{
+
+        width: 50%;
+    }
 }
