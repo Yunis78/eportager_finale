@@ -1,23 +1,83 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta charset="UTF-8">
+        <meta charset="UTF-8" />
         <title>{% block title %}Welcome!{% endblock %}</title>
-        {# Run `composer require symfony/webpack-encore-bundle`
-           and uncomment the following Encore helpers to start using Symfony UX #}
-        {% block stylesheets %}
-            {{ encore_entry_link_tags('app') }}
-        {% endblock %}
+        <!-- favicon -->
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+        <link rel="manifest" href="/site.webmanifest">
+        <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+        <meta name="msapplication-TileColor" content="#da532c">
+        <meta name="theme-color" content="#ffffff">
+        <!-- favicon -->
 
-        
+        {# Run `composer require symfony/webpack-encore-bundle` and uncomment the following Encore helpers to start using Symfony UX #} {% block stylesheets %}
+        {{
+            encore_entry_link_tags("app")
+        }}
+        {% endblock %}
     </head>
     <body>
-        {% block body %}{% endblock %}
-        
-        
-        
-        {% block javascripts %}
-            {{ encore_entry_script_tags('app') }}
+        <!-- Bannière logo -->
+
+        <header class="pb-1">
+            <div class="container-fluid d-flex py-2 align-items-center">
+                <div class="col-2 headerheight">
+                    <picture> <img id="logo" class="d-none d-md-block" src="{{ asset("img/LOGO4.svg") }}" alt="Logo"> <img id="logo" class="d-md-none" src="{{ asset("img/LOGO5.svg") }}" alt="Logo"> </picture>
+                </div>
+                <div class="input-group">
+                    <div class="input-group-prepend ml-auto">
+                        <span class="input-group-text" id="basic-addon1"><i class="ri-search-line"></i></span>
+                    </div>
+                    <input type="text" class="form-control col-5 col-md-4 col-lg-2" placeholder="Rechercher..." aria-label="Rechercher..." aria-describedby="basic-addon1" />
+                </div>
+                <!-- <input type="button" class="btn btnvert text-white ml-3" value="Connexion" /> -->
+                
+                <button class="btn btnviolet ml-3"><i class="ri-shopping-cart-2-line"></i></button>
+                <div class="dropdown">
+                    <button class="btn btnvert ml-3 dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="ri-user-3-fill"></i></button>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" href="#">Client</a>
+                        <a class="dropdown-item" href="#">Producteur</a>
+                        <a class="dropdown-item" href="#">Déconnexion</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- nav barre -->
+        </header>
+        <nav class="navbar navbar-expand-md navbar-light bg-white py-3 jaune mb-4">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarText">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item orange mx-1">
+                        <a class="nav-link orange" href="#">Accueil</a>
+                    </li>
+                    <li class="nav-item vert mx-1">
+                        <a class="nav-link vert" href="#">Produits</a>
+                    </li>
+                    <li class="nav-item violet mx-1 active">
+                        <a class="nav-link violet active" href="#">Producteurs</a>
+                    </li>
+                    <li class="nav-item rouge mx-1">
+                        <a class="nav-link rouge" href="#">Concept</a>
+                    </li>
+                    <li class="nav-item orange mx-1">
+                        <a class="nav-link orange" href="#">Contact</a>
+                    </li>
+                </ul>
+                <span class="navbar-text"> Options de connections </span>
+            </div>
+        </nav>
+
+        <!-- FIN DU CODE -->
+
+        {% block body %}{% endblock %} {% block javascripts %}
+        {{ encore_entry_script_tags("app") }}
         {% endblock %}
     </body>
 </html>
