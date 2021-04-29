@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Producer{% endblock %}
+
+{% block body %}
+    <h1>Create new Producer</h1>
+
+    {{ include('producer/_form.html.twig') }}
+
+    <a href="{{ path('producer_index') }}">back to list</a>
+{% endblock %}

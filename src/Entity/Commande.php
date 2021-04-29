@@ -40,13 +40,13 @@ class Commande
     private $amount;
 
     /**
-     * @ORM\OneToMany(targetEntity=CommmandeProduct::class, mappedBy="commande")
+     * @ORM\OneToMany(targetEntity=CommandeProduct::class, mappedBy="commande")
      */
-    private $commmandeProducts;
+    private $commandeProducts;
 
     public function __construct()
     {
-        $this->commmandeProducts = new ArrayCollection();
+        $this->commandeProducts = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -103,29 +103,29 @@ class Commande
     }
 
     /**
-     * @return Collection|CommmandeProduct[]
+     * @return Collection|CommandeProduct[]
      */
-    public function getCommmandeProducts(): Collection
+    public function getCommandeProducts(): Collection
     {
-        return $this->commmandeProducts;
+        return $this->commandeProducts;
     }
 
-    public function addCommmandeProduct(CommmandeProduct $commmandeProduct): self
+    public function addCommandeProduct(CommandeProduct $commandeProduct): self
     {
-        if (!$this->commmandeProducts->contains($commmandeProduct)) {
-            $this->commmandeProducts[] = $commmandeProduct;
-            $commmandeProduct->setCommande($this);
+        if (!$this->commandeProducts->contains($commandeProduct)) {
+            $this->commandeProducts[] = $commandeProduct;
+            $commandeProduct->setCommande($this);
         }
 
         return $this;
     }
 
-    public function removeCommmandeProduct(CommmandeProduct $commmandeProduct): self
+    public function removeCommandeProduct(CommandeProduct $commandeProduct): self
     {
-        if ($this->commmandeProducts->removeElement($commmandeProduct)) {
+        if ($this->commandeProducts->removeElement($commandeProduct)) {
             // set the owning side to null (unless already changed)
-            if ($commmandeProduct->getCommande() === $this) {
-                $commmandeProduct->setCommande(null);
+            if ($commandeProduct->getCommande() === $this) {
+                $commandeProduct->setCommande(null);
             }
         }
 
