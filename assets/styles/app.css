@@ -79,6 +79,11 @@ color: #ff0959!important;
 }
 
 .textCarou{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    
     position: absolute;
     z-index: 6;
     height: 100%;
@@ -106,6 +111,10 @@ max-height: 380px;
 
     .textCarou{
 
+        margin-left: 50px;
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
         width: 50%;
     }
 }
