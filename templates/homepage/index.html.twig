@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %} {% block title %}ePotager - Accueil{% endblock %} {% block body %}
-<!-- carousel -->
 
+<!-- carousel -->
 <div id="carouselhome" class="carousel slide" data-ride="carousel">
     <div class="carouOver"></div>
     <div class="carousel-inner">
@@ -46,13 +46,12 @@
 <!-- cards -->
 <div class="container">
     <div class="row">
-        <div class="col-12 col-md-6"> <!-- produits -->
-            <input type="button" class="btn btnorange text-white mb-4 mt-5" value="Voir plus de produits" /> <!-- Bouton voir plus de produits -->
+        <div class="col-12 col-lg-6"> <!-- produits -->
+            <a href="#" class="btn btnorange text-white mb-4 mt-5">Voir plus de produits</a> <!-- Bouton voir plus de produits -->
             <div class="row">
-                <div class="col-12 col-md-6"> <!-- produits card 1 -->
+                <div class="col-12 col-lg-6"> <!-- produits card 1 -->
                     <div class="card mb-3" style="width: 100% ; height:400px ; position:relative"> 
                         <div style="width:100% ; height: 200px ; background-image: url('{{ asset("img/Pomme1.jpg") }}');background-size:cover ; background-position:center">
-                        <!-- <img src="{{ asset("img/Pomme1.jpg") }}" class="card-img-top img-fluid" alt="..." /> -->
                         </div>
                             <div class="card-body"> 
                                 <h5 class="card-title">Card title</h5>
@@ -61,10 +60,9 @@
                             </div>
                     </div>
                 </div>
-                <div class="col-12 col-md-6"> <!-- produits card 1 -->
+                <div class="col-12 col-lg-6"> <!-- produits card 2 -->
                     <div class="card mb-3" style="width: 100% ; height:400px ; position:relative">
                         <div style="width:100% ; height: 200px ; background-image: url('{{ asset("img/Pomme1.jpg") }}');background-size:cover ; background-position:center">
-                          <!-- <img src="{{ asset("img/Pomme1.jpg") }}" class="card-img-top img-fluid" alt="..." /> -->
                         </div>
                             <div class="card-body">
                                 <h5 class="card-title">Card title</h5>
@@ -73,10 +71,9 @@
                             </div>
                     </div>
                 </div>
-                <div class="col-12 col-md-6">
+                <div class="col-12 col-lg-6"> <!-- produits card 3 -->
                     <div class="card mb-3" style="width: 100% ; height:400px ; position:relative">
                         <div style="width:100% ; height: 200px ; background-image: url('{{ asset("img/Pomme1.jpg") }}');background-size:cover ; background-position:center">
-                        <!-- <img src="{{ asset("img/Pomme1.jpg") }}" class="card-img-top img-fluid" alt="..." /> -->
                         </div>
                             <div class="card-body">
                                 <h5 class="card-title">Card title</h5>
@@ -85,10 +82,9 @@
                             </div>
                     </div>
                 </div>
-                <div class="col-12 col-md-6">
+                <div class="col-12 col-lg-6"> <!-- produits card 4 -->
                     <div class="card mb-3" style="width: 100% ; height:400px ; position:relative">
                         <div style="width:100% ; height: 200px ; background-image: url('{{ asset("img/Pomme1.jpg") }}');background-size:cover ; background-position:center">
-                          <!-- <img src="{{ asset("img/Pomme1.jpg") }}" class="card-img-top img-fluid" alt="..." /> -->
                         </div>
                             <div class="card-body">
                                 <h5 class="card-title">Card title</h5>
@@ -100,13 +96,12 @@
             </div>
         </div>
     
-        <div class="col-12 col-md-6 pl-5"> <!-- producteurs -->
+        <div class="col-12 col-lg-6 pl-5 container-card-producteur-home-page"> <!-- producteurs -->
             <div class="row">
-                <input type="button" class="btn btnorange text-white mb-4 mt-5 ml-3" value="Voir les autres producteurs" /> <!-- Bouton voir les producteurs -->
-                <div class="col-12">
+                <a href="#" class="btn btnorange text-white mb-4 mt-5 ml-3">Voir les autres producteurs</a> <!-- Bouton voir les autres producteurs -->
+                <div class="col-12"> <!-- producteurs card 1 -->
                     <div class="card mb-3" style="width: 100% ; height:400px ; position:relative">
                         <div style="width:100% ; height: 200px ; background-image: url('{{ asset("img/Exploit1.jpg") }}');background-size:cover ; background-position:center">
-                            <!-- <img src="{{ asset("img/Exploit1.jpg") }}" class="card-img-top img-fluid" alt="..." /> -->
                         </div>
                             <div class="card-body">
                                 <h5 class="card-title">Card title</h5>
@@ -115,10 +110,9 @@
                             </div>
                     </div>
                 </div>
-                <div class="col-12">
+                <div class="col-12"> <!-- producteurs card 2 -->
                     <div class="card mb-3" style="width: 100% ; height:400px ; position:relative">
                         <div style="width:100% ; height: 200px ; background-image: url('{{ asset("img/Exploit1.jpg") }}');background-size:cover ; background-position:center">
-                            <!-- <img src="{{ asset("img/Exploit1.jpg") }}" class="card-img-top img-fluid" alt="..." /> -->
                         </div>
                             <div class="card-body">
                                 <h5 class="card-title">Card title</h5>
@@ -129,19 +123,55 @@
                 </div>
             </div>
         </div>
-</div>
-
-        
-        
-        
     </div>
+</div>
+<!-- avis -->
+<div class="container">
+    <h2 class="text-center mt-5 mb-4">Avis des clients</h2>
+    <div class="row">
 
-    <div class="col-6">
-        <div class="col mb-4">
-            
-            
+
+        
+        <div class="col-12 mb-2"> <!-- avis client card 1 -->
+            <div class="card mb-3">
+                <div class="row no-gutters d-flex justify-content-center" style="min-height: 124px">
+                    <div class="col-lg-2 d-flex justify-content-center align-items-center img-home-card-avis-client">
+                        <!-- <img src="..." alt="..."> -->
+                        <div class="" style="height: 100px; width: 100px ; background-image: url('{{ asset("img/Exploit1.jpg") }}');background-size:cover ; background-position:center; border-radius: 50px">
+                        </div>
+                    </div>
+                    <div class="col-lg-10">
+                        <div class="card-body">
+                            <h5 class="card-title titre-avis-client-home-page">Card title</h5>
+                            <p class="card-text texte-avis-client-home-page">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
+        <div class="col-12 mb-2"> <!-- avis client card 2 -->
+            <div class="card mb-3">
+                <div class="row no-gutters d-flex justify-content-center" style="min-height: 124px">
+                    <div class="col-lg-2 d-flex justify-content-center align-items-center img-home-card-avis-client">
+                        <!-- <img src="..." alt="..."> -->
+                        <div class="" style="height: 100px; width: 100px ; background-image: url('{{ asset("img/Exploit1.jpg") }}');background-size:cover ; background-position:center; border-radius: 50px">
+                        </div>
+                    </div>
+                    <div class="col-lg-10">
+                        <div class="card-body">
+                            <h5 class="card-title titre-avis-client-home-page">Card title</h5>
+                            <p class="card-text texte-avis-client-home-page">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
     </div>
+    <p class="text-center"><a href="#" class="btn btnorange text-white mb-4 mt-1">Voir tous les avis</a></p> <!-- Bouton voir tous les avis -->
 </div>
+
+
 
 {% endblock %}
