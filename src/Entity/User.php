@@ -3,14 +3,15 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * @ORM\Entity(repositoryClass=UserRepository::class)
+ * @UniqueEntity(fields={"email"}, message="There is already an account with this email")
  */
-class User
+class User implements UserInterface
 {
     /**
      * @ORM\Id
@@ -20,24 +21,35 @@ class User
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=45)
+     * @ORM\Column(type="string", length=180, unique=true)
      */
-    private $firstName;
+    private $email;
 
     /**
-     * @ORM\Column(type="string", length=45)
+     * @ORM\Column(type="json")
      */
-    private $famillyName;
+    private $roles = [];
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @var string The hashed password
+     * @ORM\Column(type="string")
      */
     private $password;
 
     /**
+     * @ORM\Column(type="string", length=50)
+     */
+    private $givenName;
+
+    /**
+     * @ORM\Column(type="string", length=50)
+     */
+    private $familyName;
+
+    /**
      * @ORM\Column(type="string", length=100, nullable=true)
      */
-    private $addressSteet;
+    private $addressStreet;
 
     /**
      * @ORM\Column(type="string", length=100, nullable=true)
@@ -45,7 +57,7 @@ class User
     private $addressCountry;
 
     /**
-     * @ORM\Column(type="string", length=100)
+     * @ORM\Column(type="string", length=100, nullable=true)
      */
     private $addressComplement;
 
@@ -55,68 +67,74 @@ class User
     private $addressZipcode;
 
     /**
+     * @ORM\Column(type="string", length=100, nullable=true)
+     */
+    private $addressCity;
+
+    /**
      * @ORM\Column(type="integer")
      */
     private $phone;
 
     /**
-     * @ORM\Column(type="array")
+     * @ORM\Column(type="boolean")
      */
-    private $roles = [];
+    private $isVerified = false;
 
-    /**
-     * @ORM\Column(type="string", length=100)
-     */
-    private $email;
-
-    /**
-     * @ORM\OneToMany(targetEntity=Commande::class, mappedBy="user")
-     */
-    private $commandes;
-
-    /**
-     * @ORM\OneToMany(targetEntity=Comment::class, mappedBy="user")
-     */
-    private $comments;
-
-    public function __construct()
-    {
-        $this->commandes = new ArrayCollection();
-        $this->comments = new ArrayCollection();
-    }
+    private $producer;
 
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getFirstName(): ?string
+    public function getEmail(): ?string
     {
-        return $this->firstName;
+        return $this->email;
     }
 
-    public function setFirstName(string $firstName): self
+    public function setEmail(string $email): self
     {
-        $this->firstName = $firstName;
+        $this->email = $email;
 
         return $this;
     }
 
-    public function getFamillyName(): ?string
+    /**
+     * A visual identifier that represents this user.
+     *
+     * @see UserInterface
+     */
+    public function getUsername(): string
     {
-        return $this->famillyName;
+        return (string) $this->email;
     }
 
-    public function setFamillyName(string $famillyName): self
+    /**
+     * @see UserInterface
+     */
+    public function getRoles(): array
     {
-        $this->famillyName = $famillyName;
+        $roles = $this->roles;
+        // guarantee every user at least has ROLE_USER
+        $roles[] = 'ROLE_USER';
+
+        return array_unique($roles);
+    }
+
+    public function setRoles(array $roles): self
+    {
+        $this->roles = $roles;
 
         return $this;
     }
 
-    public function getPassword(): ?string
+    /**
+     * @see UserInterface
+     */
+    public function getPassword(): string
     {
-        return $this->password;
+        return (string) $this->password;
     }
 
     public function setPassword(string $password): self
@@ -126,14 +144,58 @@ class User
         return $this;
     }
 
-    public function getAddressSteet(): ?string
+    /**
+     * Returning a salt is only needed, if you are not using a modern
+     * hashing algorithm (e.g. bcrypt or sodium) in your security.yaml.
+     *
+     * @see UserInterface
+     */
+    public function getSalt(): ?string
     {
-        return $this->addressSteet;
+        return null;
     }
 
-    public function setAddressSteet(?string $addressSteet): self
+    /**
+     * @see UserInterface
+     */
+    public function eraseCredentials()
     {
-        $this->addressSteet = $addressSteet;
+        // If you store any temporary, sensitive data on the user, clear it here
+        // $this->plainPassword = null;
+    }
+
+    public function getGivenName(): ?string
+    {
+        return $this->givenName;
+    }
+
+    public function setGivenName(string $givenName): self
+    {
+        $this->givenName = $givenName;
+
+        return $this;
+    }
+
+    public function getFamilyName(): ?string
+    {
+        return $this->familyName;
+    }
+
+    public function setFamilyName(string $familyName): self
+    {
+        $this->familyName = $familyName;
+
+        return $this;
+    }
+
+    public function getAddressStreet(): ?string
+    {
+        return $this->addressStreet;
+    }
+
+    public function setAddressStreet(?string $addressStreet): self
+    {
+        $this->addressStreet = $addressStreet;
 
         return $this;
     }
@@ -155,7 +217,7 @@ class User
         return $this->addressComplement;
     }
 
-    public function setAddressComplement(string $addressComplement): self
+    public function setAddressComplement(?string $addressComplement): self
     {
         $this->addressComplement = $addressComplement;
 
@@ -174,6 +236,18 @@ class User
         return $this;
     }
 
+    public function getAddressCity(): ?string
+    {
+        return $this->addressCity;
+    }
+
+    public function setAddressCity(?string $addressCity): self
+    {
+        $this->addressCity = $addressCity;
+
+        return $this;
+    }
+
     public function getPhone(): ?int
     {
         return $this->phone;
@@ -186,86 +260,25 @@ class User
         return $this;
     }
 
-    public function getRoles(): ?array
+    public function isVerified(): bool
     {
-        return $this->roles;
+        return $this->isVerified;
     }
 
-    public function setRoles(array $roles): self
+    public function setIsVerified(bool $isVerified): self
     {
-        $this->roles = $roles;
+        $this->isVerified = $isVerified;
 
         return $this;
     }
-
-    public function getEmail(): ?string
+    public function getProducer(): array
     {
-        return $this->email;
+        return $this->producer;
     }
 
-    public function setEmail(string $email): self
+    public function setProducer(array $producer): self
     {
-        $this->email = $email;
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|Commande[]
-     */
-    public function getCommandes(): Collection
-    {
-        return $this->commandes;
-    }
-
-    public function addCommande(Commande $commande): self
-    {
-        if (!$this->commandes->contains($commande)) {
-            $this->commandes[] = $commande;
-            $commande->setUser($this);
-        }
-
-        return $this;
-    }
-
-    public function removeCommande(Commande $commande): self
-    {
-        if ($this->commandes->removeElement($commande)) {
-            // set the owning side to null (unless already changed)
-            if ($commande->getUser() === $this) {
-                $commande->setUser(null);
-            }
-        }
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|Comment[]
-     */
-    public function getComments(): Collection
-    {
-        return $this->comments;
-    }
-
-    public function addComment(Comment $comment): self
-    {
-        if (!$this->comments->contains($comment)) {
-            $this->comments[] = $comment;
-            $comment->setUser($this);
-        }
-
-        return $this;
-    }
-
-    public function removeComment(Comment $comment): self
-    {
-        if ($this->comments->removeElement($comment)) {
-            // set the owning side to null (unless already changed)
-            if ($comment->getUser() === $this) {
-                $comment->setUser(null);
-            }
-        }
+        $this->producer = $producer;
 
         return $this;
     }

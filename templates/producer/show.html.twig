@@ -34,6 +34,12 @@
         </tbody>
     </table>
 
+    {% if is_granted('ROLE_USER') %}
+    laches tes com ! 
+    {% else %}
+    connectes toi frero !
+    {% endif %}
+
     <a href="{{ path('producer_index') }}">back to list</a>
 
     <a href="{{ path('producer_edit', {'id': producer.id}) }}">edit</a>
