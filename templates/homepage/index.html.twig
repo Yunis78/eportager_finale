@@ -46,6 +46,10 @@
 
 <!-- cards -->
 
+ {% if is_granted('ROLE_ADMIN') %}
+ JE SUIS ADMIN
+ {% endif %}
+
 <div class="bouton">
     <input type="button" class="btn btnorange text-white" value="Voir plus de produits" />
     <input type="button" class="btn btnorange text-white" value="Voir les autres producteurs" />
