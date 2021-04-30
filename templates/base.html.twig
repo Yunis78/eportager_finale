@@ -13,7 +13,8 @@
         <meta name="theme-color" content="#ffffff">
         <!-- favicon -->
 
-        {# Run `composer require symfony/webpack-encore-bundle` and uncomment the following Encore helpers to start using Symfony UX #} {% block stylesheets %}
+        {# Run `composer require symfony/webpack-encore-bundle` and uncomment the following Encore helpers to start using Symfony UX #} 
+        {% block stylesheets %}
         {{
             encore_entry_link_tags("app")
         }}
@@ -76,7 +77,12 @@
 
         <!-- FIN DU CODE -->
 
-        {% block body %}{% endblock %} {% block javascripts %}
+        {% block body %}{% endblock %} 
+        
+        
+        <!-- Footer ? -->
+        
+        {% block javascripts %}
         {{ encore_entry_script_tags("app") }}
         {% endblock %}
     </body>

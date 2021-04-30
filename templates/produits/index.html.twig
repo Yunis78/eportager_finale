@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %} {% block title %}Hello ProduitsController!{% endblock %} {% block stylesheets %}
+{{ encore_entry_link_tags("app") }}
+{{ encore_entry_link_tags("product") }}
+{% endblock %} {% block body %}
+
+<!-- bannière -->
+
+<div class="banniProd1">
+    <div class="card text-white">
+        <div style="width:100% ; height: 300px ; background-image: url('{{ asset("img/fruitLegume.jpg") }}');background-size:cover ; background-position:center">
+        <!-- <img src="{{ asset("img/fruitLegume.jpg") }}" class="card-img" alt="..." /> -->
+    </div>
+        <div class="card-img-overlay d-flex align-items-center justify-content-center">
+            <h2 class="card-title">TOUTS LES PRODUITS</h2>
+        </div>
+    </div>
+</div>
+
+<!-- cards -->
+
+
+
+{% endblock %}
