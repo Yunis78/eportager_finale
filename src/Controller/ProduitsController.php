@@ -17,4 +17,24 @@ class ProduitsController extends AbstractController
             'controller_name' => 'ProduitsController',
         ]);
     }
+
+    /**
+     * @Route("/categorie", name="categorie")
+     */
+    public function categorie(): Response
+    {
+        return $this->render('produits/categorie.html.twig', [
+            'controller_name' => 'ProduitsController',
+        ]);
+    }
+
+        /**
+     * @Route("/produit", name="produit")
+     */
+    public function produit(): Response
+    {
+        return $this->render('produits/produit.html.twig', [
+            'controller_name' => 'ProduitsController',
+        ]);
+    }
 }

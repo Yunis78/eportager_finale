@@ -1,7 +1,15 @@
+@font-face {
+    font-family: 'Noteworthy';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Noteworthy'), url('Noteworthy-Lt.woff') format('woff');
+    }
+
 body {
     margin:0;
     background-color: #f6f5ffa1;
 }
+
 
 /* Home page bannière */
 
@@ -36,7 +44,7 @@ body {
 }
 
 .nav-link {
-    font-weight: bold;
+    font-weight:bold;
 }
 
 .vert a{
@@ -128,7 +136,7 @@ max-height: 380px;
 .bouton {
     display: flex;
     justify-content: space-around;
-margin: 30px;
+    margin: 30px;
 }
 
 /* changer de css plus tard */
