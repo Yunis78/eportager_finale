@@ -141,3 +141,26 @@ max-height: 380px;
 
 /* changer de css plus tard */
 
+/* debut responsive momo*/
+@media (max-width: 991px)
+{
+    .container-card-producteur-home-page{
+        padding-left: 15px !important;
+    }
+    .img-home-card-avis-client{
+        display: flex;
+        justify-content: center !important;
+        margin-top: 20px
+    }
+
+    .titre-avis-client-home-page{
+        text-align: center;
+    }
+
+    .texte-avis-client-home-page{
+        text-align: center;
+    }
+}
+
+
+/* fin responsive img-home-card-avis-client momo*/
