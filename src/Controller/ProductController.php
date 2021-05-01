@@ -41,7 +41,6 @@ class ProductController extends AbstractController
         $form->handleRequest($request);
         
         if ($form->isSubmitted() && $form->isValid()) {
-
             foreach($form->get('file') as $media)
             {
                 // Get file field
