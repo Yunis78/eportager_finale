@@ -7,8 +7,8 @@
     /* outline: 1px solid transparent; */
 }
 
-.banniProd1 h2,
-.titreCards1 span {
+.banniProd1 h2 {
+    text-transform: uppercase;
     font-family: "Noteworthy";
     font-weight: bold;
     background-color: #5c9c18;
@@ -25,22 +25,25 @@
     /* color: #5c9c18; */
 }
 
-.cardsCat h2,
-.cardsProd h2 {
+.cardsCat h2 {
     text-transform: uppercase;
     font-family: "Noteworthy";
     font-weight: bold;
+    text-align: center;
+    width: min-content;
+    padding: .5rem;
 }
 
+
 .cardsProd > .card > div {
-    width: 500px;
-    height: 200px;
+    width: 300px;
+    height: 250px;
     background-size: cover;
     background-position: center;
 }
 
 .cardsCat > .card > div {
-    width: 300px;
+    width: 500px;
     height: 200px;
     background-size: cover;
     background-position: center;
@@ -52,22 +55,18 @@
     justify-content: flex-end;
 }
 
-.cardsProd h2{
-    background-color: #5c9c18;
-    border-radius: .5rem;
-    color: white;
-    padding: .5rem;
-    width: fit-content;
-}
 
 .cardsProd h4{
     text-transform: uppercase;
     font-family: "Noteworthy";
-    font-weight: bold;
     background-color: #5c9c18;
     border-radius: .5rem;
     color: white;
     padding: .5rem;
     width: fit-content;
     margin-bottom: 0;
+}
+
+.cardsProd .card-img-overlay:not(:hover) p{
+    display: none;
 }
