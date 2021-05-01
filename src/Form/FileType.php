@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\File;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\FileType as TypeFileType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -12,7 +13,10 @@ class FileType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('path')
+            ->add('path', FileType::class, [
+                'mapped' => false,
+                'required' => false,
+            ])
             ->add('producer')
             ->add('product')
         ;

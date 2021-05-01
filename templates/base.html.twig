@@ -50,35 +50,47 @@
             <!-- nav barre -->
         </header>
         <nav class="navbar navbar-expand-md navbar-light bg-white py-3 jaune mb-4">
-            <div class="container">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarText">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item orange mx-1 active">
+                        <a class="nav-link orange active" href="{{ path('homepage') }}">Accueil</a>
+                    </li>
+                    <li class="nav-item vert mx-1">
+                        <a class="nav-link vert" href="{{ path('product_index') }}">Produits</a>
+                    </li>
+                    <li class="nav-item violet mx-1">
+                        <a class="nav-link violet" href="{{ path('producer_index') }}">Producteurs</a>
+                    </li>
+                    <li class="nav-item rouge mx-1">
+                        <a class="nav-link rouge" href="{{ path('default') }}">Concept</a>
+                    </li>
+                    <li class="nav-item orange mx-1">
+                        <a class="nav-link orange" href="{{ path('contact') }}">Contact</a>
+                    </li>
+                    <li class="nav-item blue mx-1">
+                        <a class="nav-link orange" href="{{ path('faq') }}">F.A.Q</a>
+                    </li>
+                </ul>
 
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarText">
-                    <ul class="navbar-nav mr-auto">
-                        <li class="nav-item orange mx-1 active">
-                            <a class="nav-link orange active" href="{{ path('homepage')}}">Accueil</a>
-                        </li>
-                        <li class="nav-item vert mx-1">
-                            <a class="nav-link vert" href="{{ path('produits')}}">Produits</a>
-                        </li>
-                        <li class="nav-item violet mx-1">
-                            <a class="nav-link violet" href="#">Producteurs</a>
-                        </li>
-                        <li class="nav-item rouge mx-1">
-                            <a class="nav-link rouge" href="#">Concept</a>
-                        </li>
-                        <li class="nav-item orange mx-1">
-                            <a class="nav-link orange" href="#">Contact</a>
-                        </li>
-                    </ul>
-                    <span class="navbar-text"> Options de connexions </span>
-                </div>
+                    {% if is_granted('ROLE_USER') %}
+                        <span class="navbar-text"> {{ app.user.givenname }} {{ app.user.familyname }}, <a href="{{ path('app_logout') }}">Logout</a> </span>
+
+                    {% else %}
+
+                        <span class="navbar-text">  <a href="{{ path('app_login') }}">Connexion</a> </span>
+
+                    {% endif %}
+
+                
             </div>
         </nav>
 
         <!-- FIN DU CODE -->
+        
+
 
         {% block body %}{% endblock %} 
         

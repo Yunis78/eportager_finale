@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Controller;
-
+use App\Entity\File;
 use App\Entity\Product;
 use App\Form\ProductType;
 use App\Repository\ProductRepository;
@@ -9,6 +9,10 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+use Symfony\Component\HttpFoundation\File\Exception\FileException;
+use Symfony\Component\String\Slugger\SluggerInterface;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 /**
  * @Route("/product")
@@ -26,15 +30,48 @@ class ProductController extends AbstractController
     }
 
     /**
+     * @IsGranted("ROLE_PRODUCER")
+     * 
      * @Route("/new", name="product_new", methods={"GET","POST"})
      */
-    public function new(Request $request): Response
+    public function new(Request $request,  SluggerInterface $slugger): Response
     {
         $product = new Product();
         $form = $this->createForm(ProductType::class, $product);
         $form->handleRequest($request);
-
+        
         if ($form->isSubmitted() && $form->isValid()) {
+
+            foreach($form->get('file') as $media)
+            {
+                // Get file field
+                $uploaded_file = $media->get('file')->getData();
+
+                // If has file
+                if ($uploaded_file)
+                {
+                    // File Content
+                    $file_content = file_get_contents($uploaded_file->getPathname());
+
+                    // Generate MD5 from file content
+                    $file_md5 = md5($file_content);
+
+                    // Get file extension
+                    $file_extension = $uploaded_file->guessExtension();
+
+                    // Generate new file name
+                    $new_file = $file_md5.".".$file_extension;
+
+                    // Move file
+                    $uploaded_file->move(
+                        "./upload/",
+                        $new_file
+                    );
+
+                    // Save the new file name in the "path" field
+                    $media->getData()->setPath( $new_file );
+                }
+            }
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($product);
             $entityManager->flush();

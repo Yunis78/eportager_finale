@@ -25,9 +25,11 @@ class Product
     private $categorie;
 
     /**
-     * @ORM\OneToMany(targetEntity=File::class, mappedBy="product")
+     * @ORM\ManyToMany(targetEntity=File::class, cascade={"persist"})
      */
     private $file;
+
+    private $files;
 
     /**
      * @ORM\ManyToOne(targetEntity=Producer::class, inversedBy="products")
@@ -198,6 +200,18 @@ class Product
                 $commandeProduct->setProduct(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getFiles(): ?array
+    {
+        return $this->files;
+    }
+
+    public function setFiles( array $files): self
+    {
+        $this->files = $files;
 
         return $this;
     }
