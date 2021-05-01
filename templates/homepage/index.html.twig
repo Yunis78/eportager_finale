@@ -1,99 +1,197 @@
 {% extends 'base.html.twig' %} {% block title %}ePotager - Accueil{% endblock %} {% block body %}
-<!-- carousel -->
 
+<!-- carousel -->
 <div id="carouselhome" class="carousel slide" data-ride="carousel">
     <div class="carouOver"></div>
-
     <div class="carousel-inner">
         <div class="carousel-item active">
-            <div class="textCarou d-flex flex-column text-white">
-                <h3>MICHEL ET SES POMMES</h3>
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. <br />
-                    Eligendi eaque, sequi saepe voluptate aliquid? <br />
-                    Nulla asperiores eaque expedita laboriosam deserunt.
-                </p>
-                <input type="button" class="btn btnorange text-white ml-3" value="Voir le produit" />
-            </div>
+            <div class="container"> <div class="row"> 
+                <div class="col-12 textCarou text-white">
+                    <h3 class="noteworthy">MICHEL ET SES POMMES</h3>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. <br />
+                        Eligendi eaque, sequi saepe voluptate aliquid? <br />
+                        Nulla asperiores eaque expedita laboriosam deserunt.
+                    </p>
+                    <a href="#" class="btn btnorange text-white">Voir le produit</a>                </div>
+            </div></div>
             <img src="{{ asset("img/carou1.jpg") }}" class="d-block w-100" alt="...">
         </div>
         <div class="carousel-item">
-            <div class="textCarou d-flex flex-column text-white">
-                <h3>NOUVELLES FRAISES</h3>
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. <br />
-                    Eligendi eaque, sequi saepe voluptate aliquid? <br />
-                    Nulla asperiores eaque expedita laboriosam deserunt.
-                </p>
-                <input type="button" class="btn btnorange text-white ml-3" value="Voir le produit" />
-            </div>
+            <div class="container"> <div class="row"> 
+                <div class="col-12 textCarou text-white">
+                    <h3 class="noteworthy">NOUVELLES FRAISES</h3>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. <br />
+                        Eligendi eaque, sequi saepe voluptate aliquid? <br />
+                        Nulla asperiores eaque expedita laboriosam deserunt.
+                    </p>
+                    <a href="#" class="btn btnorange text-white">Voir le produit</a>                </div>
+            </div></div>
             <img src="{{ asset("img/carou1.jpg") }}" class="d-block w-100" alt="...">
         </div>
         <div class="carousel-item">
-            <div class="textCarou d-flex flex-column text-white">
-                <h3>ENFIN DES EPINARDS</h3>
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. <br />
-                    Eligendi eaque, sequi saepe voluptate aliquid? <br />
-                    Nulla asperiores eaque expedita laboriosam deserunt.
-                </p>
-                <input type="button" class="btn btnorange text-white ml-3" value="Voir le produit" />
-            </div>
+            <div class="container"> <div class="row"> 
+                <div class="col-12 textCarou text-white">
+                    <h3 class="noteworthy">ENFIN DES EPINARDS</h3>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. <br />
+                        Eligendi eaque, sequi saepe voluptate aliquid? <br />
+                        Nulla asperiores eaque expedita laboriosam deserunt.
+                    </p>
+                    <a href="#" class="btn btnorange text-white">Voir le produit</a>
+                </div>
+            </div></div>
             <img src="{{ asset("img/carou1.jpg") }}" class="d-block w-100" alt="...">
         </div>
     </div>
+
+    <a class="carousel-control-next" href="#carouselhome" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+    </a>
 </div>
 
 <!-- cards -->
-
- {% if is_granted('ROLE_ADMIN') %}
- JE SUIS ADMIN
- {% endif %}
-
-<div class="bouton">
-    <input type="button" class="btn btnorange text-white" value="Voir plus de produits" />
-    <input type="button" class="btn btnorange text-white" value="Voir les autres producteurs" />
-</div>
-
-<div class="row">
-    <div class="row justify-content-between col-6 mb-4">
-        <div class="card" style="width: 17rem ; height:400px ; position:relative">
-          <div style="width:100% ; height: 200px ; background-image: url('{{ asset("img/Pomme1.jpg") }}');background-size:cover ; background-position:center">
-            <!-- <img src="{{ asset("img/Pomme1.jpg") }}" class="card-img-top img-fluid" alt="..." /> -->
-          </div>
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card.</p>
-                <a href="#" class="btn btnvert" style="position:absolute ; bottom:4%">Go somewhere</a>
-            </div>
-        </div>
-        <div class="card" style="width: 17rem ; height:400px ; position:relative">
-          <div style="width:100% ; height: 200px ; background-image: url('{{ asset("img/Pomme1.jpg") }}');background-size:cover ; background-position:center">
-            <!-- <img src="{{ asset("img/Pomme1.jpg") }}" class="card-img-top img-fluid" alt="..." /> -->
-          </div>
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card.</p>
-                <a href="#" class="btn btnvert" style="position:absolute ; bottom:4%">Go somewhere</a>
-            </div>
-      </div>
-    </div>
-
-    <div class="col-6">
-        <div class="col mb-4">
-            <div class="card" style="width: 36rem ; height:500px ; position:relative">
-              <div style="width:100% ; height: 300px ; background-image: url('{{ asset("img/Exploit1.jpg") }}');background-size:cover ; background-position:center">
-                <!-- <img src="{{ asset("img/Exploit1.jpg") }}" class="card-img-top img-fluid" alt="..." /> -->
-              </div>
-                <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p style="overflow:hidden ; max-width:50ch ; text-overflow: ellipsis ; wihte-space:nowrap" class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content up the bulk of the card the bulk of the card.</p>
-                    <a href="#" class="btn btnvert" style="position:absolute ; bottom:4%">Go somewhere</a>
+<div class="container">
+    <div class="row">
+        <div class="col-12 col-lg-6"> <!-- produits --> <!-- Bouton voir plus de produits -->
+            <h2 class="text-center mt-5 mb-4"> <span class="cadre-titre-vert px-2">Derniers</span> produits</h2>
+            <div class="row">
+                <div class="col-12 col-lg-6"> <!-- produits card 1 -->
+                    <div class="card mb-3" style="width: 100% ; height:400px ; position:relative"> 
+                        <div style="width:100% ; height: 200px ; background-image: url('{{ asset("img/Pomme1.jpg") }}');background-size:cover ; background-position:center">
+                        </div>
+                            <div class="card-body"> 
+                                <h5 class="card-title">Card title</h5>
+                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card.</p>
+                                <a href="#" class="btn btnvert">Découvrir</a>
+                                <button class="btn btnviolet"><i class="ri-shopping-cart-2-line"></i></button>
+                            </div>
+                    </div>
+                </div>
+                <div class="col-12 col-lg-6"> <!-- produits card 2 -->
+                    <div class="card mb-3" style="width: 100% ; height:400px ; position:relative">
+                        <div style="width:100% ; height: 200px ; background-image: url('{{ asset("img/Pomme1.jpg") }}');background-size:cover ; background-position:center">
+                        </div>
+                            <div class="card-body">
+                                <h5 class="card-title">Card title</h5>
+                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card.</p>
+                                <a href="#" class="btn btnvert">Découvrir</a>
+                                <button class="btn btnviolet"><i class="ri-shopping-cart-2-line"></i></button>
+                            </div>
+                    </div>
+                </div>
+                <div class="col-12 col-lg-6"> <!-- produits card 3 -->
+                    <div class="card mb-3" style="width: 100% ; height:400px ; position:relative">
+                        <div style="width:100% ; height: 200px ; background-image: url('{{ asset("img/Pomme1.jpg") }}');background-size:cover ; background-position:center">
+                        </div>
+                            <div class="card-body">
+                                <h5 class="card-title">Card title</h5>
+                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card.</p>
+                                <a href="#" class="btn btnvert">Découvrir</a>
+                                <button class="btn btnviolet"><i class="ri-shopping-cart-2-line"></i></button>
+                            </div>
+                    </div>
+                </div>
+                <div class="col-12 col-lg-6"> <!-- produits card 4 -->
+                    <div class="card mb-3" style="width: 100% ; height:400px ; position:relative">
+                        <div style="width:100% ; height: 200px ; background-image: url('{{ asset("img/Pomme1.jpg") }}');background-size:cover ; background-position:center">
+                        </div>
+                            <div class="card-body">
+                                <h5 class="card-title">Card title</h5>
+                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card.</p>
+                                <a href="#" class="btn btnvert">Découvrir</a>
+                                <button class="btn btnviolet"><i class="ri-shopping-cart-2-line"></i></button>
+                            </div>
+                    </div>
                 </div>
             </div>
-            
+            <a href="#" class="btn btn orange text-white mb-4 mt-2">Voir plus de produits</a
         </div>
+        <div class="col-12 col-lg-6 pl-5 container-card-producteur-home-page"> <!-- producteurs -->
+            <h2 class="text-center mt-5 mb-4"><span class="cadre-titre-violet px-2">Producteurs</span> populaires</h2>
+            <div class="row">
+              <div class="bouton">
+                  <input type="button" class="btn btnorange text-white" value="Voir plus de produits" />
+                  <input type="button" class="btn btnorange text-white" value="Voir les autres producteurs" />
+              </div>
+                <div class="col-12"> <!-- producteurs card 1 -->
+                    <div class="card mb-3" style="width: 100% ; height:400px ; position:relative">
+                        <div style="width:100% ; height: 200px ; background-image: url('{{ asset("img/Exploit1.jpg") }}');background-size:cover ; background-position:center">
+                        </div>
+                            <div class="card-body">
+                                <h5 class="card-title">Card title</h5>
+                                <p style="overflow:hidden ; max-width:50ch ; text-overflow: ellipsis ; wihte-space:nowrap" class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content up the bulk of the card the bulk of the card.</p>
+                                <a href="#" class="btn btnvert" style="position:absolute ; bottom:4%">Découvrir</a>
+                            </div>
+                    </div>
+                </div>
+                <div class="col-12"> <!-- producteurs card 2 -->
+                    <div class="card mb-3" style="width: 100% ; height:400px ; position:relative">
+                        <div style="width:100% ; height: 200px ; background-image: url('{{ asset("img/Exploit1.jpg") }}');background-size:cover ; background-position:center">
+                        </div>
+                            <div class="card-body">
+                                <h5 class="card-title">Card title</h5>
+                                <p style="overflow:hidden ; max-width:50ch ; text-overflow: ellipsis ; wihte-space:nowrap" class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content up the bulk of the card the bulk of the card.</p>
+                                <a href="#" class="btn btnvert" style="position:absolute ; bottom:4%">Découvrir</a>
+                            </div>
+                    </div>
+                </div>
+            </div>
+            <a href="#" class="btn btnorange text-white mb-4 mt-2 ml-3">Voir les autres producteurs</a> <!-- Bouton voir les autres producteurs -->
+
+        </div>
+        
     </div>
 </div>
+<!-- avis -->
+<div class="container">
+    <h2 class="text-center mt-5 mb-4"> <span class="cadre-titre-orange px-2">Avis</span> des clients</h2>
+    <div class="row">
+
+
+        
+        <div class="col-12 mb-2"> <!-- avis client card 1 -->
+            <div class="card mb-3">
+                <div class="row no-gutters d-flex justify-content-center" style="min-height: 124px">
+                    <div class="col-lg-2 d-flex justify-content-center align-items-center img-home-card-avis-client">
+                        <!-- <img src="..." alt="..."> -->
+                        <div class="" style="height: 100px; width: 100px ; background-image: url('{{ asset("img/Exploit1.jpg") }}');background-size:cover ; background-position:center; border-radius: 50px">
+                        </div>
+                    </div>
+                    <div class="col-lg-10">
+                        <div class="card-body">
+                            <h5 class="card-title titre-avis-client-home-page">Card title</h5>
+                            <p class="card-text texte-avis-client-home-page">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 mb-2"> <!-- avis client card 2 -->
+            <div class="card mb-3">
+                <div class="row no-gutters d-flex justify-content-center" style="min-height: 124px">
+                    <div class="col-lg-2 d-flex justify-content-center align-items-center img-home-card-avis-client">
+                        <!-- <img src="..." alt="..."> -->
+                        <div class="" style="height: 100px; width: 100px ; background-image: url('{{ asset("img/Exploit1.jpg") }}');background-size:cover ; background-position:center; border-radius: 50px">
+                        </div>
+                    </div>
+                    <div class="col-lg-10">
+                        <div class="card-body">
+                            <h5 class="card-title titre-avis-client-home-page">Card title</h5>
+                            <p class="card-text texte-avis-client-home-page">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+    <p class="text-center"><a href="#" class="btn btnorange text-white mb-4 mt-1">Voir tous les avis</a></p> <!-- Bouton voir tous les avis -->
+</div>
+
+
 
 {% endblock %}
