@@ -24,11 +24,13 @@ class File
 
     /**
      * @ORM\ManyToOne(targetEntity=Producer::class, inversedBy="file")
+     * @ORM\JoinColumn(nullable=true)
      */
     private $producer;
 
     /**
      * @ORM\ManyToOne(targetEntity=Product::class, inversedBy="file")
+     * @ORM\JoinColumn(nullable=true)
      */
     private $product;
 

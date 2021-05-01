@@ -41,7 +41,7 @@ security:
     # Note: Only the *first* access control that matches will be used
     access_control:
         # - { path: ^/admin, roles: ROLE_ADMIN }
-        # - { path: ^/[user|comment], roles: ROLE_USER }
-        # - { path: ^/[producer|product|file], roles: ROLE_PRODUCER}
+        # - { path: ^/[user|comment|product], roles: ROLE_USER }
+        # - { path: ^/[producer|product/new|product/{id}/edit|file], roles: ROLE_PRODUCER}
 
 

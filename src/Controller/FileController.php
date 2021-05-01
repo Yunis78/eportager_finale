@@ -35,6 +35,40 @@ class FileController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+
+             // Get file field
+             $uploaded_file = $form->get('file')->getData();
+
+             // If has file
+             if ($uploaded_file)
+             {
+                 // File Content
+                $file_content = file_get_contents($uploaded_file->getPathname());
+ 
+                 // Generate MD5 from file content
+                $file_md5 = md5($file_content);
+ 
+                 // Get file extension
+                $file_extension = $uploaded_file->guessExtension();
+ 
+                $original_name = $uploaded_file->getClientOriginalName();
+                $original_name_array = explode('.', $original_name);
+ 
+                $file_extension = end($original_name_array);
+ 
+                 // Generate new file name
+                $new_file = $file_md5.".".$file_extension;
+ 
+                 // Move file
+                $uploaded_file->move(
+                    "./upload/",
+                    $new_file
+                );
+ 
+                 // Save the new file name in the "path" field
+                $file->setPath( $new_file );
+             }
+
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($file);
             $entityManager->flush();

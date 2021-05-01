@@ -7,11 +7,16 @@
 
 // any CSS you import will output into a single css file (app.css in this case)
 import './styles/app.css';
-import 'bootstrap/dist/css/bootstrap.min.css'
-import 'remixicon/fonts/remixicon.css'
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'remixicon/fonts/remixicon.css';
 
 // start the Stimulus application
 // import './bootstrap';
-import 'bootstrap'
-import 'popper.js'
-import 'jquery'
+import 'jquery';
+import 'popper.js';
+
+require('./js/input.js');
+require('./js/collection.js');
+
+$("#product-medias-collection").collection();
+window.component_input();
