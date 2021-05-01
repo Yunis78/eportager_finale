@@ -25,7 +25,7 @@ class Product
     private $categorie;
 
     /**
-     * @ORM\ManyToMany(targetEntity=File::class, cascade={"persist"})
+     * @ORM\OneToMany(targetEntity=File::class, mappedBy="product")
      */
     private $file;
 

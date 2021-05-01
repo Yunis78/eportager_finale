@@ -20,7 +20,7 @@ class Producer
     private $id;
 
     /**
-     * @ORM\ManyToMany(targetEntity=File::class, cascade={"persist"})
+     * @ORM\OneToMany(targetEntity=File::class, mappedBy="producer")
      */
     private $file;
 
