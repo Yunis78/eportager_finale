@@ -70,3 +70,11 @@
 .cardsProd .card-img-overlay:not(:hover) p{
     display: none;
 }
+
+.prix2 h3{
+    background-color: #ff7e00;
+    color: white;
+    text-align: center;
+    width: 40%;
+    
+}
