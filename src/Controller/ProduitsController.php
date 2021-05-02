@@ -19,7 +19,7 @@ class ProduitsController extends AbstractController
     }
 
     /**
-     * @Route("/categorie", name="categorie")
+     * @Route("/cat", name="cat")
      */
     public function categorie(): Response
     {
@@ -29,7 +29,7 @@ class ProduitsController extends AbstractController
     }
 
         /**
-     * @Route("/produit", name="produit")
+     * @Route("/prod", name="prod")
      */
     public function produit(): Response
     {

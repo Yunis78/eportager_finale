@@ -35,7 +35,7 @@
 }
 
 
-.cardsProd > .card > div {
+.cardsProd .imgCard {
     width: 300px;
     height: 250px;
     background-size: cover;
@@ -49,7 +49,7 @@
     background-position: center;
 }
 
-.cardsProd>.card>.card-img-overlay{
+.cardsProd .card-img-overlay{
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
@@ -74,7 +74,27 @@
 .prix2 h3{
     background-color: #ff7e00;
     color: white;
-    text-align: center;
-    width: 40%;
-    
+    text-align: center;    
+}
+
+.imageProduit>div{
+    border-top-left-radius: .25rem;
+    border-bottom-left-radius: .25rem;
+    width:100% ;
+    height: 100% ;
+    background-size:cover ;
+    background-position:center;
+}
+
+.producteur {
+    border-left: #6c757d1a solid 1px;
+}
+
+
+.producteur>div {
+    height: 70px;
+    width: 70px;
+    background-size:cover;
+    background-position:center;
+    border-radius: 50%;
 }
