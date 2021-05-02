@@ -35,7 +35,7 @@
     </table>
 
     {% if is_granted('ROLE_USER') %}
-    laches tes com ! 
+    {{ include('comment/_form.html.twig') }}
     {% else %}
     connectes toi frero !
     {% endif %}
