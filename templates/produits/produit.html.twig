@@ -74,6 +74,32 @@
             </div>
         </div>
 
+        <!-- card produit -->
+        <div class="col-12 col-xl-6">
+            <div class="card w-100 d-flex flex-row m-1 px-0">
+                <!-- image -->
+                <div class="imageProduit col-4 p-0">
+                    <div style="background-image: url('{{ asset("img/Pomme1.jpg") }}');"></div>
+                </div>
+                <!-- description et prix -->
+                <div class="prix col-5 d-flex flex-column justify-content-between">
+                    <h3 class="mt-3">Titre</h3>
+                    <p>Description du produit</p>
+                    <div class="mb-3 d-flex flex-row">
+                        <p class="btnorange-inverse m-2 font-weight-bold">3€ / kg</p>
+                        <!-- <a href="#" class="btn btnvert m-2"><i class="ri-heart-line"></i></a> -->
+                        <button class="btn btnviolet m-2"><i class="ri-shopping-cart-2-line"></i></button>
+                    </div>      
+                </div>
+                <!-- producteur -->
+                <div class="producteur col-3 d-flex flex-column justify-content-center align-items-center pb-3">
+                    <div class="mt-3" style="background-image: url('{{ asset("img/Exploit1.jpg") }}');"></div>
+                    <p class="text-center mt-2 mb-1 font-weight-bold">Michel POLUX</p>
+                    <a href="#" class="btn btnvert m-2">Découvrir</a>
+                </div>
+            </div>
+        </div>
+
         
     </div>
     

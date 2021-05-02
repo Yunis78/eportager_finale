@@ -35,7 +35,7 @@
 }
 
 
-.cardsProd > .card > div {
+.cardsProd .imgCard {
     width: 300px;
     height: 250px;
     background-size: cover;
@@ -49,7 +49,7 @@
     background-position: center;
 }
 
-.cardsProd>.card>.card-img-overlay{
+.cardsProd .card-img-overlay{
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
@@ -85,6 +85,11 @@
     background-size:cover ;
     background-position:center;
 }
+
+.producteur {
+    border-left: #6c757d1a solid 1px;
+}
+
 
 .producteur>div {
     height: 70px;
