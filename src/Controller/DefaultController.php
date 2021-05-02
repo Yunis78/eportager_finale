@@ -9,12 +9,12 @@ use Symfony\Component\Routing\Annotation\Route;
 class DefaultController extends AbstractController
 {
     /**
-     * @Route("/default", name="default")
+     * @Route("/", name="homepage")
      */
     public function index(): Response
     {
-        return $this->render('default/index.html.twig', [
-            'controller_name' => 'DefaultController',
+        return $this->render('components/pages/default/index.html.twig', [
+            'controller_name' => 'HomepageController',
         ]);
     }
 
@@ -23,7 +23,7 @@ class DefaultController extends AbstractController
      */
     public function contact(): Response
     {
-        return $this->render('default/contact.html.twig', [
+        return $this->render('components/pages/default/contact.html.twig', [
             'controller_name' => 'DefaultController',
         ]);
     }
@@ -33,8 +33,18 @@ class DefaultController extends AbstractController
      */
     public function faq(): Response
     {
-        return $this->render('default/faq.html.twig', [
+        return $this->render('components/pages/default/faq.html.twig', [
             'controller_name' => 'DefaultController',
+        ]);
+    }
+
+    /**
+     * @Route("/concept", name="concept")
+     */
+    public function concept(): Response
+    {
+        return $this->render('components/pages/default/index.html.twig', [
+            'controller_name' => 'HomepageController',
         ]);
     }
 }

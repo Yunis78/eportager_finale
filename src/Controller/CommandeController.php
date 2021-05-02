@@ -20,7 +20,7 @@ class CommandeController extends AbstractController
      */
     public function index(CommandeRepository $commandeRepository): Response
     {
-        return $this->render('commande/index.html.twig', [
+        return $this->render('components/pages/commande/index.html.twig', [
             'commandes' => $commandeRepository->findAll(),
         ]);
     }
@@ -42,7 +42,7 @@ class CommandeController extends AbstractController
             return $this->redirectToRoute('commande_index');
         }
 
-        return $this->render('commande/new.html.twig', [
+        return $this->render('components/pages/commande/new.html.twig', [
             'commande' => $commande,
             'form' => $form->createView(),
         ]);
@@ -53,7 +53,7 @@ class CommandeController extends AbstractController
      */
     public function show(Commande $commande): Response
     {
-        return $this->render('commande/show.html.twig', [
+        return $this->render('components/pages/commande/show.html.twig', [
             'commande' => $commande,
         ]);
     }
@@ -72,7 +72,7 @@ class CommandeController extends AbstractController
             return $this->redirectToRoute('commande_index');
         }
 
-        return $this->render('commande/edit.html.twig', [
+        return $this->render('components/pages/commande/edit.html.twig', [
             'commande' => $commande,
             'form' => $form->createView(),
         ]);
