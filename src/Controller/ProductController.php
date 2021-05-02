@@ -24,7 +24,7 @@ class ProductController extends AbstractController
      */
     public function index(ProductRepository $productRepository): Response
     {
-        return $this->render('product/index.html.twig', [
+        return $this->render('components/pages/product/index.html.twig', [
             'products' => $productRepository->findAll(),
         ]);
     }
@@ -78,7 +78,7 @@ class ProductController extends AbstractController
             return $this->redirectToRoute('product_index');
         }
 
-        return $this->render('product/new.html.twig', [
+        return $this->render('components/pages/product/new.html.twig', [
             'product' => $product,
             'form' => $form->createView(),
         ]);
@@ -89,7 +89,7 @@ class ProductController extends AbstractController
      */
     public function show(Product $product): Response
     {
-        return $this->render('product/show.html.twig', [
+        return $this->render('components/pages/product/show.html.twig', [
             'product' => $product,
         ]);
     }
@@ -108,7 +108,7 @@ class ProductController extends AbstractController
             return $this->redirectToRoute('product_index');
         }
 
-        return $this->render('product/edit.html.twig', [
+        return $this->render('components/pages/product/edit.html.twig', [
             'product' => $product,
             'form' => $form->createView(),
         ]);

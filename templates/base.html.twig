@@ -20,9 +20,7 @@
 
         {# Run `composer require symfony/webpack-encore-bundle` and uncomment the following Encore helpers to start using Symfony UX #} 
         {% block stylesheets %}
-        {{
-            encore_entry_link_tags("app")
-        }}
+        {{ encore_entry_link_tags("app") }}
         {% endblock %}
     </head>
     <body>
@@ -70,7 +68,7 @@
                         <a class="nav-link violet" href="{{ path('producer_index') }}">Producteurs</a>
                     </li>
                     <li class="nav-item rouge mx-1">
-                        <a class="nav-link rouge" href="{{ path('default') }}">Concept</a>
+                        <a class="nav-link rouge" href="{{ path('concept') }}">Concept</a>
                     </li>
                     <li class="nav-item orange mx-1">
                         <a class="nav-link orange" href="{{ path('contact') }}">Contact</a>

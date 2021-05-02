@@ -13,7 +13,7 @@ class ProduitsController extends AbstractController
      */
     public function index(): Response
     {
-        return $this->render('produits/index.html.twig', [
+        return $this->render('components/pages/produits/index.html.twig', [
             'controller_name' => 'ProduitsController',
         ]);
     }
@@ -23,7 +23,7 @@ class ProduitsController extends AbstractController
      */
     public function categorie(): Response
     {
-        return $this->render('produits/categorie.html.twig', [
+        return $this->render('components/pages/produits/categorie.html.twig', [
             'controller_name' => 'ProduitsController',
         ]);
     }
@@ -33,7 +33,7 @@ class ProduitsController extends AbstractController
      */
     public function produit(): Response
     {
-        return $this->render('produits/produit.html.twig', [
+        return $this->render('components/pages/produits/produit.html.twig', [
             'controller_name' => 'ProduitsController',
         ]);
     }

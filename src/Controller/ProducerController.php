@@ -20,7 +20,7 @@ class ProducerController extends AbstractController
      */
     public function index(ProducerRepository $producerRepository): Response
     {
-        return $this->render('producer/index.html.twig', [
+        return $this->render('components/pages/producer/index.html.twig', [
             'producers' => $producerRepository->findAll(),
         ]);
     }
@@ -42,7 +42,7 @@ class ProducerController extends AbstractController
             return $this->redirectToRoute('producer_index');
         }
 
-        return $this->render('producer/new.html.twig', [
+        return $this->render('components/pages/producer/new.html.twig', [
             'producer' => $producer,
             'form' => $form->createView(),
         ]);
@@ -53,7 +53,7 @@ class ProducerController extends AbstractController
      */
     public function show(Producer $producer): Response
     {
-        return $this->render('producer/show.html.twig', [
+        return $this->render('components/pages/producer/show.html.twig', [
             'producer' => $producer,
         ]);
     }
@@ -72,7 +72,7 @@ class ProducerController extends AbstractController
             return $this->redirectToRoute('producer_index');
         }
 
-        return $this->render('producer/edit.html.twig', [
+        return $this->render('components/pages/producer/edit.html.twig', [
             'producer' => $producer,
             'form' => $form->createView(),
         ]);

@@ -20,7 +20,7 @@ class FileController extends AbstractController
      */
     public function index(FileRepository $fileRepository): Response
     {
-        return $this->render('file/index.html.twig', [
+        return $this->render('components/pages/file/index.html.twig', [
             'files' => $fileRepository->findAll(),
         ]);
     }
@@ -76,7 +76,7 @@ class FileController extends AbstractController
             return $this->redirectToRoute('file_index');
         }
 
-        return $this->render('file/new.html.twig', [
+        return $this->render('components/pages/file/new.html.twig', [
             'file' => $file,
             'form' => $form->createView(),
         ]);
@@ -87,7 +87,7 @@ class FileController extends AbstractController
      */
     public function show(File $file): Response
     {
-        return $this->render('file/show.html.twig', [
+        return $this->render('components/pages/file/show.html.twig', [
             'file' => $file,
         ]);
     }
@@ -106,7 +106,7 @@ class FileController extends AbstractController
             return $this->redirectToRoute('file_index');
         }
 
-        return $this->render('file/edit.html.twig', [
+        return $this->render('components/pages/file/edit.html.twig', [
             'file' => $file,
             'form' => $form->createView(),
         ]);

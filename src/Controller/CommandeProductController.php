@@ -20,7 +20,7 @@ class CommandeProductController extends AbstractController
      */
     public function index(CommandeProductRepository $commandeProductRepository): Response
     {
-        return $this->render('commande_product/index.html.twig', [
+        return $this->render('components/pages/commande_product/index.html.twig', [
             'commande_products' => $commandeProductRepository->findAll(),
         ]);
     }
@@ -42,7 +42,7 @@ class CommandeProductController extends AbstractController
             return $this->redirectToRoute('commande_product_index');
         }
 
-        return $this->render('commande_product/new.html.twig', [
+        return $this->render('components/pages/commande_product/new.html.twig', [
             'commande_product' => $commandeProduct,
             'form' => $form->createView(),
         ]);
@@ -53,7 +53,7 @@ class CommandeProductController extends AbstractController
      */
     public function show(CommandeProduct $commandeProduct): Response
     {
-        return $this->render('commande_product/show.html.twig', [
+        return $this->render('components/pages/commande_product/show.html.twig', [
             'commande_product' => $commandeProduct,
         ]);
     }
@@ -72,7 +72,7 @@ class CommandeProductController extends AbstractController
             return $this->redirectToRoute('commande_product_index');
         }
 
-        return $this->render('commande_product/edit.html.twig', [
+        return $this->render('components/pages/commande_product/edit.html.twig', [
             'commande_product' => $commandeProduct,
             'form' => $form->createView(),
         ]);
