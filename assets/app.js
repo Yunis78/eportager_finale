@@ -12,11 +12,15 @@ import 'remixicon/fonts/remixicon.css';
 
 // start the Stimulus application
 // import './bootstrap';
-import 'jquery';
+const $ = require('jquery');
+global.jQuery = $;
+global.$ = $;
+
+import 'bootstrap';
 import 'popper.js';
 
 require('./js/input.js');
 require('./js/collection.js');
 
-$("#product-medias-collection").collection();
+// $("#product-medias-collection").collection();
 window.component_input();
