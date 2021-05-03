@@ -1,4 +1,5 @@
 .card-img-overlay {
+    padding: 0%;
     position: absolute;
     z-index: 4;
     height: 100%;
@@ -11,9 +12,8 @@
     text-transform: uppercase;
     font-family: "Noteworthy";
     font-weight: bold;
-    background-color: #5c9c18;
+    background-color: #7d4aa8;
     border-radius: .5rem;
-    text-align: center;
     color: white;
 }
 .banniProd1 p {
@@ -61,7 +61,7 @@
 .cardsProd h4{
     text-transform: uppercase;
     font-family: "Noteworthy";
-    background-color: #5c9c18;
+    background-color: #7d4aa8;
     border-radius: .5rem;
     color: white;
     padding: .5rem;
@@ -94,9 +94,9 @@
 
 
 .producteur>div {
-    height: 70px;
-    width: 95%;
+    height: 40px;
+    width: 40px;
     background-size:cover;
     background-position:center;
-    border-radius: 5%;
+    border-radius: 50%;
 }

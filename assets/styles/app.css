@@ -198,6 +198,7 @@ max-height: 380px;
     background-color: #5c9c18;
     border-radius: .5rem;
     color: white;
+    padding: .5rem;
 }
 
 .cadre-titre-violet {
@@ -205,6 +206,7 @@ max-height: 380px;
     background-color: #7d4aa8;
     border-radius: .5rem;
     color: white;
+    padding: .5rem;
 }
 
 .cadre-titre-rouge {
@@ -212,6 +214,7 @@ max-height: 380px;
     background-color: #ff0959;
     border-radius: .5rem;
     color: white;
+    padding: .5rem;
 }
 
 .cadre-titre-orange {
@@ -219,6 +222,7 @@ max-height: 380px;
     background-color: #ff7e00;
     border-radius: .5rem;
     color: white;
+    padding: .5rem;
 }
 
 
