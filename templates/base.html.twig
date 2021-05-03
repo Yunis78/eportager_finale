@@ -43,9 +43,23 @@
                 <div class="dropdown">
                     <button class="btn btnvert ml-3 dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="ri-user-3-fill"></i></button>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
-                        <a class="dropdown-item" href="#">Client</a>
-                        <a class="dropdown-item" href="#">Producteur</a>
-                        <a class="dropdown-item" href="#">Déconnexion</a>
+
+                        {% if app.user is null %}
+                            <a class="dropdown-item" href="{{ path('app_login') }}">Connexion</a> 
+                            <a class="dropdown-item" href="{{ path('app_register') }}">Inscription</a> 
+                        {% else %}
+                            <span class="dropdown-item"> {{ app.user.givenname }} {{ app.user.familyname }}</span>
+                            <a class="dropdown-item" href="#">Client</a>
+                            {% if is_granted('ROLE_PRODUCER') and is_granted('ROLE_USER') %}
+                                <a class="dropdown-item" href="#">Producteur</a>
+                            {% elseif is_granted('ROLE_USER') %}
+                                <a class="dropdown-item" href="#">Devenir Producteur</a>
+                            {% endif %}
+                            {% if is_granted('ROLE_ADMIN') %}
+                                <a class="dropdown-item" href="#">Panel Admin</a>
+                            {% endif %} 
+                            <a class="dropdown-item" href="{{ path('app_logout') }}">Déconnexion</a>
+                        {% endif %}
                     </div>
                 </div>
             </div>

@@ -25,11 +25,6 @@ class Producer
     private $file;
 
     /**
-     * @ORM\OneToOne(targetEntity=User::class, cascade={"persist", "remove"})
-     */
-    private $user;
-
-    /**
      * @ORM\Column(type="string", length=50)
      */
     private $name;
@@ -64,7 +59,10 @@ class Producer
      */
     private $comments;
 
-
+    /**
+     * @ORM\OneToOne(targetEntity=User::class, inversedBy="producer", cascade={"persist", "remove"})
+     */
+    private $user;
 
     public function __construct()
     {
@@ -108,18 +106,6 @@ class Producer
         return $this;
     }
 
-    public function getUser(): ?User
-    {
-        return $this->user;
-    }
-
-    public function setUser(?User $user): self
-    {
-        $this->user = $user;
-
-        return $this;
-    }
-     
     public function getName(): ?string
     {
         return $this->name;
@@ -236,6 +222,18 @@ class Producer
                 $comment->setProducer(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(?User $user): self
+    {
+        $this->user = $user;
 
         return $this;
     }

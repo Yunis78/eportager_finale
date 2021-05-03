@@ -35,7 +35,7 @@
     </table>
 
     {% if is_granted('ROLE_USER') %}
-    laches tes com ! 
+    {{ include('components/pages/comment/_form.html.twig') }}
     {% else %}
     connectes toi frero !
     {% endif %}
@@ -44,5 +44,5 @@
 
     <a href="{{ path('producer_edit', {'id': producer.id}) }}">edit</a>
 
-    {{ include('producer/_delete_form.html.twig') }}
+    {{ include('components/pages/producer/_delete_form.html.twig') }}
 {% endblock %}

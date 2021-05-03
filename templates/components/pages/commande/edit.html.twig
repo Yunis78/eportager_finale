@@ -5,9 +5,9 @@
 {% block body %}
     <h1>Edit Commande</h1>
 
-    {{ include('commande/_form.html.twig', {'button_label': 'Update'}) }}
+    {{ include('components/pages/commande/_form.html.twig', {'button_label': 'Update'}) }}
 
     <a href="{{ path('commande_index') }}">back to list</a>
 
-    {{ include('commande/_delete_form.html.twig') }}
+    {{ include('components/pages/commande/_delete_form.html.twig') }}
 {% endblock %}

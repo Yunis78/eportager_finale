@@ -81,6 +81,9 @@ class User implements UserInterface
      */
     private $isVerified = false;
 
+    /**
+     * @ORM\OneToOne(targetEntity=Producer::class, mappedBy="user", cascade={"persist", "remove"})
+     */
     private $producer;
 
     public function getId(): ?int
@@ -271,20 +274,31 @@ class User implements UserInterface
 
         return $this;
     }
-    public function getProducer(): array
-    {
-        return $this->producer;
-    }
-
-    public function setProducer(array $producer): self
-    {
-        $this->producer = $producer;
-
-        return $this;
-    }
 
     public function getIsVerified(): ?bool
     {
         return $this->isVerified;
+    }
+
+    public function getProducer(): ?Producer
+    {
+        return $this->producer;
+    }
+
+    public function setProducer(?Producer $producer): self
+    {
+        // unset the owning side of the relation if necessary
+        if ($producer === null && $this->producer !== null) {
+            $this->producer->setUser(null);
+        }
+
+        // set the owning side of the relation if necessary
+        if ($producer !== null && $producer->getUser() !== $this) {
+            $producer->setUser($this);
+        }
+
+        $this->producer = $producer;
+
+        return $this;
     }
 }

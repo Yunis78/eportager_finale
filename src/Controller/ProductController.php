@@ -2,13 +2,19 @@
 
 namespace App\Controller;
 use App\Entity\File;
+use App\Entity\Producer;
 use App\Entity\Product;
+use App\Entity\User;
 use App\Form\ProductType;
+use App\Repository\ProducerRepository;
 use App\Repository\ProductRepository;
+use App\Repository\UserRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Core\Security;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\String\Slugger\SluggerInterface;
@@ -20,26 +26,73 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
 class ProductController extends AbstractController
 {
     /**
-     * @Route("/", name="product_index", methods={"GET"})
+     * @var Security
+     */
+    private $security;
+
+     /**
+     * @var EntityManagerInterface
+     */
+    private $em;
+
+    public function __construct(Security $security, EntityManagerInterface $em )
+    {
+        $this->security = $security;
+        $this->em = $em;
+    }
+    /**
+     * @Route("/", name="produits")
+     */
+    public function produits(): Response
+    {
+        return $this->render('components/pages/product/type.html.twig', [
+            'controller_name' => 'ProduitsController',
+        ]);
+    }
+
+    /**
+     * @Route("/cat", name="cat")
+     */
+    public function categorie(): Response
+    {
+        return $this->render('components/pages/product/categorie.html.twig', [
+            'controller_name' => 'ProduitsController',
+        ]);
+    }
+    /**
+     * @Route("/produits", name="product_produit", methods={"GET"})
      */
     public function index(ProductRepository $productRepository): Response
     {
-        return $this->render('components/pages/product/index.html.twig', [
+        return $this->render('components/pages/product/produit.html.twig', [
             'products' => $productRepository->findAll(),
         ]);
+
+        
     }
 
     /**
      * @IsGranted("ROLE_PRODUCER")
      * 
-     * @Route("/new", name="product_new", methods={"GET","POST"})
+     * @Route("/new" , name="product_new", methods={"GET","POST"})
      */
-    public function new(Request $request,  SluggerInterface $slugger): Response
+    public function new(Request $request): Response
     {
         $product = new Product();
+
+        $user =$this->em->getRepository(User::class)->find($this->security->getUser()->getId());
+        if (null === $user->getProducer() ) { 
+
+            return $this->redirectToRoute('app_login');
+
+        }
+        
+        $product->setProducer($this->em->getRepository(Producer::class)->find($user));
+
+        // dd($product);
+
         $form = $this->createForm(ProductType::class, $product);
         $form->handleRequest($request);
-        
         if ($form->isSubmitted() && $form->isValid()) {
             foreach($form->get('file') as $media)
             {
@@ -127,4 +180,5 @@ class ProductController extends AbstractController
 
         return $this->redirectToRoute('product_index');
     }
+    
 }
