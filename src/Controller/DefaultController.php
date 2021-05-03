@@ -43,8 +43,18 @@ class DefaultController extends AbstractController
      */
     public function concept(): Response
     {
-        return $this->render('components/pages/default/index.html.twig', [
-            'controller_name' => 'HomepageController',
+        return $this->render('components/pages/default/concept.html.twig', [
+            'controller_name' => 'DefaultController',
+        ]);
+    }
+
+    /**
+     * @Route("/accessCRUD", name="accessCRUD")
+     */
+    public function accessCRUD(): Response
+    {
+        return $this->render('components/pages/default/accessCRUD.html.twig', [
+            'controller_name' => 'DefaultController',
         ]);
     }
 }
