@@ -4,15 +4,15 @@
 
         {{ form_label(form.file) }}
 
-            {% embed "/components/organisms/collection.html.twig" with {
-                name: "product-medias-collection",
-                form: form,
-                items: form.file,
-                minimum_items: 1,
-                init_items: 1,
-                tag: '<div class="form-group"></div>',
-                counter: form.file|length,
-            } only %}
+        {% embed "components/organisms/collection.html.twig" with {
+            name: "product-medias-collection",
+            form: form,
+            items: form.file,
+            minimum_items: 1,
+            init_items: 1,
+            tag: '<div class="form-group"></div>',
+            counter: form.file|length,
+        } only %}
             
             {% block collection_items %}
                 {% for item in items %}
