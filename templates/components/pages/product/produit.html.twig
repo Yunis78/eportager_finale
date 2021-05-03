@@ -27,7 +27,7 @@
             <div class="card w-100 d-flex flex-row m-1 px-0">
                 <!-- image -->
                 <div class="imageProduit col-4 p-0">
-                    <div style="background-image: url('{{ asset("img/Pomme1.jpg") }}');"></div>
+                    <div style="background-image: url('{{ asset("upload/" ~ product.file.0.path ) }}');"></div>
                 </div>
                 <!-- description et prix -->
                 <div class="prix col-5 d-flex flex-column justify-content-between">
@@ -42,7 +42,7 @@
                 <!-- producteur -->
                 <div class="producteur col-3 d-flex flex-column justify-content-center align-items-center pb-3">
                     <div class="mt-3" style="background-image: url('{{ asset("img/Exploit1.jpg") }}');"></div>
-                    <p class="text-center mt-2 mb-1 font-weight-bold">{#{- product.producer.name -}#}</p>
+                    <p class="text-center mt-2 mb-1 font-weight-bold">{{- product.producer.name -}}</p>
                     <a href="#" class="btn btnvert m-2">Découvrir</a>
                 </div>
             </div>
