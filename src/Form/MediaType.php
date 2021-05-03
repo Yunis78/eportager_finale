@@ -2,7 +2,7 @@
 
 namespace App\Form;
 
-use App\Entity\File;
+use App\Entity\Media;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -13,7 +13,7 @@ class MediaType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('path', FileType::class, [
+            ->add('file', FileType::class, [
                 'mapped' => false,
                 'required' => false,
             ])
@@ -25,7 +25,7 @@ class MediaType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => File::class,
+            'data_class' => Media::class,
         ]);
     }
 }

@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Controller;
-use App\Entity\File;
+use App\Entity\Media;
 use App\Entity\Producer;
 use App\Entity\Product;
 use App\Entity\User;
@@ -16,9 +16,6 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Security;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
-use Symfony\Component\HttpFoundation\File\Exception\FileException;
-use Symfony\Component\String\Slugger\SluggerInterface;
-//use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 /**
  * @Route("/product")
@@ -60,7 +57,7 @@ class ProductController extends AbstractController
         ]);
     }
     /**
-     * @Route("/produits", name="product_produit", methods={"GET"})
+     * @Route("/produits", name="product_index", methods={"GET"})
      */
     public function index(ProductRepository $productRepository): Response
     {
@@ -82,23 +79,16 @@ class ProductController extends AbstractController
 
         $user = $this->getUser();
 
-        // $user = $this->em->getRepository(User::class)->find($this->security->getUser()->getId());
+        
         if (null === $user->getProducer() ) { 
 
             return $this->redirectToRoute('app_login');
 
-        }
-        
-        // $product->setProducer($this->em->getRepository(Producer::class)->find($user));
-        // $product->setProducer($user);
-
-        // dd($product);
+        }    
 
         $form = $this->createForm(ProductType::class, $product);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-
-            dd($form->getData());
 
             foreach($form->get('file') as $media)
             {
@@ -130,9 +120,8 @@ class ProductController extends AbstractController
                     $media->getData()->setPath( $new_file );
                 }
             }
-
-
-            $product->setProducer($user);
+            
+            $product->setProducer($user->getProducer());
 
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($product);

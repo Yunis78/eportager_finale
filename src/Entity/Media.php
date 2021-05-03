@@ -2,13 +2,13 @@
 
 namespace App\Entity;
 
-use App\Repository\FileRepository;
+use App\Repository\MediaRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass=FileRepository::class)
+ * @ORM\Entity(repositoryClass=MediaRepository::class)
  */
-class File
+class Media
 {
     /**
      * @ORM\Id
@@ -23,7 +23,7 @@ class File
     private $path;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Producer::class, inversedBy="file")
+     * @ORM\ManyToOne(targetEntity=Producer::class, inversedBy="Media")
      * @ORM\JoinColumn(nullable=true)
      */
     private $producer;

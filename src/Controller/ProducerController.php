@@ -3,8 +3,10 @@
 namespace App\Controller;
 
 use App\Entity\Producer;
+use App\Entity\User;
 use App\Form\ProducerType;
 use App\Repository\ProducerRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -15,6 +17,16 @@ use Symfony\Component\Routing\Annotation\Route;
  */
 class ProducerController extends AbstractController
 {
+    /**
+     * @var EntityManagerInterface
+     */
+    private $em;
+
+    public function __construct( EntityManagerInterface $em )
+    {
+        $this->em = $em;
+    }
+
     /**
      * @Route("/", name="producer_index", methods={"GET"})
      */
@@ -35,6 +47,15 @@ class ProducerController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            
+            $user = $this->em->getRepository(User::class)->find($this->getUser());
+
+            $user->setRoles(["ROLE_PRODUCER"]);
+
+            $producer->setUser($this->getUser());
+            
+            
+        
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($producer);
             $entityManager->flush();

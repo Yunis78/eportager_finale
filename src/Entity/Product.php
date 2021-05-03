@@ -25,7 +25,7 @@ class Product
     private $categorie;
 
     /**
-     * @ORM\ManyToMany(targetEntity=File::class, cascade={"persist"})
+     * @ORM\ManyToMany(targetEntity=Media::class, cascade={"persist"})
      */
     private $file;
 
@@ -85,14 +85,14 @@ class Product
     }
 
     /**
-     * @return Collection|File[]
+     * @return Collection|Media[]
      */
     public function getFile(): Collection
     {
         return $this->file;
     }
 
-    public function addFile(File $file): self
+    public function addFile(Media $file): self
     {
         if (!$this->file->contains($file)) {
             $this->file[] = $file;
@@ -102,7 +102,7 @@ class Product
         return $this;
     }
 
-    public function removeFile(File $file): self
+    public function removeFile(Media $file): self
     {
         if ($this->file->removeElement($file)) {
             // set the owning side to null (unless already changed)

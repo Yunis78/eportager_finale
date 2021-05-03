@@ -20,7 +20,7 @@ class Producer
     private $id;
 
     /**
-     * @ORM\OneToMany(targetEntity=File::class, mappedBy="producer")
+     * @ORM\OneToMany(targetEntity=Media::class, mappedBy="producer")
      */
     private $file;
 
@@ -60,12 +60,13 @@ class Producer
     private $comments;
 
     /**
-     * @ORM\OneToOne(targetEntity=User::class, inversedBy="producer", cascade={"persist", "remove"})
+     * @ORM\OneToOne(targetEntity=User::class, inversedBy="producer")
      */
     private $user;
 
     public function __construct()
     {
+        $this->active = false;
         $this->file = new ArrayCollection();
         $this->products = new ArrayCollection();
         $this->comments = new ArrayCollection();
@@ -77,14 +78,14 @@ class Producer
     }
 
     /**
-     * @return Collection|File[]
+     * @return Collection|Media[]
      */
     public function getFile(): Collection
     {
         return $this->file;
     }
 
-    public function addFile(File $file): self
+    public function addFile(Media $file): self
     {
         if (!$this->file->contains($file)) {
             $this->file[] = $file;
@@ -94,7 +95,7 @@ class Producer
         return $this;
     }
 
-    public function removeFile(File $file): self
+    public function removeFile(Media $file): self
     {
         if ($this->file->removeElement($file)) {
             // set the owning side to null (unless already changed)
