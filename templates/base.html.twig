@@ -53,7 +53,7 @@
                             {% if is_granted('ROLE_PRODUCER') and is_granted('ROLE_USER') %}
                                 <a class="dropdown-item" href="#">Producteur</a>
                             {% elseif is_granted('ROLE_USER') %}
-                                <a class="dropdown-item" href="#">Devenir Producteur</a>
+                                <a class="dropdown-item" href="{{ path('producer_new') }}">Devenir Producteur</a>
                             {% endif %}
                             {% if is_granted('ROLE_ADMIN') %}
                                 <a class="dropdown-item" href="#">Panel Admin</a>
@@ -94,17 +94,6 @@
                     </ul>
 
                     <a class="nav-link gris" href="{{ path('accessCRUD') }}">accès CRUDs</a>
-                    
-                    {% if is_granted('ROLE_USER') %}
-                        <span class="navbar-text"> {{ app.user.givenname }} {{ app.user.familyname }}, <a href="{{ path('app_logout') }}">Logout</a> </span>
-
-                    {% else %}
-
-                        <span class="navbar-text mr-3">  <a href="{{ path('app_login') }}">Connexion</a> </span>
-                        <span class="navbar-text">  <a href="{{ path('app_register') }}">Inscription</a> </span>
-
-                    {% endif %}
-
                     
                 </div>
             </div>

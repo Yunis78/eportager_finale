@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Controller;
-use App\Entity\File;
+use App\Entity\Media;
 use App\Entity\Producer;
 use App\Entity\Product;
 use App\Entity\User;
@@ -16,9 +16,6 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Security;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
-use Symfony\Component\HttpFoundation\File\Exception\FileException;
-use Symfony\Component\String\Slugger\SluggerInterface;
-//use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 /**
  * @Route("/product")

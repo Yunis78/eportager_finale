@@ -52,14 +52,6 @@ class RegistrationFormType extends AbstractType
                     ]),
                 ],
             ])
-            ->add('producer',ChoiceType::class,[
-                'expanded' => true,
-                'multiple' => true,
-                'choices' => [
-                    'oui' => true,
-                ],
-                'label' => 'êtes-vous un producteur ?'
-            ])
             ->add('agreeTerms', CheckboxType::class, [
                 'mapped' => false,
                 'constraints' => [

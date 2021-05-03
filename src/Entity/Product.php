@@ -25,7 +25,7 @@ class Product
     private $categorie;
 
     /**
-     * @ORM\ManyToMany(targetEntity=File::class, cascade={"persist"})
+     * @ORM\ManyToMany(targetEntity=Media::class, cascade={"persist"})
      */
     private $file;
 
