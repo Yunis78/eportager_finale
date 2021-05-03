@@ -100,3 +100,10 @@
     background-position:center;
     border-radius: 5%;
 }
+
+
+.ligne-grise {
+    height: 1px;
+    width: 40%;
+    background-color: grey;
+}

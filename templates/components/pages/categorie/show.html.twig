@@ -3,7 +3,14 @@
 {% block title %}Categorie{% endblock %}
 
 {% block body %}
-    <h1>Categorie</h1>
+<div class="container">
+    <div class="d-flex justify-content-between mb-2">
+        <h1>Categorie</h1>
+        <p>
+            <a class="btn btn-primary" href="{{ path('categorie_index') }}">back to list</a>
+            <a class="btn btnorange" href="{{ path('categorie_edit', {'id': categorie.id}) }}">edit</a>
+        </p>
+    </div>
 
     <table class="table">
         <tbody>
@@ -18,9 +25,9 @@
         </tbody>
     </table>
 
-    <a href="{{ path('categorie_index') }}">back to list</a>
+    <p ></p>
 
-    <a href="{{ path('categorie_edit', {'id': categorie.id}) }}">edit</a>
+    <!-- <a href="{{ path('categorie_edit', {'id': categorie.id}) }}">edit</a> -->
 
     {{ include('components/pages/categorie/_delete_form.html.twig') }}
 {% endblock %}

@@ -5,7 +5,7 @@
 {% block body %}
     <h1>Edit Producer</h1>
 
-    {{ include('components/pages/producer/_form.html.twig', {'button_label': 'Update'}) }}
+    {{ include('producer/_form.html.twig', {'button_label': 'Update', 'btn_class': 'btnorange'}) }}
 
     <a href="{{ path('producer_index') }}">back to list</a>
 
