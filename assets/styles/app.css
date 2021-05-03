@@ -92,6 +92,13 @@ color: #ff0959!important;
     border-bottom: 1px solid #ff7e00;
 }
 
+.gris{
+    color: grey!important;
+}
+.gris:hover, .gris.active {
+    border-bottom: 1px solid grey;
+}
+
 
 /* home page carousel */
 
