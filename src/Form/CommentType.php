@@ -14,8 +14,8 @@ class CommentType extends AbstractType
     {
         $builder
             // ->add('status')
-            ->add('message',TextareaType::class)
             ->add('rate')
+            ->add('message',TextareaType::class)
             // ->add('producer')
             // ->add('user')
         ;

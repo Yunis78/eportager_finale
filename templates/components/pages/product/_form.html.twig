@@ -4,7 +4,7 @@
 
         {{ form_label(form.file) }}
 
-        {% embed "components/collection.html.twig" with {
+        {% embed "/components/organisms/collection.html.twig" with {
             name: "product-medias-collection",
             form: form,
             items: form.file,
