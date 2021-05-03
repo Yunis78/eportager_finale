@@ -8,7 +8,7 @@ use App\Entity\Product;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
-use Symfony\Component\Form\Extension\Core\Type\FileType;
+//use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -25,7 +25,7 @@ class ProductType extends AbstractType
             ->add('description',TextareaType::class)
             ->add('price')
             ->add('file', CollectionType::class,[
-                'entry_type' => FileType::class,
+                'entry_type' => MediaType::class,
                 "allow_add" => true,
                 "allow_delete" => true,
                 "prototype" => true,

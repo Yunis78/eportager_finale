@@ -18,7 +18,7 @@ use Symfony\Component\Security\Core\Security;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\String\Slugger\SluggerInterface;
-use Symfony\Component\HttpFoundation\File\UploadedFile;
+//use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 /**
  * @Route("/product")
@@ -80,20 +80,26 @@ class ProductController extends AbstractController
     {
         $product = new Product();
 
-        $user =$this->em->getRepository(User::class)->find($this->security->getUser()->getId());
+        $user = $this->getUser();
+
+        // $user = $this->em->getRepository(User::class)->find($this->security->getUser()->getId());
         if (null === $user->getProducer() ) { 
 
             return $this->redirectToRoute('app_login');
 
         }
         
-        $product->setProducer($this->em->getRepository(Producer::class)->find($user));
+        // $product->setProducer($this->em->getRepository(Producer::class)->find($user));
+        // $product->setProducer($user);
 
         // dd($product);
 
         $form = $this->createForm(ProductType::class, $product);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
+
+            dd($form->getData());
+
             foreach($form->get('file') as $media)
             {
                 // Get file field
@@ -124,6 +130,10 @@ class ProductController extends AbstractController
                     $media->getData()->setPath( $new_file );
                 }
             }
+
+
+            $product->setProducer($user);
+
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($product);
             $entityManager->flush();

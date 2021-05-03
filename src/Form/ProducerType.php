@@ -19,7 +19,7 @@ class ProducerType extends AbstractType
             ->add('description',TextareaType::class)
             ->add('siret')
             ->add('phone')
-            ->add('user', UserType::class)
+            // ->add('user', UserType::class)
         ;
     }
 

@@ -28,11 +28,6 @@ class File
      */
     private $producer;
 
-    /**
-     * @ORM\ManyToOne(targetEntity=Product::class, inversedBy="file")
-     * @ORM\JoinColumn(nullable=true)
-     */
-    private $product;
 
     public function getId(): ?int
     {

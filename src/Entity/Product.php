@@ -25,11 +25,11 @@ class Product
     private $categorie;
 
     /**
-     * @ORM\OneToMany(targetEntity=File::class, mappedBy="product")
+     * @ORM\ManyToMany(targetEntity=File::class, cascade={"persist"})
      */
     private $file;
 
-    private $files;
+    //private $files;
 
     /**
      * @ORM\ManyToOne(targetEntity=Producer::class, inversedBy="products")

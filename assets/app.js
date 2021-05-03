@@ -22,5 +22,5 @@ import 'popper.js';
 require('./js/input.js');
 require('./js/collection.js');
 
-// $("#product-medias-collection").collection();
+$("#product-medias-collection").collection();
 window.component_input();
