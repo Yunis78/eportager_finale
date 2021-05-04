@@ -40,6 +40,14 @@ class CategorieFixtures extends Fixture
         [
             'nom' => 'Condiments',
         ],
+        [
+            'nom' => 'Thym',
+            'parent' => 'epices',
+        ],
+        [
+            'nom' => 'Sauce Tomate',
+            'parent' => 'epices',
+        ],
     ];
     
     const LABEL = 'categorie-%s';
@@ -51,6 +59,10 @@ class CategorieFixtures extends Fixture
             //Instabtiate Entities
             $categorie = new Categorie();
             $categorie->setNom($data['nom']);
+            if (isset($data['parent'])) {
+                $categorieParent = $this->getReference(sprintf(CategorieFixtures::LABEL, $data['parent']));
+                $categorie->setParent($categorieParent);
+            }
             
             $manager->persist($categorie);
 

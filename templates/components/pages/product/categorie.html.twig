@@ -2,7 +2,10 @@
 {{ encore_entry_link_tags("app") }}
 {{ encore_entry_link_tags("product") }}
 {% endblock %} {% block body %}
-
+<pre>
+    {{ dump(subCategories) }}
+    {{ dump(categorie) }}
+</pre>
 <!-- bannière -->
 
 <div class="banniProd1 mb-5">
@@ -11,7 +14,7 @@
         <!-- <img src="{{ asset("img/fruitLegume.jpg") }}" class="card-img" alt="..." /> -->
     </div>
         <div class="card-img-overlay d-flex align-items-center justify-content-center d-flex flex-column">
-            <h2 class="card-title p-3">Les légumes</h2>
+            <h2 class="card-title p-3">{{- categorie.nom -}}</h2>
             <!-- <p>Le meilleur de leurs produits !</p> -->
         </div>
     </div>
@@ -19,7 +22,7 @@
 
 <!-- cards -->
 
-<h3 class="titreCards1 mb-5"><span class="cadre-titre-vert px-2">Leurs</span>&nbsp; meilleurs légumes pour vous.</h3>
+<h3 class="titreCards1 mb-5"><span class="cadre-titre-vert px-2">Leurs</span>&nbsp;meilleurs&nbsp;{{- categorie.nom -}}&nbsp;pour vous.</h3>
 
 <!-- <div class="container-fluid"> -->
     <div class="ligne-grise mx-auto"></div>
@@ -37,20 +40,18 @@
 
 
     <div class="row py-3 justify-content-center cardsProd">
-
-        <div class="card text-white m-3">
-            <div class="imgCard" style="background-image: url('{{ asset("img/legume.jpg") }}');">
-            <!-- <img src="{{ asset("img/fruitLegume.jpg") }}" class="card-img" alt="..." /> -->
+        {% for subCategorie in subCategories %}        
+            <div class="card text-white m-3">
+                <div class="imgCard" style="background-image: url('{{ asset("upload/categories/" ~ subCategorie.file.0.path) }}');"></div>
+                <a href="{{ path('product_categorie_index', {'id': subCategorie.id})}}">
+                    <div class="card-img-overlay">
+                        <h4 class="card-title">{{- subCategorie.nom -}}</h2>
+                        <p class="card-text text-white">&nbsp;</p>
+                    </div>
+                </a>
             </div>
-            <a href="{{ path('un_produit')}}">
-                <div class="card-img-overlay">
-                    <h4 class="card-title">Navets</h2>
-                    <p class="card-text text-white">&nbsp;</p>
-                </div>
-            </a>
-        </div>
-
-        <div class="card text-white m-3">
+        {% endfor %}
+        {# <div class="card text-white m-3">
             <div class="imgCard" style="background-image: url('{{ asset("img/legume.jpg") }}');">
             <!-- <img src="{{ asset("img/fruitLegume.jpg") }}" class="card-img" alt="..." /> -->
             </div>
@@ -96,7 +97,7 @@
                     <p class="card-text text-white">rouges, jaunes et blancs&nbsp;</p>
                 </div>
             </a>
-        </div>
+        </div> #}
         
     </div>
 </div>

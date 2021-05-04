@@ -59,8 +59,16 @@ class Product
      */
     private $commandeProducts;
 
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(type="datetime")
+     */
+    private $dateCreated;
+
     public function __construct()
     {
+        $this->dateCreated = new \DateTime('now');
         $this->file = new ArrayCollection();
         $this->commandeProducts = new ArrayCollection();
     }
@@ -212,5 +220,10 @@ class Product
         $this->files = $files;
 
         return $this;
+    }
+    
+    public function getDateCreated(): \DateTime
+    {
+        return $this->dateCreated;
     }
 }

@@ -1,21 +1,16 @@
 <?php
 
 namespace App\Controller;
-use App\Entity\Media;
-use App\Entity\Producer;
+
+use App\Entity\Categorie;
 use App\Entity\Product;
-use App\Entity\User;
 use App\Form\ProductType;
 use App\Repository\CategorieRepository;
-use App\Repository\ProducerRepository;
 use App\Repository\ProductRepository;
-use App\Repository\UserRepository;
-use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\Security\Core\Security;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
 /**
@@ -24,40 +19,32 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 class ProductController extends AbstractController
 {
     /**
-     * @var Security
-     */
-    private $security;
-
-     /**
-     * @var EntityManagerInterface
-     */
-    private $em;
-
-    public function __construct(Security $security, EntityManagerInterface $em )
-    {
-        $this->security = $security;
-        $this->em = $em;
-    }
-    /**
      * @Route("/", name="front_produits")
      */
     public function front_produits(CategorieRepository $categorieRepository): Response
     {
         return $this->render('components/pages/product/type.html.twig', [
             'controller_name' => 'ProduitsController',
-            'categories' => $categorieRepository->findAll(),
+            'categories' => $categorieRepository->findBy(['parent' => null ]),
         ]);
     }
 
-    // /**
-    //  * @Route("/cat", name="cat")
-    //  */
-    // public function categorie(): Response
-    // {
-    //     return $this->render('components/pages/product/categorie.html.twig', [
-    //         'controller_name' => 'ProduitsController',
-    //     ]);
-    // }
+    /**
+     * @Route("/categorie/{id}", name="product_categorie_show", methods={"GET"})
+     */
+    public function showCategorie(CategorieRepository $categorieRepository, int $id): Response
+    {
+        $entityManager = $this->getDoctrine()->getManager();
+        $subCategories = $entityManager->getRepository(Categorie::class)->findBy(['parent' => $categorieRepository->find($id)]);
+        $products = $entityManager->getRepository(Product::class)->findBy(['categorie' => $categorieRepository->find($id)]);
+
+        return $this->render('components/pages/product/type.html.twig', [
+            'categorie' => $categorieRepository->find($id),
+            'title' => 'Voici les sous categories',
+            'categories' => $subCategories,
+            'products' => $products,
+        ]);
+    }
 
     /**
      * @IsGranted("ROLE_PRODUCER")
@@ -81,8 +68,6 @@ class ProductController extends AbstractController
             // à modifier pour aller chercher les bons
             'products' => $productRepository->findAll(),
         ]);
-
-        
     }
 
     /**
@@ -95,10 +80,6 @@ class ProductController extends AbstractController
         $product = new Product();
 
         $user = $this->getUser();
-
-            // if (null === $user->getProducer() ) { 
-            //     return $this->redirectToRoute('app_login');
-            // }
 
         $form = $this->createForm(ProductType::class, $product);
         $form->handleRequest($request);
@@ -161,7 +142,7 @@ class ProductController extends AbstractController
     }
 
     /**
-     * @Route("/{id}/edit", name="product_edit", methods={"GET","POST"})
+     * @Route("/edit/{id}", name="product_edit", methods={"GET","POST"})
      */
     public function edit(Request $request, Product $product): Response
     {
@@ -213,12 +194,11 @@ class ProductController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="product_delete", methods={"POST"})
+     * @Route("/remove/{id}", name="product_delete", methods={"POST"})
      */
     public function delete(Request $request, Product $product): Response
     {
         if ($this->isCsrfTokenValid('delete'.$product->getId(), $request->request->get('_token'))) {
-
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($product);
             $entityManager->flush();
@@ -227,17 +207,5 @@ class ProductController extends AbstractController
         return $this->redirectToRoute('product_index');
     }
 
-    /**
-     * @Route("/{categorie}", name="categorie_produit", methods={"GET"})
-     */
-    public function filtrProduits(ProductRepository $productRepository): Response
-    {
-        return $this->render('components/pages/product/produit.html.twig', [
-            // à modifier pour aller chercher les bons
-            'products' => $productRepository->findAllBy(),
-        ]);
-
-        
-    }
     
 }
