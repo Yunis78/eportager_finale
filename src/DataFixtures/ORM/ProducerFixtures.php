@@ -21,7 +21,6 @@ class ProducerFixtures extends Fixture implements DependentFixtureInterface
             'phone' => '0154548654',
             'user' => 'mohammed@epotager.com',
             'active' => '',
-            
         ],
         [
             'name' => 'la ferme du gali',
@@ -36,7 +35,7 @@ class ProducerFixtures extends Fixture implements DependentFixtureInterface
             'description' => 'zeboi',
             'siret' => '12452',
             'phone' => '015454856',
-            'user' => 'stephanne@epotager.com',
+            'user' => 'stephane@epotager.com',
             'active' => '',
         ],
     ];

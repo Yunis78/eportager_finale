@@ -9,7 +9,7 @@ use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 
-class CategorieFixtures extends Fixture implements DependentFixtureInterface
+class CategorieFixtures extends Fixture
 {       
     const DATA = [
 
@@ -44,13 +44,6 @@ class CategorieFixtures extends Fixture implements DependentFixtureInterface
     
     const LABEL = 'categorie-%s';
 
-    public function getDependencies()
-    {
-        return [ 
-            // Fixtures::class
-        ];
-    }
-    
     public function load(ObjectManager $manager)
     {
         foreach( self::DATA as $data){

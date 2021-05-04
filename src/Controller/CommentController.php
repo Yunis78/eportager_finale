@@ -3,8 +3,11 @@
 namespace App\Controller;
 
 use App\Entity\Comment;
+use App\Entity\Producer;
 use App\Form\CommentType;
+use Doctrine\ORM\EntityManagerInterface;
 use App\Repository\CommentRepository;
+use COM;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -15,6 +18,17 @@ use Symfony\Component\Routing\Annotation\Route;
  */
 class CommentController extends AbstractController
 {
+
+    /**
+     * @var EntityManagerInterface
+     */
+    private $em;
+
+    public function __construct( EntityManagerInterface $em )
+    {
+        $this->em = $em;
+    }
+
     /**
      * @Route("/", name="comment_index", methods={"GET"})
      */
@@ -26,15 +40,20 @@ class CommentController extends AbstractController
     }
 
     /**
-     * @Route("/new", name="comment_new", methods={"GET","POST"})
+     * @Route("/{producer}/new", name="comment_new", methods={"GET","POST"})
      */
-    public function new(Request $request): Response
+    public function new(Request $request, int $producer): Response
     {
         $comment = new Comment();
         $form = $this->createForm(CommentType::class, $comment);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+
+            $comment->setUser($this->getUser());
+            $producer = $this->em->getRepository(Producer::class)->find($producer);;
+            $comment->setProducer($producer);
+
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($comment);
             $entityManager->flush();

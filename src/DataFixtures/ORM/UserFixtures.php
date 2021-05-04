@@ -15,8 +15,8 @@ class UserFixtures extends Fixture
                 'email' => 'admin@epotager.com',
                 'roles' => ["ROLES_ADMIN"],
                 'password' => 'admin1234',
-                'givenName' => 'admin',
-                'familyName' => 'admin',
+                'givenName' => 'john',
+                'familyName' => 'doe',
                 'address_street' => 'admin',
                 'address_country' => '',
                 'address_complement' => '',
@@ -27,7 +27,7 @@ class UserFixtures extends Fixture
             ],
             [
                 'email' => 'melissa@epotager.com',
-                'roles' => ["ROLES_USER"],
+                'roles' => ["ROLES_PRODUCER", "ROLES_ADMIN"],
                 'password' => 'admin1234',
                 'givenName' => 'Melissa',
                 'familyName' => 'Pascale',
@@ -41,7 +41,7 @@ class UserFixtures extends Fixture
             ],
             [
                 'email' => 'mohammed@epotager.com',
-                'roles' => ["ROLES_USER"],
+                'roles' => ["ROLES_PRODUCER"],
                 'password' => 'admin1234',
                 'givenName' => 'Mouhamed',
                 'familyName' => 'Hatoum',
@@ -55,10 +55,24 @@ class UserFixtures extends Fixture
             ],
             [
                 'email' => 'stephane@epotager.com',
-                'roles' => ["ROLES_USER"],
+                'roles' => ["ROLES_PRODUCER"],
                 'password' => 'admin1234',
                 'givenName' => 'stephane',
                 'familyName' => 'Jaouen',
+                'address_street' => '',
+                'address_country' => '',
+                'address_complement' => '',
+                'address_zipcode' => null,
+                'address_city' => '',
+                'phone' => 0606060060,
+                'is_verified' => '',
+            ],
+            [
+                'email' => 'client@epotager.com',
+                'roles' => [""],
+                'password' => 'admin1234',
+                'givenName' => 'jullie',
+                'familyName' => 'gillet',
                 'address_street' => '',
                 'address_country' => '',
                 'address_complement' => '',
@@ -75,7 +89,6 @@ class UserFixtures extends Fixture
         /**
          * password Encoder
          * @var UserPasswordEncodeInterface
-         * 
          */
         private $encoder;
 

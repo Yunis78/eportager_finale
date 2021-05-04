@@ -2,8 +2,10 @@
 
 namespace App\Controller;
 
+use App\Entity\Comment;
 use App\Entity\Producer;
 use App\Entity\User;
+use App\Form\CommentType;
 use App\Form\ProducerType;
 use App\Repository\ProducerRepository;
 use Doctrine\ORM\EntityManagerInterface;
@@ -70,12 +72,31 @@ class ProducerController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="producer_show", methods={"GET"})
+     * @Route("/{id}", name="producer_show", methods={"GET","POST"})
      */
-    public function show(Producer $producer): Response
+    public function show(Request $request, Producer $producer, int $id): Response
     {
+
+        $comment = new Comment();
+        $form = $this->createForm(CommentType::class, $comment);
+        $form->handleRequest($request);
+        $producer = $this->em->getRepository(Producer::class)->find($producer);
+        
+        if ($form->isSubmitted() && $form->isValid()) {
+
+            $comment->setUser($this->getUser());
+            $comment->setProducer($producer);
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($comment);
+            $entityManager->flush();
+
+            return $this->redirectToRoute('producer_show', ['id' => $id]);
+        }
+
         return $this->render('components/pages/producer/show.html.twig', [
             'producer' => $producer,
+            'comments' => $this->em->getRepository(Comment::class)->findBy(['producer'=> $producer->getId()]),
+            'form' => $form->createView(),
         ]);
     }
 

@@ -16,9 +16,9 @@ class ProductFixtures extends Fixture implements DependentFixtureInterface
         [
             'name' => 'pomme',
             'stock' => '4',
-            'description' => 'pomme juteux du jargon',
+            'description' => 'pommes juteuses du jargon',
             'price' => '15',
-            'categorie' => 'Fruits',
+            'categorie' => 'fruits',
             'producer' => '12345',
         ],
         [
@@ -26,7 +26,7 @@ class ProductFixtures extends Fixture implements DependentFixtureInterface
             'stock' => '4',
             'description' => 'courgette du jargon',
             'price' => '2',
-            'categorie' => 'Legumes',
+            'categorie' => 'legumes',
             'producer' => '12345',
         ],
         [
@@ -34,7 +34,7 @@ class ProductFixtures extends Fixture implements DependentFixtureInterface
             'stock' => '4',
             'description' => 'venue tout droit du japon',
             'price' => '2',
-            'categorie' => 'Viandes',
+            'categorie' => 'viandes',
             'producer' => '12345',
         ],
         [
@@ -58,7 +58,7 @@ class ProductFixtures extends Fixture implements DependentFixtureInterface
             'stock' => '4',
             'description' => 'Miel pops',
             'price' => '20',
-            'categorie' => 'Miels et confitures',
+            'categorie' => 'miel et confitures',
             'producer' => '124527',
         ],
         [
@@ -66,7 +66,7 @@ class ProductFixtures extends Fixture implements DependentFixtureInterface
             'stock' => '4',
             'description' => 'le bon pain du pays',
             'price' => '0.80',
-            'categorie' => 'Boulangerie',
+            'categorie' => 'boulangerie',
             'producer' => '12345',
         ],
         [
@@ -82,7 +82,7 @@ class ProductFixtures extends Fixture implements DependentFixtureInterface
             'stock' => '4',
             'description' => 'la sauce prefere des tomate',
             'price' => '25',
-            'categorie' => 'Condiments',
+            'categorie' => 'condiments',
             'producer' => '12452',
         ],
         [
@@ -90,7 +90,7 @@ class ProductFixtures extends Fixture implements DependentFixtureInterface
             'stock' => '4',
             'description' => 'le bon poissons du pays Nord',
             'price' => '25',
-            'categorie' => 'Poissons',
+            'categorie' => 'poissons',
             'producer' => '12345',
         ]
     ];

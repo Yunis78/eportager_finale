@@ -34,6 +34,14 @@
         </tbody>
     </table>
 
+    {% for comment in comments %}
+        <div>
+            <div>{{- comment.rate -}}/5</div>
+            <div>{{- comment.message -}}</div>
+        </div>
+    {% endfor %}
+
+
     {% if is_granted('ROLE_USER') %}
     {{ include('components/pages/comment/_form.html.twig') }}
     {% else %}
