@@ -13,7 +13,7 @@ class UserFixtures extends Fixture
 
             [
                 'email' => 'admin@epotager.com',
-                'roles' => ["ROLES_ADMIN"],
+                'roles' => ["ROLE_ADMIN"],
                 'password' => 'admin1234',
                 'givenName' => 'john',
                 'familyName' => 'doe',
@@ -27,7 +27,7 @@ class UserFixtures extends Fixture
             ],
             [
                 'email' => 'melissa@epotager.com',
-                'roles' => ["ROLES_PRODUCER", "ROLES_ADMIN"],
+                'roles' => ["ROLE_PRODUCER", "ROLES_ADMIN"],
                 'password' => 'admin1234',
                 'givenName' => 'Melissa',
                 'familyName' => 'Pascale',
@@ -41,7 +41,7 @@ class UserFixtures extends Fixture
             ],
             [
                 'email' => 'mohammed@epotager.com',
-                'roles' => ["ROLES_PRODUCER"],
+                'roles' => ["ROLE_PRODUCER"],
                 'password' => 'admin1234',
                 'givenName' => 'Mouhamed',
                 'familyName' => 'Hatoum',
@@ -55,7 +55,7 @@ class UserFixtures extends Fixture
             ],
             [
                 'email' => 'stephane@epotager.com',
-                'roles' => ["ROLES_PRODUCER"],
+                'roles' => ["ROLE_PRODUCER"],
                 'password' => 'admin1234',
                 'givenName' => 'stephane',
                 'familyName' => 'Jaouen',
