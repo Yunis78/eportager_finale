@@ -58,6 +58,8 @@ class ProductController extends AbstractController
     // }
 
     /**
+     * @IsGranted("ROLE_PRODUCER")
+     * 
      * @Route("/produits", name="product_index")
      */
     public function read_produits(ProductRepository $productRepository): Response
@@ -93,11 +95,11 @@ class ProductController extends AbstractController
         $user = $this->getUser();
 
         
-        if (null === $user->getProducer() ) { 
-
-            return $this->redirectToRoute('app_login');
-
-        }    
+        //ne marche pas et redondant
+            /* 
+            if (null === $user->getProducer() ) { 
+                return $this->redirectToRoute('app_login');
+            }*/
 
         $form = $this->createForm(ProductType::class, $product);
         $form->handleRequest($request);
