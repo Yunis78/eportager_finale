@@ -47,15 +47,7 @@ class ProductController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/cat", name="cat")
-     */
-    public function categorie(): Response
-    {
-        return $this->render('components/pages/product/categorie.html.twig', [
-            'controller_name' => 'ProduitsController',
-        ]);
-    }
+    
     /**
      * @Route("/produits", name="product_index", methods={"GET"})
      */

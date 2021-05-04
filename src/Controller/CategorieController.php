@@ -16,12 +16,22 @@ use Symfony\Component\Routing\Annotation\Route;
 class CategorieController extends AbstractController
 {
     /**
-     * @Route("/", name="categorie_index", methods={"GET"})
+     * @Route("/", name="categorie_index")
      */
-    public function index(CategorieRepository $categorieRepository): Response
+    public function index(): Response
     {
-        return $this->render('components/pages/categorie/index.html.twig', [
-            'categories' => $categorieRepository->findAll(),
+        return $this->render('components/pages/product/index.html.twig', [
+            'controller_name' => 'ProduitsController',
+        ]);
+    }
+
+    /**
+     * @Route("/cat", name="cat")
+     */
+    public function categorie(): Response
+    {
+        return $this->render('components/pages/product/categorie.html.twig', [
+            'controller_name' => 'ProduitsController',
         ]);
     }
 
@@ -39,7 +49,7 @@ class CategorieController extends AbstractController
             $entityManager->persist($categorie);
             $entityManager->flush();
 
-            return $this->redirectToRoute('categorie_index');
+            return $this->redirectToRoute('categorie_new');
         }
 
         return $this->render('components/pages/categorie/new.html.twig', [

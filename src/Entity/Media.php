@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\MediaRepository;
 use Doctrine\ORM\Mapping as ORM;
 
+
 /**
  * @ORM\Entity(repositoryClass=MediaRepository::class)
  */
@@ -27,6 +28,18 @@ class Media
      * @ORM\JoinColumn(nullable=true)
      */
     private $producer;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Product::class, inversedBy="Media")
+     * @ORM\JoinColumn(nullable=true)
+     */
+    private $product;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Categorie::class, inversedBy="Media")
+     * @ORM\JoinColumn(nullable=true)
+     */
+    private $categorie;
 
 
     public function getId(): ?int
@@ -66,6 +79,18 @@ class Media
     public function setProduct(?Product $product): self
     {
         $this->product = $product;
+
+        return $this;
+    }
+
+    public function getCategorie(): ?Categorie
+    {
+        return $this->categorie;
+    }
+
+    public function setCategorie(?Categorie $categorie): self
+    {
+        $this->categorie = $categorie;
 
         return $this;
     }
