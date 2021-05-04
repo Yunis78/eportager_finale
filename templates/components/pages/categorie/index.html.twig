@@ -1,82 +1,39 @@
-{% extends 'base.html.twig' %} {% block title %}Hello ProduitsController!{% endblock %} {% block stylesheets %}
-{{ encore_entry_link_tags("app") }}
-{{ encore_entry_link_tags("product") }}
-{% endblock %} {% block body %}
+{% extends 'base.html.twig' %}
 
-<!-- bannière -->
+{% block title %}Categorie index{% endblock %}
 
-<div class="banniProd1 mb-5">
-    <div class="card text-white">
-        <div style="width:100% ; height: 300px ; background-image: url('{{ asset("img/legume.jpg") }}');background-size:cover ; background-position:center;">
-        <!-- <img src="{{ asset("img/fruitLegume.jpg") }}" class="card-img" alt="..." /> -->
-    </div>
-        <div class="card-img-overlay d-flex align-items-center justify-content-center d-flex flex-column">
-            <h2 class="card-title p-3">Les légumes</h2>
-            <p class="texte">Le meilleur de leurs produits !</p>
-        </div>
-    </div>
-</div>
+{% block body %}
+<div class="container">
+    <h1 class="mb-4">Categorie index</h1>
 
-<!-- cards -->
+    <table class="table table-sm table-hover table-end-fit">
+        <thead class="table-active">
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>categorie</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for categorie in categories %}
+            <tr>
+                <th scope="row">{{- categorie.id -}}</th>
+                <td>{{- categorie.nom -}}</td>
+                <td>{{- (categorie.parent.nom)?? "" -}}</td>
+                <td>
+                    <a class="btn btn-primary" href="{{ path('categorie_show', {'id': categorie.id}) }}">show</a>
+                    <a class="btn btnorange" href="{{ path('categorie_edit', {'id': categorie.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
 
-<h2 class="titreCards1"><span class="cadre-titre-vert px-2">Leurs</span>&nbsp;légumes.</h2>
-
-<div class="row rechercher d-flex flex-column align-items-center py-4">
-    <h5>Chercher un produit</h5>
-    <input type="text" class="form-control col-5 col-md-4 col-lg-2" placeholder="Rechercher..." aria-label="Rechercher..." aria-describedby="basic-addon1" />
-</div>
-
-<div class="row py-3 justify-content-center cardsProd">
-
-    <div class="card text-white m-3">
-        <div style="background-image: url('{{ asset("img/legume.jpg") }}');">
-        <!-- <img src="{{ asset("img/fruitLegume.jpg") }}" class="card-img" alt="..." /> -->
-        </div>
-        <div class="card-img-overlay">
-            <h4 class="card-title">Navets</h2>
-            <p class="card-text">&nbsp;</p>
-        </div>
-    </div>
-
-    <div class="card text-white m-3">
-        <div style="background-image: url('{{ asset("img/legume.jpg") }}');">
-        <!-- <img src="{{ asset("img/fruitLegume.jpg") }}" class="card-img" alt="..." /> -->
-        </div>
-        <div class="card-img-overlay">
-            <h4 class="card-title">Carottes</h2>
-            <p class="card-text">de toute les couleurs&nbsp;</p>
-        </div>
-    </div>
-
-    <div class="card text-white m-3">
-        <div style="background-image: url('{{ asset("img/legume.jpg") }}');">
-        <!-- <img src="{{ asset("img/fruitLegume.jpg") }}" class="card-img" alt="..." /> -->
-        </div>
-        <div class="card-img-overlay">
-            <h4 class="card-title">Poireaux</h2>
-            <p class="card-text">&nbsp;</p>
-        </div>
-    </div>
-
-    <div class="card text-white m-3">
-        <div style="background-image: url('{{ asset("img/legume.jpg") }}');">
-        <!-- <img src="{{ asset("img/fruitLegume.jpg") }}" class="card-img" alt="..." /> -->
-        </div>
-        <div class="card-img-overlay">
-            <h4 class="card-title">Champignons</h2>
-            <p class="card-text">pour appuyer dessus&nbsp;</p>
-        </div>
-    </div>
-
-    <div class="card text-white m-3">
-        <div style="background-image: url('{{ asset("img/legume.jpg") }}');">
-        <!-- <img src="{{ asset("img/fruitLegume.jpg") }}" class="card-img" alt="..." /> -->
-        </div>
-        <div class="card-img-overlay">
-            <h4 class="card-title">Oignions</h2>
-            <p class="card-text">rouges, jaunes et blancs&nbsp;</p>
-        </div>
-    </div>
-    
+    <p><a class="btn btn-success" href="{{ path('categorie_new') }}">Create new</a></p>
 </div>
 {% endblock %}

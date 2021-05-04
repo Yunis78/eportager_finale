@@ -18,10 +18,10 @@ class CategorieController extends AbstractController
     /**
      * @Route("/", name="categorie_index")
      */
-    public function index(): Response
+    public function index(CategorieRepository $categorieRepository): Response
     {
-        return $this->render('components/pages/product/index.html.twig', [
-            'controller_name' => 'ProduitsController',
+        return $this->render('components/pages/categorie/index.html.twig', [
+            'categories' => $categorieRepository->findAll(),
         ]);
     }
 

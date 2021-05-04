@@ -12,27 +12,37 @@
     </div>
         <div class="card-img-overlay d-flex align-items-center justify-content-center d-flex flex-column">
             <h2 class="card-title p-3">Les légumes</h2>
-            <p class="texte">Le meilleur de leurs produits !</p>
+            <!-- <p>Le meilleur de leurs produits !</p> -->
         </div>
     </div>
 </div>
 
 <!-- cards -->
 
-<h2 class="titreCards1"><span class="cadre-titre-vert px-2">Leurs</span>&nbsp;légumes.</h2>
+<h3 class="titreCards1 mb-5"><span class="cadre-titre-vert px-2">Leurs</span>&nbsp; meilleurs légumes pour vous.</h3>
 
-<div class="container-fluid">
-    <div class="row rechercher d-flex flex-column align-items-center py-4">
-    <h5>Chercher un produit</h5>
-    <input type="text" class="form-control col-5 col-md-4 col-lg-2" placeholder="Rechercher..." aria-label="Rechercher..." aria-describedby="basic-addon1" />
+<!-- <div class="container-fluid"> -->
+    <div class="ligne-grise mx-auto"></div>
+
+    <div class="input-product d-flex justify-content-center">
+        <div class="input-group col-3 m-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1"><i class="ri-search-line"></i></span>
+            </div>
+            <input type="text" class="form-control" placeholder="Rechercher un produit..." aria-label="Rechercher..." aria-describedby="basic-addon1" />
+        </div>
     </div>
+    
+    <div class="ligne-grise mx-auto mb-4"></div>
+
+
     <div class="row py-3 justify-content-center cardsProd">
 
         <div class="card text-white m-3">
             <div class="imgCard" style="background-image: url('{{ asset("img/legume.jpg") }}');">
             <!-- <img src="{{ asset("img/fruitLegume.jpg") }}" class="card-img" alt="..." /> -->
             </div>
-            <a href="{{ path('product_index')}}">
+            <a href="{{ path('un_produit')}}">
                 <div class="card-img-overlay">
                     <h4 class="card-title">Navets</h2>
                     <p class="card-text text-white">&nbsp;</p>
@@ -44,7 +54,7 @@
             <div class="imgCard" style="background-image: url('{{ asset("img/legume.jpg") }}');">
             <!-- <img src="{{ asset("img/fruitLegume.jpg") }}" class="card-img" alt="..." /> -->
             </div>
-            <a href="{{ path('product_index')}}">
+            <a href="{{ path('un_produit')}}">
                 <div class="card-img-overlay">
                     <h4 class="card-title">Carottes</h2>
                     <p class="card-text text-white">de toute les couleurs&nbsp;</p>
@@ -56,7 +66,7 @@
             <div class="imgCard" style="background-image: url('{{ asset("img/legume.jpg") }}');">
             <!-- <img src="{{ asset("img/fruitLegume.jpg") }}" class="card-img" alt="..." /> -->
             </div>
-            <a href="{{ path('product_index')}}">
+            <a href="{{ path('un_produit')}}">
                 <div class="card-img-overlay">
                     <h4 class="card-title">Poireaux</h2>
                     <p class="card-text text-white">&nbsp;</p>
@@ -68,7 +78,7 @@
             <div class="imgCard" style="background-image: url('{{ asset("img/legume.jpg") }}');">
             <!-- <img src="{{ asset("img/fruitLegume.jpg") }}" class="card-img" alt="..." /> -->
             </div>
-            <a href="{{ path('product_index')}}">
+            <a href="{{ path('un_produit')}}">
                 <div class="card-img-overlay">
                     <h4 class="card-title">Champignons</h2>
                     <p class="card-text text-white">pour appuyer dessus&nbsp;</p>
@@ -80,7 +90,7 @@
             <div class="imgCard" style="background-image: url('{{ asset("img/legume.jpg") }}');">
             <!-- <img src="{{ asset("img/fruitLegume.jpg") }}" class="card-img" alt="..." /> -->
             </div>
-            <a href="{{ path('product_index')}}">
+            <a href="{{ path('un_produit')}}">
                 <div class="card-img-overlay">
                     <h4 class="card-title">Oignions</h2>
                     <p class="card-text text-white">rouges, jaunes et blancs&nbsp;</p>

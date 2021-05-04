@@ -23,7 +23,7 @@
         {{ encore_entry_link_tags("app") }}
         {% endblock %}
     </head>
-    <body>
+    <body class="d-flex flex-column min-vh-100">
         <!-- Bannière logo -->
 
         <header class="pb-1">
@@ -77,10 +77,10 @@
                             <a class="nav-link orange active" href="{{ path('homepage') }}">Accueil</a>
                         </li>
                         <li class="nav-item vert mx-1">
-                            <a class="nav-link vert" href="{{ path('produits') }}">Produits</a>
+                            <a class="nav-link vert" href="{{ path('front_produits') }}">Produits</a>
                         </li>
                         <li class="nav-item violet mx-1">
-                            <a class="nav-link violet" href="{{ path('producer_index') }}">Producteurs</a>
+                            <a class="nav-link violet" href="{{ path('front_producteurs') }}">Producteurs</a>
                         </li>
                         <li class="nav-item rouge mx-1">
                             <a class="nav-link rouge" href="{{ path('concept') }}">Concept</a>
@@ -107,7 +107,7 @@
         
         
         <!-- Footer ? -->
-        <footer class="jaune" style="height:100px">
+        <footer class="jaune mt-auto" style="height:100px">
             <p class="text-center">&copy; 2021</p>
         </footer>
         

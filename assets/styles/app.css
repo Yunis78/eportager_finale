@@ -133,6 +133,10 @@ max-height: 380px;
 }
 
 
+#carouselhome .carousel-control-next {
+    position: absolute;
+    z-index: 8!important;
+}
 #carouselhome .carousel-control-next-icon {
     background-image: none;
 }
@@ -198,6 +202,7 @@ max-height: 380px;
     background-color: #5c9c18;
     border-radius: .5rem;
     color: white;
+    padding: .5rem;
 }
 
 .cadre-titre-violet {
@@ -205,6 +210,7 @@ max-height: 380px;
     background-color: #7d4aa8;
     border-radius: .5rem;
     color: white;
+    padding: .5rem;
 }
 
 .cadre-titre-rouge {
@@ -212,6 +218,7 @@ max-height: 380px;
     background-color: #ff0959;
     border-radius: .5rem;
     color: white;
+    padding: .5rem;
 }
 
 .cadre-titre-orange {
@@ -219,6 +226,7 @@ max-height: 380px;
     background-color: #ff7e00;
     border-radius: .5rem;
     color: white;
+    padding: .5rem;
 }
 
 
@@ -254,3 +262,12 @@ max-height: 380px;
     color: #ff7e00;
 }
 
+
+
+
+/* fin de tableaux joli */
+table.table-end-fit tr td:last-child,
+table.table-end-fit tr th:last-child {
+    width: 1%;
+    white-space: nowrap;
+}
