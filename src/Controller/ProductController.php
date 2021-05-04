@@ -38,22 +38,43 @@ class ProductController extends AbstractController
         $this->em = $em;
     }
     /**
-     * @Route("/", name="produits")
+     * @Route("/", name="front_produits")
      */
-    public function produits(): Response
+    public function front_produits(): Response
     {
         return $this->render('components/pages/product/type.html.twig', [
-            'controller_name' => 'ProduitsController',
+            // 'controller_name' => 'ProduitsController',
         ]);
     }
 
-    
+    // /**
+    //  * @Route("/cat", name="cat")
+    //  */
+    // public function categorie(): Response
+    // {
+    //     return $this->render('components/pages/product/categorie.html.twig', [
+    //         'controller_name' => 'ProduitsController',
+    //     ]);
+    // }
+
     /**
-     * @Route("/produits", name="product_index", methods={"GET"})
+     * @Route("/produits", name="product_index")
+     */
+    public function read_produits(ProductRepository $productRepository): Response
+    {
+        return $this->render('components/pages/product/index.html.twig', [
+            // 'controller_name' => 'ProduitsController',
+            'products' => $productRepository->findAll(),
+        ]);
+    }
+
+    /**
+     * @Route("/produit", name="un_produit", methods={"GET"})
      */
     public function index(ProductRepository $productRepository): Response
     {
         return $this->render('components/pages/product/produit.html.twig', [
+            // à modifier pour aller chercher les bons
             'products' => $productRepository->findAll(),
         ]);
 
