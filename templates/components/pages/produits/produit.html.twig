@@ -1,0 +1,134 @@
+{% extends 'base.html.twig' %} {% block title %}Hello ProduitsController!{% endblock %} {% block stylesheets %}
+{{ encore_entry_link_tags("app") }}
+{{ encore_entry_link_tags("product") }}
+{% endblock %} {% block body %}
+
+<!-- bannière -->
+
+<div class="banniProd1 mb-5">
+    <div class="card text-white">
+        <div style="width:100% ; height: 300px ; background-image: url('{{ asset("img/fonProd.jpg") }}');background-size:cover ; background-position:center">
+            <!-- <img src="{{ asset("img/fruitLegume.jpg") }}" class="card-img" alt="..." /> -->
+        </div>
+        <div class="card-img-overlay d-flex align-items-center justify-content-center d-flex flex-column">
+            <h2 class="card-title p-3">Toutes les fraises</h2>
+            <p class="texte">Le meilleur de leurs fraises !</p>
+        </div>
+    </div>
+</div>
+
+<!-- cards -->
+
+<div class="container">
+    <div class="row">
+        
+        <!-- card produit -->
+        <div class="col-12 col-xl-6">
+            <div class="card w-100 d-flex flex-row m-1 px-0">
+                <!-- image -->
+                <div class="imageProduit col-4 p-0">
+                    <div style="background-image: url('{{ asset("img/Pomme1.jpg") }}');"></div>
+                </div>
+                <!-- description et prix -->
+                <div class="prix col-5 d-flex flex-column justify-content-between">
+                    <h3 class="mt-3">Titre</h3>
+                    <p>Description du produit</p>
+                    <div class="mb-3 d-flex flex-row">
+                        <p class="btnorange-inverse m-2 font-weight-bold">3€ / kg</p>
+                        <!-- <a href="#" class="btn btnvert m-2"><i class="ri-heart-line"></i></a> -->
+                        <a href="{{path('cart_add', {'id': product.id}) }}" class="btn btnviolet m-2"><i class="ri-shopping-cart-2-line"></i></button>
+                    </div>      
+                </div>
+                <!-- producteur -->
+                <div class="producteur col-3 d-flex flex-column justify-content-center align-items-center pb-3">
+                    <div class="mt-3" style="background-image: url('{{ asset("img/Exploit1.jpg") }}');"></div>
+                    <p class="text-center mt-2 mb-1 font-weight-bold">Michel POLUX</p>
+                    <a href="#" class="btn btnvert m-2">Découvrir</a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- card produit -->
+        <div class="col-12 col-xl-6">
+            <div class="card w-100 d-flex flex-row m-1 px-0">
+                <!-- image -->
+                <div class="imageProduit col-4 p-0">
+                    <div style="background-image: url('{{ asset("img/Pomme1.jpg") }}');"></div>
+                </div>
+                <!-- description et prix -->
+                <div class="prix col-5 d-flex flex-column justify-content-between">
+                    <h3 class="mt-3">Titre</h3>
+                    <p>Description du produit</p>
+                    <div class="mb-3 d-flex flex-row">
+                        <p class="btnorange-inverse m-2 font-weight-bold">3€ / kg</p>
+                        <!-- <a href="#" class="btn btnvert m-2"><i class="ri-heart-line"></i></a> -->
+                        <a href="{{path('cart_add', {'id': product.id}) }}" class="btn btnviolet m-2"><i class="ri-shopping-cart-2-line"></i></button>
+                    </div>      
+                </div>
+                <!-- producteur -->
+                <div class="producteur col-3 d-flex flex-column justify-content-center align-items-center pb-3">
+                    <div class="mt-3" style="background-image: url('{{ asset("img/Exploit1.jpg") }}');"></div>
+                    <p class="text-center mt-2 mb-1 font-weight-bold">Michel POLUX</p>
+                    <a href="#" class="btn btnvert m-2">Découvrir</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- card produit -->
+        <div class="col-12 col-xl-6">
+            <div class="card w-100 d-flex flex-row m-1 px-0">
+                <!-- image -->
+                <div class="imageProduit col-4 p-0">
+                    <div style="background-image: url('{{ asset("img/Pomme1.jpg") }}');"></div>
+                </div>
+                <!-- description et prix -->
+                <div class="prix col-5 d-flex flex-column justify-content-between">
+                    <h3 class="mt-3">Titre</h3>
+                    <p>Description du produit</p>
+                    <div class="mb-3 d-flex flex-row">
+                        <p class="btnorange-inverse m-2 font-weight-bold">3€ / kg</p>
+                        <!-- <a href="#" class="btn btnvert m-2"><i class="ri-heart-line"></i></a> -->
+                        <a href="{{path('cart_add', {'id': product.id}) }}" class="btn btnviolet m-2"><i class="ri-shopping-cart-2-line"></i></button>
+                    </div>      
+                </div>
+                <!-- producteur -->
+                <div class="producteur col-3 d-flex flex-column justify-content-center align-items-center pb-3">
+                    <div class="mt-3" style="background-image: url('{{ asset("img/Exploit1.jpg") }}');"></div>
+                    <p class="text-center mt-2 mb-1 font-weight-bold">Michel POLUX</p>
+                    <a href="#" class="btn btnvert m-2">Découvrir</a>
+                </div>
+            </div>
+        </div>
+
+         <!-- card produit -->
+         <div class="col-12 col-xl-6">
+            <div class="card w-100 d-flex flex-row m-1 px-0">
+                <!-- image -->
+                <div class="imageProduit col-4 p-0">
+                    <div style="background-image: url('{{ asset("img/Pomme1.jpg") }}');"></div>
+                </div>
+                <!-- description et prix -->
+                <div class="prix col-5 d-flex flex-column justify-content-between">
+                    <h3 class="mt-3">Titre</h3>
+                    <p>Description du produit</p>
+                    <div class="mb-3 d-flex flex-row">
+                        <p class="btnorange-inverse m-2 font-weight-bold">3€ / kg</p>
+                        <!-- <a href="#" class="btn btnvert m-2"><i class="ri-heart-line"></i></a> -->
+                        <a href="{{path('cart_add', {'id': product.id}) }}" class="btn btnviolet m-2"><i class="ri-shopping-cart-2-line"></i></button>
+                    </div>      
+                </div>
+                <!-- producteur -->
+                <div class="producteur col-3 d-flex flex-column justify-content-center align-items-center pb-3">
+                    <div class="mt-3" style="background-image: url('{{ asset("img/Exploit1.jpg") }}');"></div>
+                    <p class="text-center mt-2 mb-1 font-weight-bold">Michel POLUX</p>
+                    <a href="#" class="btn btnvert m-2">Découvrir</a>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+    
+</div>
+
+
+{% endblock %}
