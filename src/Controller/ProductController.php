@@ -6,6 +6,7 @@ use App\Entity\Producer;
 use App\Entity\Product;
 use App\Entity\User;
 use App\Form\ProductType;
+use App\Repository\CategorieRepository;
 use App\Repository\ProducerRepository;
 use App\Repository\ProductRepository;
 use App\Repository\UserRepository;
@@ -40,10 +41,11 @@ class ProductController extends AbstractController
     /**
      * @Route("/", name="front_produits")
      */
-    public function front_produits(): Response
+    public function front_produits(CategorieRepository $categorieRepository): Response
     {
         return $this->render('components/pages/product/type.html.twig', [
-            // 'controller_name' => 'ProduitsController',
+            'controller_name' => 'ProduitsController',
+            'categories' => $categorieRepository->findAll(),
         ]);
     }
 
@@ -94,12 +96,9 @@ class ProductController extends AbstractController
 
         $user = $this->getUser();
 
-        
-        //ne marche pas et redondant
-            /* 
-            if (null === $user->getProducer() ) { 
-                return $this->redirectToRoute('app_login');
-            }*/
+            // if (null === $user->getProducer() ) { 
+            //     return $this->redirectToRoute('app_login');
+            // }
 
         $form = $this->createForm(ProductType::class, $product);
         $form->handleRequest($request);
@@ -170,6 +169,38 @@ class ProductController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+
+            foreach($form->get('file') as $media)
+            {
+                // Get file field
+                $uploaded_file = $media->get('file')->getData();
+
+                // If has file
+                if ($uploaded_file)
+                {
+                    // File Content
+                    $file_content = file_get_contents($uploaded_file->getPathname());
+
+                    // Generate MD5 from file content
+                    $file_md5 = md5($file_content);
+
+                    // Get file extension
+                    $file_extension = $uploaded_file->guessExtension();
+
+                    // Generate new file name
+                    $new_file = $file_md5.".".$file_extension;
+
+                    // Move file
+                    $uploaded_file->move(
+                        "./upload/",
+                        $new_file
+                    );
+
+                    // Save the new file name in the "path" field
+                    $media->getData()->setPath( $new_file );
+                }
+            }
+
             $this->getDoctrine()->getManager()->flush();
 
             return $this->redirectToRoute('product_index');
@@ -187,12 +218,32 @@ class ProductController extends AbstractController
     public function delete(Request $request, Product $product): Response
     {
         if ($this->isCsrfTokenValid('delete'.$product->getId(), $request->request->get('_token'))) {
+
             $entityManager = $this->getDoctrine()->getManager();
+
+            $medias = $entityManager->getRepository(Media::class)->findBy(['product' => $product->getId()]);
+            foreach ($medias as $media) {
+                $entityManager->remove($media);
+            }
+            
             $entityManager->remove($product);
             $entityManager->flush();
         }
 
         return $this->redirectToRoute('product_index');
+    }
+
+    /**
+     * @Route("/{categorie}", name="categorie_produit", methods={"GET"})
+     */
+    public function filtrProduits(ProductRepository $productRepository): Response
+    {
+        return $this->render('components/pages/product/produit.html.twig', [
+            // à modifier pour aller chercher les bons
+            'products' => $productRepository->findAllBy(),
+        ]);
+
+        
     }
     
 }

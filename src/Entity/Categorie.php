@@ -2,7 +2,9 @@
 
 namespace App\Entity;
 
+use App\Entity\Media;
 use App\Repository\CategorieRepository;
+use App\Entity\Product;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
@@ -21,11 +23,12 @@ class Categorie
 
     /**
      * @ORM\Column(type="string", length=45)
+     * @ORM\JoinColumn(nullable=true,onDelete="CASCADE")
      */
     private $nom;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Categorie::class, inversedBy="categories")
+     * @ORM\ManyToOne(targetEntity=Categorie::class, inversedBy="categories", cascade={"persist"})
      * @ORM\JoinColumn(nullable=true,onDelete="CASCADE")
      */
     private $parent;
@@ -41,7 +44,7 @@ class Categorie
     private $products;
 
     /**
-     * @ORM\OneToMany(targetEntity=Media::class, mappedBy="categorie")
+     * @ORM\OneToMany(targetEntity=Media::class, mappedBy="product", cascade={"persist"})
      */
     private $file;
 
@@ -89,7 +92,7 @@ class Categorie
         return $this->categories;
     }
 
-    public function addCategory(self $category): self
+    public function addCategorie(self $category): self
     {
         if (!$this->categories->contains($category)) {
             $this->categories[] = $category;
@@ -99,9 +102,11 @@ class Categorie
         return $this;
     }
 
-    public function removeCategory(self $category): self
+    public function removeCategorie(self $category): self
     {
         if ($this->categories->removeElement($category)) {
+
+
             // set the owning side to null (unless already changed)
             if ($category->getParent() === $this) {
                 $category->setParent(null);
@@ -114,9 +119,9 @@ class Categorie
     /**
      * @return Collection|Product[]
      */
-    public function getProducts(): Collection
+    public function getProduct(): Collection
     {
-        return $this->products;
+        return $this->product;
     }
 
     public function addProduct(Product $product): self
@@ -141,7 +146,7 @@ class Categorie
         return $this;
     }
 
-    /**
+   /**
      * @return Collection|Media[]
      */
     public function getFile(): Collection

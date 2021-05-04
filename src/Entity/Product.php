@@ -25,12 +25,12 @@ class Product
     private $categorie;
 
     /**
-     * @ORM\OneToMany(targetEntity=Media::class, mappedBy="product")
+     * @ORM\OneToMany(targetEntity=Media::class, mappedBy="product", cascade={"persist"})
      */
     private $file;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Producer::class, inversedBy="products")
+     * @ORM\ManyToOne(targetEntity=Producer::class, inversedBy="products"))
      */
     private $producer;
 
@@ -72,7 +72,7 @@ class Product
 
     public function getCategorie(): ?Categorie
     {
-        return $this->categorie;
+        return $this->categories;
     }
 
     public function setCategorie(?Categorie $categorie): self

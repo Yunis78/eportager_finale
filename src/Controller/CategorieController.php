@@ -2,9 +2,13 @@
 
 namespace App\Controller;
 
+use App\Entity\Product;
+use App\Entity\Media;
 use App\Entity\Categorie;
 use App\Form\CategorieType;
 use App\Repository\CategorieRepository;
+use Doctrine\ORM\EntityManagerInterface;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -42,10 +46,44 @@ class CategorieController extends AbstractController
     public function new(Request $request): Response
     {
         $categorie = new Categorie();
+
+
         $form = $this->createForm(CategorieType::class, $categorie);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            
+
+            foreach($form->get('file') as $media)
+            {
+                // Get file field
+                $uploaded_file = $media->get('file')->getData();
+
+                // If has file
+                if ($uploaded_file)
+                {
+                    // File Content
+                    $file_content = file_get_contents($uploaded_file->getPathname());
+
+                    // Generate MD5 from file content
+                    $file_md5 = md5($file_content);
+
+                    // Get file extension
+                    $file_extension = $uploaded_file->guessExtension();
+
+                    // Generate new file name
+                    $new_file = $file_md5.".".$file_extension;
+
+                    // Move file
+                    $uploaded_file->move(
+                        "./upload/",
+                        $new_file
+                    );
+
+                    // Save the new file name in the "path" field
+                    $media->getData()->setPath( $new_file );
+                }
+            }
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($categorie);
             $entityManager->flush();
@@ -78,6 +116,38 @@ class CategorieController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+
+            foreach($form->get('file') as $media)
+            {
+                // Get file field
+                $uploaded_file = $media->get('file')->getData();
+
+                // If has file
+                if ($uploaded_file)
+                {
+                    // File Content
+                    $file_content = file_get_contents($uploaded_file->getPathname());
+
+                    // Generate MD5 from file content
+                    $file_md5 = md5($file_content);
+
+                    // Get file extension
+                    $file_extension = $uploaded_file->guessExtension();
+
+                    // Generate new file name
+                    $new_file = $file_md5.".".$file_extension;
+
+                    // Move file
+                    $uploaded_file->move(
+                        "./upload/",
+                        $new_file
+                    );
+
+                    // Save the new file name in the "path" field
+                    $media->getData()->setPath( $new_file );
+                }
+            }
+
             $this->getDoctrine()->getManager()->flush();
 
             return $this->redirectToRoute('categorie_index');
@@ -95,7 +165,14 @@ class CategorieController extends AbstractController
     public function delete(Request $request, Categorie $categorie): Response
     {
         if ($this->isCsrfTokenValid('delete'.$categorie->getId(), $request->request->get('_token'))) {
+
             $entityManager = $this->getDoctrine()->getManager();
+
+            $medias = $entityManager->getRepository(Media::class)->findBy(['categorie' => $categorie->getId()]);
+            foreach ($medias as $media){
+                $entityManager->remove($media);
+            }
+
             $entityManager->remove($categorie);
             $entityManager->flush();
         }

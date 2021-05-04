@@ -19,7 +19,7 @@ class ProducerFixtures extends Fixture implements DependentFixtureInterface
             'description' => 'zeboi',
             'siret' => '12345',
             'phone' => '0154548654',
-            'user' => 'mohammed@epotager.com',
+            'user' => 'mouhamed@epotager.com',
             'active' => '',
         ],
         [
