@@ -23,6 +23,7 @@ class CategorieController extends AbstractController
         return $this->render('components/pages/categorie/index.html.twig', [
             'categories' => $categorieRepository->findAll(),
         ]);
+        
     }
 
     /**
