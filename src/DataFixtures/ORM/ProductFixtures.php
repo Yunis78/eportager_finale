@@ -18,8 +18,7 @@ class ProductFixtures extends Fixture implements DependentFixtureInterface
             'stock' => '4',
             'description' => 'pommes juteuses du verger',
             'price' => '15',
-            'categorie' => 'pomme',
-            // 'categorie' => 'fruits',
+            'categorie' => 'fruits',
             'producer' => '111111',
         ],
         [

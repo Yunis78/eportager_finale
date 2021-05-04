@@ -3,6 +3,7 @@
 namespace App\DataFixtures\ORM;
 
 use App\DataFixtures\ORM\ProductFixtures;
+use App\DataFixtures\ORM\CategorieFixtures;
 use App\Entity\Media;
 use App\Entity\Product;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
@@ -14,10 +15,8 @@ class MediaFixtures extends Fixture implements DependentFixtureInterface
     const DATA = [
 
         [
-            // 'path' => 'pomme.jpg',
-            'product' => 'pomme vert-15-4',
             'path' => 'Pomme1.jpg',
-            // 'product' => 'pomme-15-4',
+            'product' => 'pomme vert-15-4',
         ],
         [
             'path' => 'courgette.jpg',
@@ -138,7 +137,8 @@ class MediaFixtures extends Fixture implements DependentFixtureInterface
     public function getDependencies()
     {
         return [ 
-            ProductFixtures::class
+            ProductFixtures::class,
+            CategorieFixtures::class,
         ];
     }
     
