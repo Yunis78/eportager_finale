@@ -18,6 +18,8 @@ class ProducerFixtures extends Fixture implements DependentFixtureInterface
             'name' => 'la ferme de l\'orient',
             'description' => 'zeboi',
             'siret' => '12345',
+            'addresszip' => '78990',
+            'villename' => 'elancourt',
             'phone' => '0154548654',
             'user' => 'mouhamed@epotager.com',
             'active' => '',
@@ -25,6 +27,8 @@ class ProducerFixtures extends Fixture implements DependentFixtureInterface
         [
             'name' => 'la ferme du gali',
             'description' => 'zeboi',
+            'addresszip' => '78990',
+            'villename' => 'elancourt',
             'siret' => '124527',
             'phone' => '015454856',
             'user' => 'melissa@epotager.com',
@@ -33,6 +37,8 @@ class ProducerFixtures extends Fixture implements DependentFixtureInterface
         [
             'name' => 'la ferme du galis',
             'description' => 'zeboi',
+            'addresszip' => '78990',
+            'villename' => 'elancourt',
             'siret' => '12452',
             'phone' => '015454856',
             'user' => 'stephane@epotager.com',
@@ -59,6 +65,8 @@ class ProducerFixtures extends Fixture implements DependentFixtureInterface
 
             $producer->setName($data['name']);
             $producer->setDescription($data['description']);
+            $producer->setAddressZip($data['addresszip']);
+            $producer->setVilleName($data['villename']);
             $producer->setSiret($data['siret']);
             $producer->setPhone($data['phone']);
             $producer->setActive($data['active']);

@@ -42,6 +42,16 @@ class Producer
     /**
      * @ORM\Column(type="integer")
      */
+    private $addresszip;
+
+    /**
+     * @ORM\Column(type="string", length=100)
+     */
+    private $villename;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
     private $phone;
 
     /**
@@ -151,6 +161,30 @@ class Producer
     public function setPhone(int $phone): self
     {
         $this->phone = $phone;
+
+        return $this;
+    }
+
+    public function getVilleName(): ?string
+    {
+        return $this->villename;
+    }
+
+    public function setVilleName(string $villename): self
+    {
+        $this->villename = $villename;
+
+        return $this;
+    }
+
+    public function getAddressZip(): ?int
+    {
+        return $this->addresszip;
+    }
+
+    public function setAddressZip(int $addresszip): self
+    {
+        $this->addresszip = $addresszip;
 
         return $this;
     }

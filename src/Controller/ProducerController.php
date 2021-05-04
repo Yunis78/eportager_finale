@@ -34,7 +34,7 @@ class ProducerController extends AbstractController
      */
     public function index(ProducerRepository $producerRepository): Response
     {
-        return $this->render('components/pages/producer/index.html.twig', [
+        return $this->render('components/pages/producer/producer_list.html.twig', [
             'producers' => $producerRepository->findAll(),
         ]);
     }
