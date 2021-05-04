@@ -6,8 +6,8 @@
 <div class="container">
     <h1 class="mb-4">Categorie index</h1>
 
-    <table class="table">
-        <thead>
+    <table class="table table-sm table-hover table-end-fit">
+        <thead class="table-active">
             <tr>
                 <th>Id</th>
                 <th>Nom</th>
@@ -18,7 +18,7 @@
         <tbody>
         {% for categorie in categories %}
             <tr>
-                <td>{{- categorie.id -}}</td>
+                <th scope="row">{{- categorie.id -}}</th>
                 <td>{{- categorie.nom -}}</td>
                 <td>{{- (categorie.parent.nom)?? "" -}}</td>
                 <td>

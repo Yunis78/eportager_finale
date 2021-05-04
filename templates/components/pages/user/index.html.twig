@@ -7,10 +7,10 @@
 
     <h1>User index</h1>
 
-    <table class="table">
-        <thead>
+    <table class="table table-sm table-hover table-end-fit">
+        <thead class="table-active">
             <tr>
-                {# <th>Id</th> #}
+                <th>Id</th>
                 <th>GivenName</th>
                 <th>FamilyName</th>
                 <th>AddressStreet</th>
@@ -26,7 +26,7 @@
         <tbody>
         {% for user in users %}
             <tr>
-                {# <td>{{ user.id }}</td> #}
+                <th scope="row">{{ user.id }}</td>
                 <td>{{ user.givenName }}</td>
                 <td>{{ user.familyName }}</td>
                 <td>{{ user.addressStreet }}</td>

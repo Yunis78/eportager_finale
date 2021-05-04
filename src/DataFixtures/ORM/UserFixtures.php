@@ -27,10 +27,10 @@ class UserFixtures extends Fixture
             ],
             [
                 'email' => 'melissa@epotager.com',
-                'roles' => ["ROLE_PRODUCER", "ROLES_ADMIN"],
+                'roles' => ["ROLE_PRODUCER", "ROLE_ADMIN"],
                 'password' => 'admin1234',
                 'givenName' => 'Melissa',
-                'familyName' => 'Pascale',
+                'familyName' => 'Pascal',
                 'address_street' => '',
                 'address_country' => '',
                 'address_complement' => '',

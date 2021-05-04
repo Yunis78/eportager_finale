@@ -70,7 +70,7 @@ class ProductFixtures extends Fixture implements DependentFixtureInterface
             'producer' => '12345',
         ],
         [
-            'name' => 'thyme',
+            'name' => 'thym',
             'stock' => '4',
             'description' => 'le bon arôme du pays',
             'price' => '25',

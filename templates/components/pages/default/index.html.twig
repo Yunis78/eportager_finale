@@ -13,7 +13,8 @@
                         Eligendi eaque, sequi saepe voluptate aliquid? <br />
                         Nulla asperiores eaque expedita laboriosam deserunt.
                     </p>
-                    <a href="#" class="btn btnorange text-white">Voir le produit</a>                </div>
+                    <a href="#" class="btn btnorange text-white">Voir le produit</a>
+                </div>
             </div></div>
             <img src="{{ asset("img/carou1.jpg") }}" class="d-block w-100" alt="...">
         </div>
@@ -26,7 +27,8 @@
                         Eligendi eaque, sequi saepe voluptate aliquid? <br />
                         Nulla asperiores eaque expedita laboriosam deserunt.
                     </p>
-                    <a href="#" class="btn btnorange text-white">Voir le produit</a>                </div>
+                    <a href="#" class="btn btnorange text-white">Voir le produit</a>
+                </div>
             </div></div>
             <img src="{{ asset("img/carou1.jpg") }}" class="d-block w-100" alt="...">
         </div>
@@ -45,10 +47,7 @@
             <img src="{{ asset("img/carou1.jpg") }}" class="d-block w-100" alt="...">
         </div>
     </div>
-    <a class="carousel-control-prev" href="#carouselhome" role="button" data-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="sr-only">Previous</span>
-    </a>
+
     <a class="carousel-control-next" href="#carouselhome" role="button" data-slide="next">
         <span class="carousel-control-next-icon" aria-hidden="true"></span>
         <span class="sr-only">Next</span>
@@ -110,7 +109,7 @@
                     </div>
                 </div>
             </div>
-            <a href="#" class="btn btnorange text-white mb-4 mt-2">Voir plus de produits</a>
+            <a href="{{ path('cat') }}" class="btn btnorange text-white mb-4 mt-2">Voir plus de produits</a>
 
         </div>
     
@@ -141,7 +140,7 @@
                     </div>
                 </div>
             </div>
-            <a href="#" class="btn btnorange text-white mb-4 mt-2 ml-3">Voir les autres producteurs</a> <!-- Bouton voir les autres producteurs -->
+            <a href="{{ path('front_producteurs') }}" class="btn btnorange text-white mb-4 mt-2 ml-3">Voir les autres producteurs</a> <!-- Bouton voir les autres producteurs -->
 
         </div>
         

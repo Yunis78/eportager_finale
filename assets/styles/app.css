@@ -133,6 +133,10 @@ max-height: 380px;
 }
 
 
+#carouselhome .carousel-control-next {
+    position: absolute;
+    z-index: 8!important;
+}
 #carouselhome .carousel-control-next-icon {
     background-image: none;
 }
@@ -258,3 +262,12 @@ max-height: 380px;
     color: #ff7e00;
 }
 
+
+
+
+/* fin de tableaux joli */
+table.table-end-fit tr td:last-child,
+table.table-end-fit tr th:last-child {
+    width: 1%;
+    white-space: nowrap;
+}
