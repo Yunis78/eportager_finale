@@ -40,8 +40,14 @@ class Categorie
      */
     private $products;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Media::class, mappedBy="categorie")
+     */
+    private $file;
+
     public function __construct()
     {
+        $this->file = new ArrayCollection();
         $this->categories = new ArrayCollection();
         $this->products = new ArrayCollection();
     }
@@ -129,6 +135,36 @@ class Categorie
             // set the owning side to null (unless already changed)
             if ($product->getCategorie() === $this) {
                 $product->setCategorie(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Media[]
+     */
+    public function getFile(): Collection
+    {
+        return $this->file;
+    }
+
+    public function addFile(Media $file): self
+    {
+        if (!$this->file->contains($file)) {
+            $this->file[] = $file;
+            $file->setCategorie($this);
+        }
+
+        return $this;
+    }
+
+    public function removeFile(Media $file): self
+    {
+        if ($this->file->removeElement($file)) {
+            // set the owning side to null (unless already changed)
+            if ($file->getCategorie() === $this) {
+                $file->setCategorie(null);
             }
         }
 

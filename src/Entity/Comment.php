@@ -28,7 +28,7 @@ class Comment
     private $user;
 
     /**
-     * @ORM\Column(type="string", length=15)
+     * @ORM\Column(type="string", length=20)
      */
     private $status;
 
@@ -41,6 +41,11 @@ class Comment
      * @ORM\Column(type="integer")
      */
     private $rate;
+
+    public function __construct()
+    {
+        $this->status = 'pending-validation';
+    }
 
     public function getId(): ?int
     {
