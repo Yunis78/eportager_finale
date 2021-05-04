@@ -220,12 +220,6 @@ class ProductController extends AbstractController
         if ($this->isCsrfTokenValid('delete'.$product->getId(), $request->request->get('_token'))) {
 
             $entityManager = $this->getDoctrine()->getManager();
-
-            $medias = $entityManager->getRepository(Media::class)->findBy(['product' => $product->getId()]);
-            foreach ($medias as $media) {
-                $entityManager->remove($media);
-            }
-            
             $entityManager->remove($product);
             $entityManager->flush();
         }

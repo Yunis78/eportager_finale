@@ -167,12 +167,6 @@ class CategorieController extends AbstractController
         if ($this->isCsrfTokenValid('delete'.$categorie->getId(), $request->request->get('_token'))) {
 
             $entityManager = $this->getDoctrine()->getManager();
-
-            $medias = $entityManager->getRepository(Media::class)->findBy(['categorie' => $categorie->getId()]);
-            foreach ($medias as $media){
-                $entityManager->remove($media);
-            }
-
             $entityManager->remove($categorie);
             $entityManager->flush();
         }

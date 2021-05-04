@@ -128,12 +128,6 @@ class ProducerController extends AbstractController
         if ($this->isCsrfTokenValid('delete'.$producer->getId(), $request->request->get('_token'))) {
             
             $entityManager = $this->getDoctrine()->getManager();
-
-            $medias = $entityManager->getRepository(Media::class)->findBy(['producer' => $producer->getId()]);
-            foreach ($medias as $media) {
-                $entityManager->remove($media);
-            }
-            
             $entityManager->remove($producer);
             $entityManager->flush();
         }

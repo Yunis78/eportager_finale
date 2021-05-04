@@ -28,7 +28,7 @@ class Categorie
     private $nom;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Categorie::class, inversedBy="categories", cascade={"persist"})
+     * @ORM\ManyToOne(targetEntity=Categorie::class, inversedBy="categories")
      * @ORM\JoinColumn(nullable=true,onDelete="CASCADE")
      */
     private $parent;
@@ -44,7 +44,7 @@ class Categorie
     private $products;
 
     /**
-     * @ORM\OneToMany(targetEntity=Media::class, mappedBy="product", cascade={"persist"})
+     * @ORM\OneToMany(targetEntity=Media::class, mappedBy="categorie", cascade={"persist","remove"})
      */
     private $file;
 
@@ -119,9 +119,9 @@ class Categorie
     /**
      * @return Collection|Product[]
      */
-    public function getProduct(): Collection
+    public function getProducts(): Collection
     {
-        return $this->product;
+        return $this->products;
     }
 
     public function addProduct(Product $product): self
