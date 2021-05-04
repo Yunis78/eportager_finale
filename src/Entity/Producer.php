@@ -20,7 +20,7 @@ class Producer
     private $id;
 
     /**
-     * @ORM\OneToMany(targetEntity=Media::class, mappedBy="producer")
+     * @ORM\OneToMany(targetEntity=Media::class, mappedBy="categorie", cascade={"persist","remove"})
      */
     private $file;
 

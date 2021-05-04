@@ -43,7 +43,7 @@ class MediaFixtures extends Fixture implements DependentFixtureInterface
         ],
         [
             'path' => 'thyme.jpg',
-            'product' => 'thyme-25-4',
+            'product' => 'thym-25-4',
         ],
         [
             'path' => 'sauce-tomate.jpg',

@@ -40,7 +40,7 @@ class UserFixtures extends Fixture
                 'is_verified' => '',
             ],
             [
-                'email' => 'mohammed@epotager.com',
+                'email' => 'mouhamed@epotager.com',
                 'roles' => ["ROLE_PRODUCER"],
                 'password' => 'admin1234',
                 'givenName' => 'Mouhamed',

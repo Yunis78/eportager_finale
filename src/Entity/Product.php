@@ -25,12 +25,12 @@ class Product
     private $categorie;
 
     /**
-     * @ORM\OneToMany(targetEntity=Media::class, mappedBy="product")
+     * @ORM\OneToMany(targetEntity=Media::class, mappedBy="categorie", cascade={"persist","remove"})
      */
     private $file;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Producer::class, inversedBy="products")
+     * @ORM\ManyToOne(targetEntity=Producer::class, inversedBy="products"))
      */
     private $producer;
 

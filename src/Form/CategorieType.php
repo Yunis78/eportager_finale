@@ -2,8 +2,10 @@
 
 namespace App\Form;
 
-use App\Entity\Categorie;
+use App\Entity\Media;
+use App\Entity\Product;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use App\Entity\Categorie;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;

@@ -2,7 +2,9 @@
 
 namespace App\Entity;
 
+use App\Entity\Media;
 use App\Repository\CategorieRepository;
+use App\Entity\Product;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
@@ -21,6 +23,7 @@ class Categorie
 
     /**
      * @ORM\Column(type="string", length=45)
+     * @ORM\JoinColumn(nullable=true,onDelete="CASCADE")
      */
     private $nom;
 
@@ -41,7 +44,7 @@ class Categorie
     private $products;
 
     /**
-     * @ORM\OneToMany(targetEntity=Media::class, mappedBy="categorie")
+     * @ORM\OneToMany(targetEntity=Media::class, mappedBy="categorie", cascade={"persist","remove"})
      */
     private $file;
 
@@ -89,7 +92,7 @@ class Categorie
         return $this->categories;
     }
 
-    public function addCategory(self $category): self
+    public function addCategorie(self $category): self
     {
         if (!$this->categories->contains($category)) {
             $this->categories[] = $category;
@@ -99,9 +102,11 @@ class Categorie
         return $this;
     }
 
-    public function removeCategory(self $category): self
+    public function removeCategorie(self $category): self
     {
         if ($this->categories->removeElement($category)) {
+
+
             // set the owning side to null (unless already changed)
             if ($category->getParent() === $this) {
                 $category->setParent(null);
@@ -141,7 +146,7 @@ class Categorie
         return $this;
     }
 
-    /**
+   /**
      * @return Collection|Media[]
      */
     public function getFile(): Collection
