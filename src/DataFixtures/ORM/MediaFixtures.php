@@ -53,6 +53,50 @@ class MediaFixtures extends Fixture implements DependentFixtureInterface
             'path' => 'saumon.jpg',
             'product' => 'saumon-25-4',
         ],
+        [
+            'path' => 'epice.jpg',
+            'categorie' => 'epices',
+        ],
+        [
+            'path' => 'viande.jpg',
+            'categorie' => 'viandes',
+        ],
+        [
+            'path' => 'fruit.jpg',
+            'categorie' => 'fruits',
+        ],
+        [
+            'path' => 'legume.jpg',
+            'categorie' => 'legumes',
+        ],
+        [
+            'path' => 'poisson.jpg',
+            'categorie' => 'poissons',
+        ],
+        [
+            'path' => 'lait.jpg',
+            'categorie' => 'produits laitiers',
+        ],
+        [
+            'path' => 'pain.jpg',
+            'categorie' => 'boulangerie',
+        ],
+        [
+            'path' => 'miel.jpg',
+            'categorie' => 'miel et confitures',
+        ],
+        [
+            'path' => 'thym.jpg',
+            'categorie' => 'condiments',
+        ],
+        [
+            'path' => 'thym.jpg',
+            'categorie' => 'thym',
+        ],
+        [
+            'path' => 'sauce-tomate.jpg',
+            'categorie' => 'sauce tomate',
+        ],
     ];
     
     const LABEL = 'media-%s';
@@ -68,12 +112,19 @@ class MediaFixtures extends Fixture implements DependentFixtureInterface
     {
         foreach( self::DATA as $data){
 
-            $product = $this->getReference(sprintf(ProductFixtures::LABEL, $data['product']));
             //Instabtiate Entities
             $media = new Media();
-            // md5($file_content)
+
+            if (isset($data['product'])) {
+                $product = $this->getReference(sprintf(ProductFixtures::LABEL, $data['product']));
+                $media->setProduct($product);
+            }
+            if (isset($data['categorie'])) {
+                $categorie = $this->getReference(sprintf(CategorieFixtures::LABEL, $data['categorie']));
+                $media->setCategorie($categorie);
+            }
+
             $media->setPath($data['path']);
-            $media->setProduct($product);
             $manager->persist($media);
 
             $this->setReference(sprintf( self::LABEL , strtolower($data['path'])), $media);

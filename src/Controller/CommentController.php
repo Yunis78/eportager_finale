@@ -7,7 +7,6 @@ use App\Entity\Producer;
 use App\Form\CommentType;
 use Doctrine\ORM\EntityManagerInterface;
 use App\Repository\CommentRepository;
-use COM;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;

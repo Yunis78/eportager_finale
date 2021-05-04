@@ -51,13 +51,10 @@ class ProducerController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             
             $user = $this->em->getRepository(User::class)->find($this->getUser());
-
             $user->setRoles(["ROLE_PRODUCER"]);
 
             $producer->setUser($this->getUser());
             
-            
-        
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($producer);
             $entityManager->flush();
