@@ -31,18 +31,8 @@ class DefaultController extends AbstractController
 
         return $this->render('components/pages/default/index.html.twig', [
             'products' => $products,
-            'controller_name' => 'HomepageController',
             'producers' => $producerRepository->findLastNb(2,0),
-        ]);
-    }
-
-    /**
-     * @Route("/contact", name="contact")
-     */
-    public function contact(): Response
-    {
-        return $this->render('components/pages/default/contact.html.twig', [
-            'controller_name' => 'DefaultController',
+            'nav' => ['active','','','',''],
         ]);
     }
 
@@ -53,6 +43,7 @@ class DefaultController extends AbstractController
     {
         return $this->render('components/pages/default/faq.html.twig', [
             'controller_name' => 'DefaultController',
+            'nav' => ['','','','','active'],
         ]);
     }
 
@@ -63,6 +54,7 @@ class DefaultController extends AbstractController
     {
         return $this->render('components/pages/default/concept.html.twig', [
             'controller_name' => 'DefaultController',
+            'nav' => ['','','','active',''],
         ]);
     }
 
