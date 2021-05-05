@@ -19,7 +19,6 @@ class ProductFixtures extends Fixture implements DependentFixtureInterface
             'description' => 'pommes juteuses du verger',
             'price' => '15',
             'categorie' => 'pomme',
-            // 'categorie' => 'fruits',
             'producer' => '111111',
         ],
         [
@@ -28,7 +27,6 @@ class ProductFixtures extends Fixture implements DependentFixtureInterface
             'description' => 'courgette du potager',
             'price' => '2',
             'categorie' => 'courgette',
-            // 'categorie' => 'legumes',
             'producer' => '111111',
         ],
         [

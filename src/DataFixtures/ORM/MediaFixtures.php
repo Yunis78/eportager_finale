@@ -14,10 +14,8 @@ class MediaFixtures extends Fixture implements DependentFixtureInterface
     const DATA = [
 
         [
-            // 'path' => 'pomme.jpg',
             'product' => 'pomme vert-15-4',
             'path' => 'Pomme1.jpg',
-            // 'product' => 'pomme-15-4',
         ],
         [
             'path' => 'courgette.jpg',
