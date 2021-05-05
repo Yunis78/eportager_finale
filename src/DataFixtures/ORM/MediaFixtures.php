@@ -56,7 +56,7 @@ class MediaFixtures extends Fixture implements DependentFixtureInterface
         ],
         [
             'path' => 'epice.jpg',
-            'categorie' => 'epices et condiments',
+            'categorie' => 'épices et condiments',
         ],
         [
             'path' => 'viande.jpg',
@@ -88,7 +88,7 @@ class MediaFixtures extends Fixture implements DependentFixtureInterface
         ],
         [
             'path' => 'thym.jpg',
-            'categorie' => 'epices et condiments',
+            'categorie' => 'épices et condiments',
         ],
         [
             'path' => 'thym.jpg',

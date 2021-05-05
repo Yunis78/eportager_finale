@@ -83,7 +83,7 @@ class ProductFixtures extends Fixture implements DependentFixtureInterface
             'stock' => '4',
             'description' => 'la sauce prefere des tomate',
             'price' => '25',
-            'categorie' => 'epices et condiments',
+            'categorie' => 'épices et condiments',
             'producer' => '111114',
         ],
         [
@@ -110,8 +110,8 @@ class ProductFixtures extends Fixture implements DependentFixtureInterface
     {
         foreach( self::DATA as $data){
 
-            $producer = $this->getReference(sprintf(ProducerFixtures::LABEL, $data['producer']));
-            $categorie = $this->getReference(sprintf(CategorieFixtures::LABEL, $data['categorie']));
+            $producer = $this->getReference(sprintf(ProducerFixtures::LABEL, \strtolower($data['producer'])));
+            $categorie = $this->getReference(sprintf(CategorieFixtures::LABEL, \strtolower($data['categorie'])));
             //Instantiate Entities
             $produit = new Product();
 
