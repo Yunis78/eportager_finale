@@ -4,10 +4,12 @@ namespace App\Controller;
 
 use App\Entity\Comment;
 use App\Entity\Producer;
+use App\Entity\Product;
 use App\Entity\User;
 use App\Form\CommentType;
 use App\Form\ProducerType;
 use App\Repository\ProducerRepository;
+use App\Repository\ProductRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -55,9 +57,9 @@ class ProducerController extends AbstractController
 
             $producer->setUser($this->getUser());
             
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($producer);
-            $entityManager->flush();
+            $this->em = $this->getDoctrine()->getManager();
+            $this->em->persist($producer);
+            $this->em->flush();
 
             return $this->redirectToRoute('homepage');
         }
@@ -71,27 +73,27 @@ class ProducerController extends AbstractController
     /**
      * @Route("/{id}", name="producer_show", methods={"GET","POST"})
      */
-    public function show(Request $request, Producer $producer, int $id): Response
+    public function show(Request $request, Producer $producer, int $id , ProductRepository $productRepository): Response
     {
+        $producer = $this->em->getRepository(Producer::class)->find($id);
+        $products = $this->em->getRepository(Product::class)->findBy(['producer' => $producer]);
 
-        $comment = new Comment();
+        // formulaire pour les commentaire
+        $comment = new Comment(); 
         $form = $this->createForm(CommentType::class, $comment);
         $form->handleRequest($request);
-        $producer = $this->em->getRepository(Producer::class)->find($producer);
-        
         if ($form->isSubmitted() && $form->isValid()) {
-
             $comment->setUser($this->getUser());
             $comment->setProducer($producer);
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($comment);
-            $entityManager->flush();
+            $this->em->persist($comment);
+            $this->em->flush();
 
             return $this->redirectToRoute('producer_show', ['id' => $id]);
         }
 
         return $this->render('components/pages/producer/show.html.twig', [
             'producer' => $producer,
+            'products' => $products,
             'comments' => $this->em->getRepository(Comment::class)->findBy(['producer'=> $producer->getId()]),
             'form' => $form->createView(),
         ]);
@@ -124,9 +126,9 @@ class ProducerController extends AbstractController
     {
         if ($this->isCsrfTokenValid('delete'.$producer->getId(), $request->request->get('_token'))) {
             
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->remove($producer);
-            $entityManager->flush();
+            $this->em = $this->getDoctrine()->getManager();
+            $this->em->remove($producer);
+            $this->em->flush();
         }
 
         return $this->redirectToRoute('producer_index');
