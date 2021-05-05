@@ -15,7 +15,7 @@ class MediaFixtures extends Fixture implements DependentFixtureInterface
 
         [
             'path' => 'pomme.jpg',
-            'product' => 'pomme-15-4',
+            'product' => 'pomme vert-15-4',
         ],
         [
             'path' => 'courgette.jpg',
@@ -23,7 +23,7 @@ class MediaFixtures extends Fixture implements DependentFixtureInterface
         ],
         [
             'path' => 'viande-de-kobe.jpg',
-            'product' => 'viande de kobe-2-4',
+            'product' => 'the boeuf-2-4',
         ],
         [
             'path' => 'lait.jpg',
@@ -31,7 +31,7 @@ class MediaFixtures extends Fixture implements DependentFixtureInterface
         ],
         [
             'path' => 'emmentale.jpg',
-            'product' => 'emmentale-45-4',
+            'product' => 'emmental-45-4',
         ],
         [
             'path' => 'miel.jpg',
@@ -55,7 +55,7 @@ class MediaFixtures extends Fixture implements DependentFixtureInterface
         ],
         [
             'path' => 'epice.jpg',
-            'categorie' => 'epices',
+            'categorie' => 'epices & condiments',
         ],
         [
             'path' => 'viande.jpg',
@@ -71,7 +71,7 @@ class MediaFixtures extends Fixture implements DependentFixtureInterface
         ],
         [
             'path' => 'poisson.jpg',
-            'categorie' => 'poissons',
+            'categorie' => 'produits de mer',
         ],
         [
             'path' => 'lait.jpg',
@@ -83,11 +83,11 @@ class MediaFixtures extends Fixture implements DependentFixtureInterface
         ],
         [
             'path' => 'miel.jpg',
-            'categorie' => 'miel et confitures',
+            'categorie' => 'miel & confitures',
         ],
         [
             'path' => 'thym.jpg',
-            'categorie' => 'condiments',
+            'categorie' => 'epices & condiments',
         ],
         [
             'path' => 'thym.jpg',
@@ -96,6 +96,38 @@ class MediaFixtures extends Fixture implements DependentFixtureInterface
         [
             'path' => 'sauce-tomate.jpg',
             'categorie' => 'sauce tomate',
+        ],
+        [
+            'categorie' => 'Lait',
+            'path' => 'lait.jpg',
+        ],
+        [
+            'categorie' => 'Fromages',
+            'path' => 'lait.jpg',
+        ],
+        [
+            'categorie' => 'Miel',
+            'path' => 'lait.jpg',
+        ],
+        [
+            'categorie' => 'pain',
+            'path' => 'lait.jpg',
+        ],
+        [
+            'categorie' => 'poissons',
+            'path' => 'lait.jpg',
+        ],
+        [
+            'categorie' => 'viandes rouges',
+            'path' => 'lait.jpg',
+        ],
+        [
+            'categorie' => 'courgette',
+            'path' => 'lait.jpg',
+        ],
+        [
+            'categorie' => 'pomme',
+            'path' => 'lait.jpg',
         ],
     ];
     
@@ -116,11 +148,11 @@ class MediaFixtures extends Fixture implements DependentFixtureInterface
             $media = new Media();
 
             if (isset($data['product'])) {
-                $product = $this->getReference(sprintf(ProductFixtures::LABEL, $data['product']));
+                $product = $this->getReference(sprintf(ProductFixtures::LABEL, \strtolower($data['product'])));
                 $media->setProduct($product);
             }
             if (isset($data['categorie'])) {
-                $categorie = $this->getReference(sprintf(CategorieFixtures::LABEL, $data['categorie']));
+                $categorie = $this->getReference(sprintf(CategorieFixtures::LABEL, \strtolower($data['categorie'])));
                 $media->setCategorie($categorie);
             }
 

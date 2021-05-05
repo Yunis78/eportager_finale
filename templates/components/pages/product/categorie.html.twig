@@ -37,68 +37,6 @@
     </div>
     
     <div class="ligne-grise mx-auto mb-4"></div>
-
-
-    <div class="row py-3 justify-content-center cardsProd">
-        {% for subCategorie in subCategories %}        
-            <div class="card text-white m-3">
-                <div class="imgCard" style="background-image: url('{{ asset("upload/categories/" ~ subCategorie.file.0.path) }}');"></div>
-                <a href="{{ path('product_categorie_index', {'id': subCategorie.id})}}">
-                    <div class="card-img-overlay">
-                        <h4 class="card-title">{{- subCategorie.nom -}}</h2>
-                        <p class="card-text text-white">&nbsp;</p>
-                    </div>
-                </a>
-            </div>
-        {% endfor %}
-        {# <div class="card text-white m-3">
-            <div class="imgCard" style="background-image: url('{{ asset("img/legume.jpg") }}');">
-            <!-- <img src="{{ asset("img/fruitLegume.jpg") }}" class="card-img" alt="..." /> -->
-            </div>
-            <a href="{{ path('un_produit')}}">
-                <div class="card-img-overlay">
-                    <h4 class="card-title">Carottes</h2>
-                    <p class="card-text text-white">de toute les couleurs&nbsp;</p>
-                </div>
-            </a>
-        </div>
-
-        <div class="card text-white m-3">
-            <div class="imgCard" style="background-image: url('{{ asset("img/legume.jpg") }}');">
-            <!-- <img src="{{ asset("img/fruitLegume.jpg") }}" class="card-img" alt="..." /> -->
-            </div>
-            <a href="{{ path('un_produit')}}">
-                <div class="card-img-overlay">
-                    <h4 class="card-title">Poireaux</h2>
-                    <p class="card-text text-white">&nbsp;</p>
-                </div>
-            </a>
-        </div>
-
-        <div class="card text-white m-3">
-            <div class="imgCard" style="background-image: url('{{ asset("img/legume.jpg") }}');">
-            <!-- <img src="{{ asset("img/fruitLegume.jpg") }}" class="card-img" alt="..." /> -->
-            </div>
-            <a href="{{ path('un_produit')}}">
-                <div class="card-img-overlay">
-                    <h4 class="card-title">Champignons</h2>
-                    <p class="card-text text-white">pour appuyer dessus&nbsp;</p>
-                </div>
-            </a>
-        </div>
-
-        <div class="card text-white m-3">
-            <div class="imgCard" style="background-image: url('{{ asset("img/legume.jpg") }}');">
-            <!-- <img src="{{ asset("img/fruitLegume.jpg") }}" class="card-img" alt="..." /> -->
-            </div>
-            <a href="{{ path('un_produit')}}">
-                <div class="card-img-overlay">
-                    <h4 class="card-title">Oignions</h2>
-                    <p class="card-text text-white">rouges, jaunes et blancs&nbsp;</p>
-                </div>
-            </a>
-        </div> #}
-        
     </div>
 </div>
 {% endblock %}

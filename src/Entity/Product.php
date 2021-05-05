@@ -25,7 +25,7 @@ class Product
     private $categorie;
 
     /**
-     * @ORM\OneToMany(targetEntity=Media::class, mappedBy="categorie", cascade={"persist","remove"})
+     * @ORM\OneToMany(targetEntity=Media::class, mappedBy="product", cascade={"persist","remove"})
      */
     private $file;
 

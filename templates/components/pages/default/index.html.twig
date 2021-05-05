@@ -60,56 +60,22 @@
         <div class="col-12 col-lg-6"> <!-- produits --> <!-- Bouton voir plus de produits -->
             <h2 class="text-center mt-5 mb-4"> <span class="cadre-titre-vert px-2">Derniers</span> produits</h2>
             <div class="row">
-                <div class="col-12 col-lg-6"> <!-- produits card 1 -->
-                    <div class="card mb-3" style="width: 100% ; height:400px ; position:relative"> 
-                        <div style="width:100% ; height: 200px ; background-image: url('{{ asset("img/Pomme1.jpg") }}');background-size:cover ; background-position:center">
-                        </div>
+                {% for product in products %}
+                    <div class="col-12 col-lg-6"> <!-- produits card 1 -->
+                        <div class="card mb-3" style="width: 100% ; height:400px ; position:relative"> 
+                            <div style="width:100% ; height: 200px ; background-image: url('{{ asset("upload/" ~ product.file.0.path  ) }}');background-size:cover ; background-position:center">
+                            </div>
                             <div class="card-body"> 
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card.</p>
-                                <a href="#" class="btn btnvert">Découvrir</a>
+                                <h5 class="card-title">{{- product.name -}}</h5>
+                                <p class="card-text">{{- product.description -}}</p>
+                                <a href="{{ path('product_show', {'id': product.id })}}" class="btn btnvert">Découvrir</a>
                                 <button class="btn btnviolet"><i class="ri-shopping-cart-2-line"></i></button>
                             </div>
-                    </div>
-                </div>
-                <div class="col-12 col-lg-6"> <!-- produits card 2 -->
-                    <div class="card mb-3" style="width: 100% ; height:400px ; position:relative">
-                        <div style="width:100% ; height: 200px ; background-image: url('{{ asset("img/Pomme1.jpg") }}');background-size:cover ; background-position:center">
                         </div>
-                            <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card.</p>
-                                <a href="#" class="btn btnvert">Découvrir</a>
-                                <button class="btn btnviolet"><i class="ri-shopping-cart-2-line"></i></button>
-                            </div>
                     </div>
-                </div>
-                <div class="col-12 col-lg-6"> <!-- produits card 3 -->
-                    <div class="card mb-3" style="width: 100% ; height:400px ; position:relative">
-                        <div style="width:100% ; height: 200px ; background-image: url('{{ asset("img/Pomme1.jpg") }}');background-size:cover ; background-position:center">
-                        </div>
-                            <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card.</p>
-                                <a href="#" class="btn btnvert">Découvrir</a>
-                                <button class="btn btnviolet"><i class="ri-shopping-cart-2-line"></i></button>
-                            </div>
-                    </div>
-                </div>
-                <div class="col-12 col-lg-6"> <!-- produits card 4 -->
-                    <div class="card mb-3" style="width: 100% ; height:400px ; position:relative">
-                        <div style="width:100% ; height: 200px ; background-image: url('{{ asset("img/Pomme1.jpg") }}');background-size:cover ; background-position:center">
-                        </div>
-                            <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card.</p>
-                                <a href="#" class="btn btnvert">Découvrir</a>
-                                <button class="btn btnviolet"><i class="ri-shopping-cart-2-line"></i></button>
-                            </div>
-                    </div>
-                </div>
+                {% endfor %}
             </div>
-            <a href="{{ path('cat') }}" class="btn btnorange text-white mb-4 mt-2">Voir plus de produits</a>
+            <a href="{{ path('front_produits') }}" class="btn btnorange text-white mb-4 mt-2">Voir plus de produits</a>
 
         </div>
     

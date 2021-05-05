@@ -17,60 +17,11 @@
     </div>
 </div>
 
-<!-- cards -->
-<div class="container">
 
-    {% if categories is defined and categories|length > 1 %}
-        <div class="row my-3 justify-content-center cardsCat">
-            {% for categorie in categories %}
-                <div class="card text-white m-3">
-                {# {{ dump(categorie.file) }} #}
-                    <div style="background-image: url('{{ asset("upload/categories/" ~ categorie.file.0.path) }}');"></div>
-                    <a href="{{ path('product_categorie_show', {'id' : categorie.id})}}">
-                        <div class="card-img-overlay d-flex align-items-center justify-content-center bgvert-hover">
-                            <h2 class="card-title cadre-titre-vert">{{categorie.nom}}</h2>
-                        </div>
-                    </a>
-                </div>
-            {% endfor %}
-        </div>
-    {% endif %}
-    {% if products is defined %}
-        <div class="row my-3 justify-content-center">
-            <h3 class="titreCards1"><span class="cadre-titre-vert px-2">Tous</span>&nbsp;leurs produits pour vous.</h3>
-            <table class="table table-sm table-hover table-end-fit">
-                <thead class="table-active">
-                    <tr>
-                        <th>Id</th>
-                        <th>Name</th>
-                        <th>Stock</th>
-                        <th>Description</th>
-                        <th>Price</th>
-                        <th>actions</th>
-                    </tr>
-                </thead>
-                <tbody>
-                {% for product in products %}
-                    <tr>
-                        <th scope="row">{{ product.id }}</th>
-                        <td>{{ product.name }}</td>
-                        <td>{{ product.stock }}</td>
-                        <td>{{ product.description }}</td>
-                        <td>{{ product.price }}</td>
-                        <td>
-                            <a class="btn btn-primary" href="{{ path('product_show', {'id': product.id}) }}">show</a>
-                        </td>
-                    </tr>
-                {% else %}
-                    <tr>
-                        <td colspan="6">no records found</td>
-                    </tr>
-                {% endfor %}
-                </tbody>
-            </table>
-        {% endif %}
-    </div>
-</div>
+
+
+
+{% block zeList %}{% endblock %}
 
 
 
