@@ -111,7 +111,7 @@ class ProductFixtures extends Fixture implements DependentFixtureInterface
 
             $producer = $this->getReference(sprintf(ProducerFixtures::LABEL, $data['producer']));
             $categorie = $this->getReference(sprintf(CategorieFixtures::LABEL, $data['categorie']));
-            //Instabtiate Entities
+            //Instantiate Entities
             $produit = new Product();
 
             $produit->setName($data['name']);

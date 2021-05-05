@@ -36,6 +36,18 @@ class ProducerRepository extends ServiceEntityRepository
     }
     */
 
+    /**
+     * @return Producer[] Returns an array of Producer objects
+     */
+    
+    public function findLastNb($limit = null, $offset = null)
+    {
+        return $this->findBy([], ['id'=>'DESC'], $limit, $offset);
+    }
+    
+
+
+
     /*
     public function findOneBySomeField($value): ?Producer
     {

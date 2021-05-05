@@ -27,7 +27,7 @@ class ProductController extends AbstractController
      */
     private $security;
 
-     /**
+    /**
      * @var EntityManagerInterface
      */
     private $em;
@@ -37,6 +37,7 @@ class ProductController extends AbstractController
         $this->security = $security;
         $this->em = $em;
     }
+
     /**
      * @Route("/", name="front_produits")
      */
@@ -47,6 +48,7 @@ class ProductController extends AbstractController
         ]);
     }
 
+    // cette route est gérée par le CategorieController
     // /**
     //  * @Route("/cat", name="cat")
     //  */

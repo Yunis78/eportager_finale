@@ -62,7 +62,7 @@ class ProducerFixtures extends Fixture implements DependentFixtureInterface
         foreach( self::DATA as $data){
 
             $user = $this->getReference(sprintf(UserFixtures::LABEL,$data['user']));
-            //Instabtiate Entities
+            //Instantiate Entities
             $producer = new Producer();
 
             $producer->setName($data['name']);
@@ -70,9 +70,9 @@ class ProducerFixtures extends Fixture implements DependentFixtureInterface
             $producer->setSiret($data['siret']);
             $producer->setPhone($data['phone']);
             $producer->setActive($data['active']);
+            $producer->setUser($user);
             
             $manager->persist($producer);
-
             $this->setReference(sprintf(self::LABEL, strtolower($data['siret'])), $producer);
 
         }
