@@ -30,7 +30,7 @@ class DefaultController extends AbstractController
 
         return $this->render('components/pages/default/index.html.twig', [
             'products' => $products,
-            'producers' => $producerRepository->findLastNb(2,0),
+            'producers' => $producerRepository->findBy([], ['id'=>'DESC'], 2, 0),
             'nav' => ['active','','','',''],
         ]);
     }
