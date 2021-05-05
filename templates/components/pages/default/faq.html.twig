@@ -3,18 +3,65 @@
 {% block title %}Hello DefaultController!{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+<div class="container">
+    <div class="d-flex justify-content-between">
+        <h1 class="mt-4 mb-4">Information de base</h1>
+        <form class="form-inline">
+            <input class="form-control mr-sm-2" type="search" placeholder="..." aria-label="Search">
+            <button class="btn btn-success my-2 my-sm-0" type="submit">Rechercher</button>
+          </form>
+    </div>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'D:/MAMP/htdocs/projet_final/epotager/src/Controller/DefaultController.php'|file_link(0) }}">src/Controller/DefaultController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'D:/MAMP/htdocs/projet_final/epotager/templates/default/index.html.twig'|file_link(0) }}">templates/default/index.html.twig</a></code></li>
-    </ul>
+
+    <div class="accordion" id="accordionExample">
+        <div class="card">
+          <div class="card-header" id="headingOne">
+            <h2 class="mb-0">
+              <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                Mon compte : (3)
+              </button>
+            </h2>
+          </div>
+      
+          <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+            <div class="card-body">
+                <p><a href="#">Comment puis-je créer mon compte Producteur ?</a></p>
+                <p><a href="#">Comment puis-je réinitialiser mon mot de passe ?</a></p>
+                <p><a href="#">Comment puis-je contacter un Producteur ?</a></p>            
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header" id="headingTwo">
+            <h2 class="mb-0">
+              <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                Mes commandes et paiements : (2)
+              </button>
+            </h2>
+          </div>
+          <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+            <div class="card-body">
+                <p><a href="#">Comment puis-je passer une commande ?</a></p>
+                <p><a href="#">Comment puis-je modifier ou annuler une commande ?</a></p>    
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header" id="headingThree">
+            <h2 class="mb-0">
+              <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                Service client : (1)
+              </button>
+            </h2>
+          </div>
+          <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+            <div class="card-body">
+                <p><a href="#">J'ai une question relative au service client.</a></p>
+            </div>
+          </div>
+        </div>
+      </div>
+
 </div>
 {% endblock %}

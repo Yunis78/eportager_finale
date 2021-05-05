@@ -37,13 +37,13 @@
 
             {% block collection_template %}
             <div class="input-group">
-                <div class="input-group-prepend">
+                <div class="" style="margin-top: 32px">
                     <span class="input-group-text"># <span data-collection-serial></span></span>
                 </div>
 
                 {{ form_widget(form.file.vars.prototype) }}
 
-                <div class="input-group-append">
+                <div class="" style="margin-top: 32px">
                     <button type="button" class="btn btn-secondary"  
                     data-collection-action="remove" 
                     data-collection-target="#{{ name }}"
