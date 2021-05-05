@@ -23,7 +23,8 @@ class ProductController extends AbstractController
      */
     public function front_produits(CategorieRepository $categorieRepository): Response
     {
-        return $this->render('components/pages/product/type.html.twig', [
+        //return $this->render('components/pages/product/type.html.twig', [
+        return $this->render('components/pages/product/_categ_list.html.twig', [
             'controller_name' => 'ProduitsController',
             'categories' => $categorieRepository->findBy(['parent' => null ]),
         ]);
@@ -37,11 +38,31 @@ class ProductController extends AbstractController
         $entityManager = $this->getDoctrine()->getManager();
         $subCategories = $entityManager->getRepository(Categorie::class)->findBy(['parent' => $categorieRepository->find($id)]);
         $products = $entityManager->getRepository(Product::class)->findBy(['categorie' => $categorieRepository->find($id)]);
+        //si subcategorie = 0 alors je redirige vers la route /categorie/{id}/items
+        if ($subCategories === [] ) {
+            return $this->redirectToRoute('product_categorie_items_show', [ 'id' => $id ]);            
+        }
 
-        return $this->render('components/pages/product/type.html.twig', [
+        //return $this->render('components/pages/product/type.html.twig', [
+        return $this->render('components/pages/product/_subcateg_list.html.twig', [
             'categorie' => $categorieRepository->find($id),
             'title' => 'Voici les sous categories',
             'categories' => $subCategories,
+            'products' => $products,
+        ]);
+    }
+
+    /**
+     * @Route("/categorie/{id}/items", name="product_categorie_items_show", methods={"GET"})
+     */
+    public function showCategorieItems(CategorieRepository $categorieRepository, int $id): Response
+    {
+        $entityManager = $this->getDoctrine()->getManager();
+        $products = $entityManager->getRepository(Product::class)->findBy(['categorie' => $categorieRepository->find($id)]);
+
+        return $this->render('components/pages/product/index_front.html.twig', [
+            'categorie' => $categorieRepository->find($id),
+            'title' => 'Voici les produits',
             'products' => $products,
         ]);
     }

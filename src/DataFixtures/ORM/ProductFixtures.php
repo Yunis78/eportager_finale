@@ -14,11 +14,11 @@ class ProductFixtures extends Fixture implements DependentFixtureInterface
     const DATA = [
 
         [
-            'name' => 'pomme',
+            'name' => 'pomme vert',
             'stock' => '4',
             'description' => 'pommes juteuses du jargon',
             'price' => '15',
-            'categorie' => 'fruits',
+            'categorie' => 'pomme',
             'producer' => '12345',
         ],
         [
@@ -26,15 +26,15 @@ class ProductFixtures extends Fixture implements DependentFixtureInterface
             'stock' => '4',
             'description' => 'courgette du jargon',
             'price' => '2',
-            'categorie' => 'legumes',
+            'categorie' => 'courgette',
             'producer' => '12345',
         ],
         [
-            'name' => 'viande de kobe',
+            'name' => 'The Boeuf',
             'stock' => '4',
-            'description' => 'venue tout droit du japon',
+            'description' => 'venue tout droit du Limousin',
             'price' => '2',
-            'categorie' => 'viandes',
+            'categorie' => 'viandes rouges',
             'producer' => '12345',
         ],
         [
@@ -42,15 +42,15 @@ class ProductFixtures extends Fixture implements DependentFixtureInterface
             'stock' => '4',
             'description' => 'venue tout droit de la ferme',
             'price' => '10',
-            'categorie' => 'produits laitiers',
+            'categorie' => 'lait',
             'producer' => '124527',
         ],
         [
-            'name' => 'emmentale',
+            'name' => 'emmental',
             'stock' => '4',
             'description' => 'fait maison',
             'price' => '45',
-            'categorie' => 'produits laitiers',
+            'categorie' => 'fromages',
             'producer' => '12345',
         ],
         [
@@ -58,7 +58,7 @@ class ProductFixtures extends Fixture implements DependentFixtureInterface
             'stock' => '4',
             'description' => 'Miel pops',
             'price' => '20',
-            'categorie' => 'miel et confitures',
+            'categorie' => 'miel',
             'producer' => '124527',
         ],
         [
@@ -66,7 +66,7 @@ class ProductFixtures extends Fixture implements DependentFixtureInterface
             'stock' => '4',
             'description' => 'le bon pain du pays',
             'price' => '0.80',
-            'categorie' => 'boulangerie',
+            'categorie' => 'pain',
             'producer' => '12345',
         ],
         [
@@ -74,7 +74,7 @@ class ProductFixtures extends Fixture implements DependentFixtureInterface
             'stock' => '4',
             'description' => 'le bon arôme du pays',
             'price' => '25',
-            'categorie' => 'epices',
+            'categorie' => 'thym',
             'producer' => '12452',
         ],
         [
@@ -82,7 +82,7 @@ class ProductFixtures extends Fixture implements DependentFixtureInterface
             'stock' => '4',
             'description' => 'la sauce prefere des tomate',
             'price' => '25',
-            'categorie' => 'condiments',
+            'categorie' => 'epices & condiments',
             'producer' => '12452',
         ],
         [

@@ -14,7 +14,7 @@ class CategorieFixtures extends Fixture
     const DATA = [
 
         [
-            'nom' => 'epices',
+            'nom' => 'Epices & Condiments',
         ],
         [
             'nom' => 'Viandes',
@@ -26,7 +26,7 @@ class CategorieFixtures extends Fixture
             'nom' => 'Legumes',
         ],
         [
-            'nom' => 'Poissons',
+            'nom' => 'Produits de mer',
         ],
         [
             'nom' => 'Produits laitiers',
@@ -35,18 +35,47 @@ class CategorieFixtures extends Fixture
             'nom' => 'Boulangerie',
         ],
         [
-            'nom' => 'Miel et confitures',
-        ],
-        [
-            'nom' => 'Condiments',
+            'nom' => 'Miel & Confitures',
         ],
         [
             'nom' => 'Thym',
-            'parent' => 'epices',
+            'parent' => 'epices & condiments',
         ],
         [
             'nom' => 'Sauce Tomate',
-            'parent' => 'epices',
+            'parent' => 'epices & condiments',
+        ],
+        [
+            'nom' => 'Lait',
+            'parent' => 'produits laitiers',
+        ],
+        [
+            'nom' => 'Fromages',
+            'parent' => 'produits laitiers',
+        ],
+        [
+            'nom' => 'Miel',
+            'parent' => 'miel & confitures',
+        ],
+        [
+            'nom' => 'pain',
+            'parent' => 'boulangerie',
+        ],
+        [
+            'nom' => 'poissons',
+            'parent' => 'produits de mer',
+        ],
+        [
+            'nom' => 'viandes rouges',
+            'parent' => 'viandes',
+        ],
+        [
+            'nom' => 'courgette',
+            'parent' => 'legumes',
+        ],
+        [
+            'nom' => 'pomme',
+            'parent' => 'fruits',
         ],
     ];
     
