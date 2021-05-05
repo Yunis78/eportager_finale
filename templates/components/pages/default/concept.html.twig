@@ -1,11 +1,26 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello DefaultController!{% endblock %}
+{% block title %}ePotager - Concept{% endblock %} 
+{% block stylesheets %}
+{{ encore_entry_link_tags("app") }}
+{{ encore_entry_link_tags("product") }}
+{% endblock %}
 
 {% block body %}
-<div class="container-fluid" style="height: 250px; background-image: url('{{ asset("img/legume.jpg") }}');background-size:cover ; background-position:center"></div>
-<div class="container mt-5">
-    <p>E-potager est un projet idéaliste, laisse-moi te raconter notre rêve...</p>
+<div class="banniCon2 mb-5">
+    <div class="card text-white">
+        <div style="width:100% ; height: 300px ; background-image: url('{{ asset("img/Exploit1.jpg") }}');background-size:cover ; background-position:center;">
+        <!-- <img src="{{ asset("img/fruitLegume.jpg") }}" class="card-img" alt="..." /> -->
+    </div>
+        <div class="card-img-overlay d-flex align-items-center justify-content-center d-flex flex-column">
+            <h2 class="card-title p-3">Quelques explications</h2>
+            <!-- <p>Le meilleur de leurs produits !</p> -->
+        </div>
+    </div>
+</div>
+<div class="container">
+    <h4>E-potager est un projet idéaliste, laisse-moi te raconter notre rêve...</h4>
+    <br>
     <p>Démocratiser le bien-manger local.</p>
     <p>Il sera une fois, où tous les commerçants éthiques et les producteurs responsables auront créé gratuitement
         leur boutique en ligne sur e-potager. Les eco-consommateurs se presseront sur la plateforme pour faire leurs
@@ -18,7 +33,9 @@
         directement ses produits frais chez un producteur. On veut aider les producteurs et les magasins fermiers à se faire connaitre
         en leur donnant plus de visibilité.</p>
     <p>E-potager a pour objectif de rendre les produits locaux accessibles au plus grand nombre.</p>
-    <p>C’est meilleur pour ta santé, la planète et ton porte-monnaie !</p>
-
+    <p class="font-weight-bold">C’est meilleur pour ta santé, la planète et ton porte-monnaie !</p>
+<br>
+<br>
+<br>
 </div>
 {% endblock %}

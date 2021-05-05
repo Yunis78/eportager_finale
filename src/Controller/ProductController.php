@@ -25,7 +25,6 @@ class ProductController extends AbstractController
     {
         //return $this->render('components/pages/product/type.html.twig', [
         return $this->render('components/pages/product/_categ_list.html.twig', [
-            'controller_name' => 'ProduitsController',
             'categories' => $categorieRepository->findBy(['parent' => null ]),
             'nav' => ['','active','','',''],
         ]);
