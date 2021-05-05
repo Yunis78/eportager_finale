@@ -35,15 +35,15 @@ class CategorieFixtures extends Fixture
             'nom' => 'Miel et Confitures',
         ],
         [
-            'nom' => 'Epices et Condiments',
+            'nom' => 'épices et Condiments',
         ],
         [
             'nom' => 'Thym',
-            'parent' => 'epices et condiments',
+            'parent' => 'épices et condiments',
         ],
         [
             'nom' => 'Sauce Tomate',
-            'parent' => 'epices et condiments',
+            'parent' => 'épices et condiments',
         ],
         [
             'nom' => 'Lait',

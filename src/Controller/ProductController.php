@@ -46,7 +46,7 @@ class ProductController extends AbstractController
         //return $this->render('components/pages/product/type.html.twig', [
         return $this->render('components/pages/product/_subcateg_list.html.twig', [
             'categorie' => $categorieRepository->find($id),
-            'title' => 'Voici les sous categories',
+            'title' => 'Les sous catégories de',
             'categories' => $subCategories,
             'products' => $products,
             'nav' => ['','active','','',''],
