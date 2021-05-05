@@ -32,7 +32,20 @@ class ProducerController extends AbstractController
     }
 
     /**
-     * @Route("/", name="producer_index", methods={"GET"})
+     * @Route("/", name="front_producteurs")
+     */
+    public function front_producteurs(ProducerRepository $producerRepository): Response
+    {
+        return $this->render('components/pages/front_producteurs/index.html.twig', [
+            // 'controller_name' => 'FrontProducteursController',
+            'producers' => $producerRepository->findAll(),
+        ]);
+    }
+
+    // même convention de nommage que pour Product
+
+    /**
+     * @Route("/producteurs", name="producer_index", methods={"GET"})
      */
     public function index(ProducerRepository $producerRepository): Response
     {
@@ -40,6 +53,7 @@ class ProducerController extends AbstractController
             'producers' => $producerRepository->findAll(),
         ]);
     }
+
 
     /**
      * @Route("/new", name="producer_new", methods={"GET","POST"})
@@ -133,4 +147,5 @@ class ProducerController extends AbstractController
 
         return $this->redirectToRoute('producer_index');
     }
+
 }

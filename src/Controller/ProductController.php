@@ -67,6 +67,8 @@ class ProductController extends AbstractController
         ]);
     }
 
+    // la route /cat est gérée par le CategorieController
+
     /**
      * @IsGranted("ROLE_PRODUCER")
      * 
