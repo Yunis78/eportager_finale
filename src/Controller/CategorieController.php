@@ -26,6 +26,7 @@ class CategorieController extends AbstractController
     {
         return $this->render('components/pages/categorie/index.html.twig', [
             'categories' => $categorieRepository->findAll(),
+            'nav' => ['','active','','',''],
         ]);
         
     }
@@ -37,6 +38,7 @@ class CategorieController extends AbstractController
     {
         return $this->render('components/pages/product/categorie.html.twig', [
             'controller_name' => 'ProduitsController',
+            'nav' => ['','active','','',''],
         ]);
     }
 
@@ -94,6 +96,7 @@ class CategorieController extends AbstractController
         return $this->render('components/pages/categorie/new.html.twig', [
             'categorie' => $categorie,
             'form' => $form->createView(),
+            'nav' => ['','active','','',''],
         ]);
     }
 
@@ -104,6 +107,7 @@ class CategorieController extends AbstractController
     {
         return $this->render('components/pages/categorie/show.html.twig', [
             'categorie' => $categorie,
+            'nav' => ['','active','','',''],
         ]);
     }
 
@@ -156,6 +160,7 @@ class CategorieController extends AbstractController
         return $this->render('components/pages/categorie/edit.html.twig', [
             'categorie' => $categorie,
             'form' => $form->createView(),
+            'nav' => ['','active','','',''],
         ]);
     }
 

@@ -56,7 +56,7 @@ class MediaFixtures extends Fixture implements DependentFixtureInterface
         ],
         [
             'path' => 'epice.jpg',
-            'categorie' => 'epices & condiments',
+            'categorie' => 'epices et condiments',
         ],
         [
             'path' => 'viande.jpg',
@@ -68,14 +68,14 @@ class MediaFixtures extends Fixture implements DependentFixtureInterface
         ],
         [
             'path' => 'legume.jpg',
-            'categorie' => 'legumes',
+            'categorie' => 'légumes',
         ],
         [
             'path' => 'poisson.jpg',
-            'categorie' => 'produits de mer',
+            'categorie' => 'produits de la mer',
         ],
         [
-            'path' => 'lait.jpg',
+            'path' => 'fromage.jpg',
             'categorie' => 'produits laitiers',
         ],
         [
@@ -84,11 +84,11 @@ class MediaFixtures extends Fixture implements DependentFixtureInterface
         ],
         [
             'path' => 'miel.jpg',
-            'categorie' => 'miel & confitures',
+            'categorie' => 'miel et confitures',
         ],
         [
             'path' => 'thym.jpg',
-            'categorie' => 'epices & condiments',
+            'categorie' => 'epices et condiments',
         ],
         [
             'path' => 'thym.jpg',

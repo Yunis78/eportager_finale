@@ -83,7 +83,7 @@ class ProductFixtures extends Fixture implements DependentFixtureInterface
             'stock' => '4',
             'description' => 'la sauce prefere des tomate',
             'price' => '25',
-            'categorie' => 'epices & condiments',
+            'categorie' => 'epices et condiments',
             'producer' => '111114',
         ],
         [
