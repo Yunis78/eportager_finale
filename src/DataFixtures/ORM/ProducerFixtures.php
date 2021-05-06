@@ -37,9 +37,13 @@ class ProducerFixtures extends Fixture implements DependentFixtureInterface
         [
             'name' => 'Ferme de Viltain',
             'description' => 'Ferme emblématique du plateau de Saclay connue pour sa cueillette de fruits et légumes de mai à novembre.',
+
             'siret' => '111113',
             'addresszip' => '78350',
             'villename' => 'Jouy-en-Josas',
+            'addresszip' => '78990',
+            'villename' => 'Elancourt',
+            'siret' => '111113',
             'phone' => '01333222',
             'user' => 'valentin.leroy@fake.com',
             'active' => '',
@@ -47,6 +51,7 @@ class ProducerFixtures extends Fixture implements DependentFixtureInterface
         [
             'name' => 'La Ferme de Romainville et son Garde Manger',
             'description' => 'Ferme habitée par la famille Delalande depuis 5 générations. Elle a ouvert en 2019 un magasin relais de producteurs : le Garde-Manger.',
+
             'siret' => '111114',
             'addresszip' => '78114',
             'villename' => 'Magny-les-Hameaux',

@@ -36,6 +36,12 @@ class Media
     private $product;
 
     /**
+     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="Media")
+     * @ORM\JoinColumn(nullable=true)
+     */
+    private $user;
+
+    /**
      * @ORM\ManyToOne(targetEntity=Categorie::class, inversedBy="Media")
      * @ORM\JoinColumn(nullable=true)
      */
@@ -90,6 +96,18 @@ class Media
     public function setCategorie(?Categorie $categorie): self
     {
         $this->categorie = $categorie;
+
+        return $this;
+    }
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(?User $user): self
+    {
+        $this->user = $user;
 
         return $this;
     }

@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Producer;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -17,10 +18,16 @@ class ProducerType extends AbstractType
             ->add('name', TextType::class)
             ->add('description',TextareaType::class)
             ->add('addresszip')
+            ->add('file', CollectionType::class,[
+                'entry_type' => MediaType::class,
+                "allow_add" => true,
+                "allow_delete" => true,
+                "prototype" => true,
+                'by_reference' => false,
+            ])
             ->add('villename', TextType::class)
             ->add('siret')
             ->add('phone')
-            // ->add('user', UserType::class)
         ;
     }
 

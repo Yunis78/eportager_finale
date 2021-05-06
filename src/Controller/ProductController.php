@@ -68,9 +68,6 @@ class ProductController extends AbstractController
             'nav' => ['','active','','',''],
         ]);
     }
-
-    // la route /cat est gérée par le CategorieController
-
     /**
      * @IsGranted("ROLE_PRODUCER")
      * 
