@@ -39,6 +39,12 @@ body {
     height: 37px;
 }
 
+.btnrouge {
+    background-color: #ff0959;
+    color: white;
+    height: 37px;
+}
+
 .btnvert {
     background-color: #5c9c18;
     color: white !important;

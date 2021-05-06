@@ -69,7 +69,7 @@
                                 <h5 class="card-title">{{- product.name -}}</h5>
                                 <p class="card-text">{{- product.description -}}</p>
                                 <a href="{{ path('product_show', {'id': product.id })}}" class="btn btnvert">Découvrir</a>
-                                <button class="btn btnviolet"><i class="ri-shopping-cart-2-line"></i></button>
+                                <a href="{{path('cart_add', {'id': product.id}) }}" class="btn btnviolet"><i class="ri-shopping-cart-2-line"></i></a>
                             </div>
                         </div>
                     </div>
