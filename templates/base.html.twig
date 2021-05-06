@@ -78,8 +78,8 @@
                             <li class="nav-item orange mx-1 {{ nav[0] }} ">
                                 <a class="nav-link orange {{ nav[0] }} " href="{{ path('homepage') }}">Accueil</a>
                             </li>
-                            <li class="nav-item vert mx-1 {{ nav[1] }} ">
-                                <a class="nav-link vert {{ nav[1] }} " href="{{ path('front_produits') }}">Produits</a>
+                            <li class="nav-item vert mx-1 {{ ('product' in app.request.get('_route')) ? 'active' : '' }} ">
+                                <a class="nav-link vert {{ ('product' in app.request.get('_route')) ? 'active' : '' }} " href="{{ path('front_products') }}">Produits</a>
                             </li>
                             <li class="nav-item violet mx-1 {{ nav[2] }} ">
                                 <a class="nav-link violet {{ nav[2] }} " href="{{ path('producer_index') }}">Producteurs</a>
@@ -95,7 +95,7 @@
                                 <a class="nav-link orange" href="{{ path('homepage') }}">Accueil</a>
                             </li>
                             <li class="nav-item vert mx-1">
-                                <a class="nav-link vert" href="{{ path('front_produits') }}">Produits</a>
+                                <a class="nav-link vert" href="{{ path('front_products') }}">Produits</a>
                             </li>
                             <li class="nav-item violet mx-1">
                                 <a class="nav-link violet" href="{{ path('producer_index') }}">Producteurs</a>
