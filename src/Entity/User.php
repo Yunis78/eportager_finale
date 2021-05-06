@@ -2,7 +2,13 @@
 
 namespace App\Entity;
 
+use App\Entity\Media;
+use App\Entity\Producer;
 use App\Repository\UserRepository;
+use App\Repository\ProducerRepository;
+use App\Repository\MediaRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -29,6 +35,11 @@ class User implements UserInterface
      * @ORM\Column(type="json")
      */
     private $roles = [];
+
+    /**
+     * @ORM\OneToMany(targetEntity=Media::class, mappedBy="user", cascade={"persist","remove"})
+     */
+    private $file;
 
     /**
      * @var string The hashed password
@@ -86,9 +97,59 @@ class User implements UserInterface
      */
     private $producer;
 
+    public function __construct()
+    {
+        $this->active = false;
+        $this->file = new ArrayCollection();
+        $this->products = new ArrayCollection();
+        $this->comments = new ArrayCollection();
+    }
+
     public function getId(): ?int
     {
         return $this->id;
+    }
+
+    public function getFiles(): ?array
+    {
+        return $this->files;
+    }
+
+    public function setFiles( array $files): self
+    {
+        $this->files = $files;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Media[]
+     */
+    public function getFile(): Collection
+    {
+        return $this->file;
+    }
+
+    public function addFile(Media $file): self
+    {
+        if (!$this->file->contains($file)) {
+            $this->file[] = $file;
+            $file->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeFile(Media $file): self
+    {
+        if ($this->file->removeElement($file)) {
+            // set the owning side to null (unless already changed)
+            if ($file->getUser() === $this) {
+                $file->setUser(null);
+            }
+        }
+
+        return $this;
     }
 
     public function getEmail(): ?string

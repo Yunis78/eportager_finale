@@ -36,6 +36,37 @@ class UserController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+
+            foreach($form->get('file') as $media)
+            {
+                // Get file field
+                $uploaded_file = $media->get('file')->getData();
+
+                // If has file
+                if ($uploaded_file)
+                {
+                    // File Content
+                    $file_content = file_get_contents($uploaded_file->getPathname());
+
+                    // Generate MD5 from file content
+                    $file_md5 = md5($file_content);
+
+                    // Get file extension
+                    $file_extension = $uploaded_file->guessExtension();
+
+                    // Generate new file name
+                    $new_file = $file_md5.".".$file_extension;
+
+                    // Move file
+                    $uploaded_file->move(
+                        "./upload/",
+                        $new_file
+                    );
+
+                    // Save the new file name in the "path" field
+                    $media->getData()->setPath( $new_file );
+                }
+            }
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($user);
             $entityManager->flush();
@@ -68,6 +99,38 @@ class UserController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+
+            foreach($form->get('file') as $media)
+            {
+                // Get file field
+                $uploaded_file = $media->get('file')->getData();
+
+                // If has file
+                if ($uploaded_file)
+                {
+                    // File Content
+                    $file_content = file_get_contents($uploaded_file->getPathname());
+
+                    // Generate MD5 from file content
+                    $file_md5 = md5($file_content);
+
+                    // Get file extension
+                    $file_extension = $uploaded_file->guessExtension();
+
+                    // Generate new file name
+                    $new_file = $file_md5.".".$file_extension;
+
+                    // Move file
+                    $uploaded_file->move(
+                        "./upload/",
+                        $new_file
+                    );
+
+                    // Save the new file name in the "path" field
+                    $media->getData()->setPath( $new_file );
+                }
+            }
+            
             $this->getDoctrine()->getManager()->flush();
 
             return $this->redirectToRoute('user_index');
