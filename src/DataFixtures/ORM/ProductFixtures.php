@@ -16,18 +16,18 @@ class ProductFixtures extends Fixture implements DependentFixtureInterface
         [
             'name' => 'pomme vert',
             'stock' => '4',
-            'description' => 'pommes juteuses du jargon',
+            'description' => 'pommes juteuses du verger',
             'price' => '15',
             'categorie' => 'pomme',
-            'producer' => '12345',
+            'producer' => '111111',
         ],
         [
             'name' => 'courgette',
             'stock' => '4',
-            'description' => 'courgette du jargon',
+            'description' => 'courgette du potager',
             'price' => '2',
             'categorie' => 'courgette',
-            'producer' => '12345',
+            'producer' => '111111',
         ],
         [
             'name' => 'The Boeuf',
@@ -35,7 +35,7 @@ class ProductFixtures extends Fixture implements DependentFixtureInterface
             'description' => 'venue tout droit du Limousin',
             'price' => '2',
             'categorie' => 'viandes rouges',
-            'producer' => '12345',
+            'producer' => '111112',
         ],
         [
             'name' => 'lait',
@@ -43,7 +43,7 @@ class ProductFixtures extends Fixture implements DependentFixtureInterface
             'description' => 'venue tout droit de la ferme',
             'price' => '10',
             'categorie' => 'lait',
-            'producer' => '124527',
+            'producer' => '111113',
         ],
         [
             'name' => 'emmental',
@@ -51,7 +51,7 @@ class ProductFixtures extends Fixture implements DependentFixtureInterface
             'description' => 'fait maison',
             'price' => '45',
             'categorie' => 'fromages',
-            'producer' => '12345',
+            'producer' => '111113',
         ],
         [
             'name' => 'Miel',
@@ -59,15 +59,15 @@ class ProductFixtures extends Fixture implements DependentFixtureInterface
             'description' => 'Miel pops',
             'price' => '20',
             'categorie' => 'miel',
-            'producer' => '124527',
+            'producer' => '111114',
         ],
         [
             'name' => 'pain pave',
             'stock' => '4',
             'description' => 'le bon pain du pays',
-            'price' => '0.80',
+            'price' => '0.40',
             'categorie' => 'pain',
-            'producer' => '12345',
+            'producer' => '111113',
         ],
         [
             'name' => 'thym',
@@ -75,23 +75,23 @@ class ProductFixtures extends Fixture implements DependentFixtureInterface
             'description' => 'le bon arôme du pays',
             'price' => '25',
             'categorie' => 'thym',
-            'producer' => '12452',
+            'producer' => '111111',
         ],
         [
             'name' => 'sauce tomate',
             'stock' => '4',
             'description' => 'la sauce prefere des tomate',
             'price' => '25',
-            'categorie' => 'epices & condiments',
-            'producer' => '12452',
+            'categorie' => 'épices et condiments',
+            'producer' => '111114',
         ],
         [
             'name' => 'saumon',
             'stock' => '4',
-            'description' => 'le bon poissons du pays Nord',
+            'description' => 'le bon poisson des pays du Nord',
             'price' => '25',
             'categorie' => 'poissons',
-            'producer' => '12345',
+            'producer' => '111112',
         ]
     ];
     
@@ -109,9 +109,9 @@ class ProductFixtures extends Fixture implements DependentFixtureInterface
     {
         foreach( self::DATA as $data){
 
-            $producer = $this->getReference(sprintf(ProducerFixtures::LABEL, $data['producer']));
-            $categorie = $this->getReference(sprintf(CategorieFixtures::LABEL, $data['categorie']));
-            //Instabtiate Entities
+            $producer = $this->getReference(sprintf(ProducerFixtures::LABEL, \strtolower($data['producer'])));
+            $categorie = $this->getReference(sprintf(CategorieFixtures::LABEL, \strtolower($data['categorie'])));
+            //Instantiate Entities
             $produit = new Product();
 
             $produit->setName($data['name']);

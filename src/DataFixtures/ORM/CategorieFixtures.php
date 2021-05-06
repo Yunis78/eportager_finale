@@ -14,19 +14,16 @@ class CategorieFixtures extends Fixture
     const DATA = [
 
         [
-            'nom' => 'Epices & Condiments',
+            'nom' => 'Fruits',
+        ],
+        [
+            'nom' => 'Légumes',
         ],
         [
             'nom' => 'Viandes',
         ],
         [
-            'nom' => 'Fruits',
-        ],
-        [
-            'nom' => 'Legumes',
-        ],
-        [
-            'nom' => 'Produits de mer',
+            'nom' => 'Produits de la mer',
         ],
         [
             'nom' => 'Produits laitiers',
@@ -35,15 +32,18 @@ class CategorieFixtures extends Fixture
             'nom' => 'Boulangerie',
         ],
         [
-            'nom' => 'Miel & Confitures',
+            'nom' => 'Miel et Confitures',
+        ],
+        [
+            'nom' => 'épices et Condiments',
         ],
         [
             'nom' => 'Thym',
-            'parent' => 'epices & condiments',
+            'parent' => 'épices et condiments',
         ],
         [
             'nom' => 'Sauce Tomate',
-            'parent' => 'epices & condiments',
+            'parent' => 'épices et condiments',
         ],
         [
             'nom' => 'Lait',
@@ -55,7 +55,7 @@ class CategorieFixtures extends Fixture
         ],
         [
             'nom' => 'Miel',
-            'parent' => 'miel & confitures',
+            'parent' => 'miel et confitures',
         ],
         [
             'nom' => 'pain',
@@ -63,7 +63,7 @@ class CategorieFixtures extends Fixture
         ],
         [
             'nom' => 'poissons',
-            'parent' => 'produits de mer',
+            'parent' => 'produits de la mer',
         ],
         [
             'nom' => 'viandes rouges',
@@ -71,7 +71,7 @@ class CategorieFixtures extends Fixture
         ],
         [
             'nom' => 'courgette',
-            'parent' => 'legumes',
+            'parent' => 'légumes',
         ],
         [
             'nom' => 'pomme',
@@ -89,7 +89,7 @@ class CategorieFixtures extends Fixture
             $categorie = new Categorie();
             $categorie->setNom($data['nom']);
             if (isset($data['parent'])) {
-                $categorieParent = $this->getReference(sprintf(CategorieFixtures::LABEL, $data['parent']));
+                $categorieParent = $this->getReference(sprintf(CategorieFixtures::LABEL, strtolower($data['parent'])));
                 $categorie->setParent($categorieParent);
             }
             

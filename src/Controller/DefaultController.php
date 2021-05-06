@@ -2,11 +2,12 @@
 
 namespace App\Controller;
 
-use App\Entity\Product;
 use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use App\Repository\ProducerRepository;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+
 
 class DefaultController extends AbstractController
 {
@@ -23,23 +24,14 @@ class DefaultController extends AbstractController
     /**
      * @Route("/", name="homepage")
      */
-    public function index(): Response
+    public function index(ProducerRepository $producerRepository): Response
     {
         $products = $this->em->getRepository(Product::class)->findBy([],['dateCreated' => 'ASC'],4);
 
         return $this->render('components/pages/default/index.html.twig', [
             'products' => $products,
-            'controller_name' => 'HomepageController',
-        ]);
-    }
-
-    /**
-     * @Route("/contact", name="contact")
-     */
-    public function contact(): Response
-    {
-        return $this->render('components/pages/default/contact.html.twig', [
-            'controller_name' => 'DefaultController',
+            'producers' => $producerRepository->findBy([], ['id'=>'DESC'], 2, 0),
+            'nav' => ['active','','','',''],
         ]);
     }
 
@@ -50,6 +42,7 @@ class DefaultController extends AbstractController
     {
         return $this->render('components/pages/default/faq.html.twig', [
             'controller_name' => 'DefaultController',
+            'nav' => ['','','','','active'],
         ]);
     }
 
@@ -60,6 +53,7 @@ class DefaultController extends AbstractController
     {
         return $this->render('components/pages/default/concept.html.twig', [
             'controller_name' => 'DefaultController',
+            'nav' => ['','','','active',''],
         ]);
     }
 
