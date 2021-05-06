@@ -22,7 +22,7 @@
         <div class="row my-3 justify-content-center cardsCat">
             {% for categorie in categories %}
                 <div class="card text-white m-3">
-                    <div  style="background-image: url('{{ asset("upload/categories/" ~ categorie.file.0.path) }}');"></div>
+                    <div  style="background-image: url('{{ asset("upload/" ~ categorie.file.0.path) }}');"></div>
                     <a href="{{ path('product_categorie_show', {'id' : categorie.id})}}">
                         <div class="card-img-overlay">
                             <h4 class="card-title cadre-titre-vert">{{ categorie.nom }}</h2>

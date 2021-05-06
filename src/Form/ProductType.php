@@ -19,22 +19,21 @@ class ProductType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
+        ->add('file', CollectionType::class,[
+            'entry_type' => MediaType::class,
+            "allow_add" => true,
+            "allow_delete" => true,
+            "prototype" => true,
+            'by_reference' => false,
+            ])
             ->add('name', TextType::class)
             ->add('stock')
             ->add('description',TextareaType::class)
             ->add('price')
-            ->add('file', CollectionType::class,[
-                'entry_type' => MediaType::class,
-                "allow_add" => true,
-                "allow_delete" => true,
-                "prototype" => true,
-                'by_reference' => false,
-            ])
             ->add('categorie', EntityType::class,[
                 'class' => Categorie::class,
                 'choice_label'=>'nom',
             ])
-            // ->add('producer')
         ;
     }
 

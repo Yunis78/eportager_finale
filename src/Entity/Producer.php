@@ -2,7 +2,11 @@
 
 namespace App\Entity;
 
+use App\Entity\Media;
+use App\Entity\User;
+use App\Repository\UserRepository;
 use App\Repository\ProducerRepository;
+use App\Repository\MediaRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
@@ -20,7 +24,7 @@ class Producer
     private $id;
 
     /**
-     * @ORM\OneToMany(targetEntity=Media::class, mappedBy="categorie", cascade={"persist","remove"})
+     * @ORM\OneToMany(targetEntity=Media::class, mappedBy="producer", cascade={"persist","remove"})
      */
     private $file;
 

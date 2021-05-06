@@ -29,7 +29,6 @@ class RegistrationFormType extends AbstractType
             ->add('addressComplement' , TextType::class)
             ->add('addressZipcode')
             ->add('phone')
-            // ->add('roles',TextType::class)
             ->add('plainPassword', RepeatedType::class, [
                 // instead of being set onto the object directly,
                 // this is read and encoded in the controller

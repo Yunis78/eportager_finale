@@ -2,7 +2,11 @@
 
 namespace App\Entity;
 
+use App\Entity\Media;
+use App\Entity\Categorie;
+use App\Repository\CategorieRepository;
 use App\Repository\ProductRepository;
+use App\Repository\MediaRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
@@ -86,36 +90,6 @@ class Product
     public function setCategorie(?Categorie $categorie): self
     {
         $this->categorie = $categorie;
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|Media[]
-     */
-    public function getFile(): Collection
-    {
-        return $this->file;
-    }
-
-    public function addFile(Media $file): self
-    {
-        if (!$this->file->contains($file)) {
-            $this->file[] = $file;
-            $file->setProduct($this);
-        }
-
-        return $this;
-    }
-
-    public function removeFile(Media $file): self
-    {
-        if ($this->file->removeElement($file)) {
-            // set the owning side to null (unless already changed)
-            if ($file->getProduct() === $this) {
-                $file->setProduct(null);
-            }
-        }
 
         return $this;
     }
@@ -218,6 +192,36 @@ class Product
     public function setFiles( array $files): self
     {
         $this->files = $files;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Media[]
+     */
+    public function getFile(): Collection
+    {
+        return $this->file;
+    }
+
+    public function addFile(Media $file): self
+    {
+        if (!$this->file->contains($file)) {
+            $this->file[] = $file;
+            $file->setProduct($this);
+        }
+
+        return $this;
+    }
+
+    public function removeFile(Media $file): self
+    {
+        if ($this->file->removeElement($file)) {
+            // set the owning side to null (unless already changed)
+            if ($file->getProduct() === $this) {
+                $file->setProduct(null);
+            }
+        }
 
         return $this;
     }
