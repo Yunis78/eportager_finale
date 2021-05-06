@@ -36,11 +36,13 @@
                 <tr>
                     <td colspan="3" class="text-right font-weight-bold">Total du panier :</td>
                     <td>{{ total }}</td>
-                    <td></td>
+                    <td><button type="button" class="btn btn-secondary">Je valide ma commande</button></td>
                 </tr>
             </tfoot>
-
         </table>
+
+        
+
     {% else %}
       <p>Votre panier est vide</p>
     {% endif %}

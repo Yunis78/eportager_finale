@@ -23,8 +23,8 @@
                 <td>{{ commande.payedAt ? commande.payedAt|date('Y-m-d H:i:s') : '' }}</td>
                 <td>{{ commande.amount }}</td>
                 <td>
-                    <a href="{{ path('commande_show', {'id': commande.id}) }}">show</a>
-                    <a href="{{ path('commande_edit', {'id': commande.id}) }}">edit</a>
+                    <a href="{{ path('commande_show', {'id': commande.id}) }}">Voir</a>
+                    <a href="{{ path('commande_edit', {'id': commande.id}) }}">Modifier</a>
                 </td>
             </tr>
         {% else %}

@@ -22,8 +22,8 @@
                 <td>{{- categorie.nom -}}</td>
                 <td>{{- (categorie.parent.nom)?? "" -}}</td>
                 <td>
-                    <a class="btn btn-primary" href="{{ path('categorie_show', {'id': categorie.id}) }}">show</a>
-                    <a class="btn btnorange" href="{{ path('categorie_edit', {'id': categorie.id}) }}">edit</a>
+                    <a class="btn btn-primary" href="{{ path('categorie_show', {'id': categorie.id}) }}">Voir</a>
+                    <a class="btn btnorange" href="{{ path('categorie_edit', {'id': categorie.id}) }}">Modifier</a>
                 </td>
             </tr>
         {% else %}

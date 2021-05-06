@@ -21,8 +21,8 @@
                 <td>{{ commande_product.quantity }}</td>
                 <td>{{ commande_product.unitPrice }}</td>
                 <td>
-                    <a href="{{ path('commande_product_show', {'id': commande_product.id}) }}">show</a>
-                    <a href="{{ path('commande_product_edit', {'id': commande_product.id}) }}">edit</a>
+                    <a href="{{ path('commande_product_show', {'id': commande_product.id}) }}">Voir</a>
+                    <a href="{{ path('commande_product_edit', {'id': commande_product.id}) }}">Modifier</a>
                 </td>
             </tr>
         {% else %}
