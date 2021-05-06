@@ -68,7 +68,6 @@ class ProductController extends AbstractController
             'nav' => ['','active','','',''],
         ]);
     }
-    
     /**
      * @IsGranted("ROLE_PRODUCER")
      * 

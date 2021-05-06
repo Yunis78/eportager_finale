@@ -114,3 +114,23 @@
     width: 40%;
     background-color: grey;
 }
+
+.profil-produdu {
+    z-index: 6;
+    margin-top: -150px;
+}
+
+.img-profil-produdu {
+    width:200px;
+    height: 200px;
+    background-size:cover;
+    background-position:center;
+    border-radius: 50%;
+    margin: 20px;
+}
+
+.ligne-grise {
+    height: 1px;
+    width: 40%;
+    background-color: grey;
+}
