@@ -44,14 +44,30 @@ class Producer
     private $siret;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="string", length=100, nullable=true)
      */
-    private $addresszip;
+    private $addressStreet;
 
     /**
-     * @ORM\Column(type="string", length=100)
+     * @ORM\Column(type="string", length=100, nullable=true)
      */
-    private $villename;
+    private $addressCountry;
+
+    /**
+     * @ORM\Column(type="string", length=100, nullable=true)
+     */
+    private $addressComplement;
+
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $addressZipcode;
+
+    /**
+     * @ORM\Column(type="string", length=100, nullable=true)
+     */
+    private $addressCity;
+
 
     /**
      * @ORM\Column(type="integer")
@@ -169,30 +185,6 @@ class Producer
         return $this;
     }
 
-    public function getVilleName(): ?string
-    {
-        return $this->villename;
-    }
-
-    public function setVilleName(string $villename): self
-    {
-        $this->villename = $villename;
-
-        return $this;
-    }
-
-    public function getAddressZip(): ?int
-    {
-        return $this->addresszip;
-    }
-
-    public function setAddressZip(int $addresszip): self
-    {
-        $this->addresszip = $addresszip;
-
-        return $this;
-    }
-
     public function getActive(): ?bool
     {
         return $this->active;
@@ -273,6 +265,66 @@ class Producer
     public function setUser(?User $user): self
     {
         $this->user = $user;
+
+        return $this;
+    }
+    
+    public function getAddressStreet(): ?string
+    {
+        return $this->addressStreet;
+    }
+
+    public function setAddressStreet(?string $addressStreet): self
+    {
+        $this->addressStreet = $addressStreet;
+
+        return $this;
+    }
+
+    public function getAddressCountry(): ?string
+    {
+        return $this->addressCountry;
+    }
+
+    public function setAddressCountry(?string $addressCountry): self
+    {
+        $this->addressCountry = $addressCountry;
+
+        return $this;
+    }
+
+    public function getAddressComplement(): ?string
+    {
+        return $this->addressComplement;
+    }
+
+    public function setAddressComplement(?string $addressComplement): self
+    {
+        $this->addressComplement = $addressComplement;
+
+        return $this;
+    }
+
+    public function getAddressZipcode(): ?int
+    {
+        return $this->addressZipcode;
+    }
+
+    public function setAddressZipcode(?int $addressZipcode): self
+    {
+        $this->addressZipcode = $addressZipcode;
+
+        return $this;
+    }
+
+    public function getAddressCity(): ?string
+    {
+        return $this->addressCity;
+    }
+
+    public function setAddressCity(?string $addressCity): self
+    {
+        $this->addressCity = $addressCity;
 
         return $this;
     }

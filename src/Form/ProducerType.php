@@ -17,7 +17,7 @@ class ProducerType extends AbstractType
         $builder
             ->add('name', TextType::class)
             ->add('description',TextareaType::class)
-            ->add('addresszip')
+            
             ->add('file', CollectionType::class,[
                 'entry_type' => MediaType::class,
                 "allow_add" => true,
@@ -25,7 +25,11 @@ class ProducerType extends AbstractType
                 "prototype" => true,
                 'by_reference' => false,
             ])
-            ->add('villename', TextType::class)
+            ->add('addressstreet', TextType::class)
+            ->add('addresscountry', TextType::class)
+            ->add('addresscomplement', TextType::class)
+            ->add('addresszipcode')
+            ->add('addresscity', TextType::class)
             ->add('siret')
             ->add('phone')
         ;
