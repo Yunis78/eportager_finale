@@ -32,7 +32,6 @@ class DefaultController extends AbstractController
         return $this->render('components/pages/default/index.html.twig', [
             'products' => $products,
             'producers' => $producerRepository->findBy([], ['id'=>'DESC'], 2, 0),
-            'nav' => ['active','','','',''],
         ]);
     }
 
@@ -43,7 +42,6 @@ class DefaultController extends AbstractController
     {
         return $this->render('components/pages/default/faq.html.twig', [
             'controller_name' => 'DefaultController',
-            'nav' => ['','','','','active'],
         ]);
     }
 
@@ -54,7 +52,6 @@ class DefaultController extends AbstractController
     {
         return $this->render('components/pages/default/concept.html.twig', [
             'controller_name' => 'DefaultController',
-            'nav' => ['','','','active',''],
         ]);
     }
 

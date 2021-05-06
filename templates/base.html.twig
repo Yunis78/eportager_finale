@@ -74,39 +74,21 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarText">
                     <ul class="navbar-nav mr-auto">
-                        {% if nav is defined %}
-                            <li class="nav-item orange mx-1 {{ nav[0] }} ">
-                                <a class="nav-link orange {{ nav[0] }} " href="{{ path('homepage') }}">Accueil</a>
-                            </li>
-                            <li class="nav-item vert mx-1 {{ nav[1] }} ">
-                                <a class="nav-link vert {{ nav[1] }} " href="{{ path('front_produits') }}">Produits</a>
-                            </li>
-                            <li class="nav-item violet mx-1 {{ nav[2] }} ">
-                                <a class="nav-link violet {{ nav[2] }} " href="{{ path('producer_index') }}">Producteurs</a>
-                            </li>
-                            <li class="nav-item rouge mx-1 {{ nav[3] }} ">
-                                <a class="nav-link rouge {{ nav[3] }} " href="{{ path('concept') }}">Concept</a>
-                            </li>
-                            <li class="nav-item gris mx-1 {{ nav[4] }} ">
-                                <a class="nav-link gris {{ nav[4] }} " href="{{ path('faq') }}">F.A.Q</a>
-                            </li>
-                        {% else %}
-                            <li class="nav-item orange mx-1">
-                                <a class="nav-link orange" href="{{ path('homepage') }}">Accueil</a>
-                            </li>
-                            <li class="nav-item vert mx-1">
-                                <a class="nav-link vert" href="{{ path('front_produits') }}">Produits</a>
-                            </li>
-                            <li class="nav-item violet mx-1">
-                                <a class="nav-link violet" href="{{ path('producer_index') }}">Producteurs</a>
-                            </li>
-                            <li class="nav-item rouge mx-1">
-                                <a class="nav-link rouge" href="{{ path('concept') }}">Concept</a>
-                            </li>
-                            <li class="nav-item gris mx-1">
-                                <a class="nav-link gris" href="{{ path('faq') }}">F.A.Q</a>
-                            </li>
-                        {% endif %}
+                        <li class="nav-item orange mx-1 {{ (app.request.requestUri == '/' ) ? 'active' : '' }} ">
+                            <a class="nav-link orange {{ (app.request.requestUri == '/' ) ? 'active' : '' }} " href="{{ path('homepage') }}">Accueil</a>
+                        </li>
+                        <li class="nav-item vert mx-1 {{ ('/product/' in app.request.requestUri) ? 'active' : '' }} ">
+                            <a class="nav-link vert {{ ('/product/' in app.request.requestUri) ? 'active' : '' }} " href="{{ path('front_produits') }}">Produits</a>
+                        </li>
+                        <li class="nav-item violet mx-1 {{ ('/producer/' in app.request.requestUri) ? 'active' : '' }} ">
+                            <a class="nav-link violet {{ ('/producer/' in app.request.requestUri) ? 'active' : '' }} " href="{{ path('producer_index') }}">Producteurs</a>
+                        </li>
+                        <li class="nav-item rouge mx-1 {{ ('/concept' == app.request.requestUri) ? 'active' : '' }} ">
+                            <a class="nav-link rouge {{ ('/concept' == app.request.requestUri) ? 'active' : '' }} " href="{{ path('concept') }}">Concept</a>
+                        </li>
+                        <li class="nav-item gris mx-1 {{ ('/faq' == app.request.requestUri) ? 'active' : '' }} ">
+                            <a class="nav-link gris {{ ('/faq' == app.request.requestUri) ? 'active' : '' }} " href="{{ path('faq') }}">F.A.Q</a>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -120,7 +102,10 @@
         
         <!-- Footer ? -->
         <footer class="jaune mt-auto" style="height:100px">
-            <p class="text-center">&copy; 2021</p>
+            <p class="text-center">&copy; ePotager 2021</p>
+            <div class="container d-flex justify-content-center">
+                <a href="/CGV_ePotager.pdf" download>Conditions Générales de Vente</a>
+            </div>
         </footer>
         
         {% block javascripts %}

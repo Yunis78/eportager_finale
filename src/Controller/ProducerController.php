@@ -38,7 +38,6 @@ class ProducerController extends AbstractController
     {
         return $this->render('components/pages/front_producteurs/index.html.twig', [
             'producers' => $producerRepository->findAll(),
-            'nav' => ['','','active','',''],
         ]);
     }
 
@@ -49,7 +48,6 @@ class ProducerController extends AbstractController
     {
         return $this->render('components/pages/front_producteurs/produdu.html.twig', [
             'producers' => $producerRepository->findAll(),
-            'nav' => ['','','active','',''],
         ]);
     }
 
@@ -62,7 +60,6 @@ class ProducerController extends AbstractController
     {
         return $this->render('components/pages/producer/producer_list.html.twig', [
             'producers' => $producerRepository->findAll(),
-            'nav' => ['','','active','',''],
         ]);
     }
 
@@ -93,7 +90,6 @@ class ProducerController extends AbstractController
         return $this->render('components/pages/producer/new.html.twig', [
             'producer' => $producer,
             'form' => $form->createView(),
-            'nav' => ['','','active','',''],
         ]);
     }
 
@@ -123,7 +119,6 @@ class ProducerController extends AbstractController
             'products' => $products,
             'comments' => $this->em->getRepository(Comment::class)->findBy(['producer'=> $producer->getId()]),
             'form' => $form->createView(),
-            'nav' => ['','','active','',''],
         ]);
     }
 
@@ -144,7 +139,6 @@ class ProducerController extends AbstractController
         return $this->render('components/pages/producer/edit.html.twig', [
             'producer' => $producer,
             'form' => $form->createView(),
-            'nav' => ['','','active','',''],
         ]);
     }
 

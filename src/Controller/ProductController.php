@@ -26,7 +26,6 @@ class ProductController extends AbstractController
         //return $this->render('components/pages/product/type.html.twig', [
         return $this->render('components/pages/product/_categ_list.html.twig', [
             'categories' => $categorieRepository->findBy(['parent' => null ]),
-            'nav' => ['','active','','',''],
         ]);
     }
 
@@ -49,7 +48,6 @@ class ProductController extends AbstractController
             'title' => 'Les sous catégories de',
             'categories' => $subCategories,
             'products' => $products,
-            'nav' => ['','active','','',''],
         ]);
     }
 
@@ -65,7 +63,6 @@ class ProductController extends AbstractController
             'categorie' => $categorieRepository->find($id),
             'title' => 'Voici les produits',
             'products' => $products,
-            'nav' => ['','active','','',''],
         ]);
     }
 
@@ -81,7 +78,6 @@ class ProductController extends AbstractController
         return $this->render('components/pages/product/index.html.twig', [
             // 'controller_name' => 'ProduitsController',
             'products' => $productRepository->findAll(),
-            'nav' => ['','active','','',''],
         ]);
     }
 
@@ -93,7 +89,6 @@ class ProductController extends AbstractController
         return $this->render('components/pages/product/produit.html.twig', [
             // à modifier pour aller chercher les bons
             'products' => $productRepository->findAll(),
-            'nav' => ['','active','','',''],
         ]);
     }
 
@@ -155,7 +150,6 @@ class ProductController extends AbstractController
         return $this->render('components/pages/product/new.html.twig', [
             'product' => $product,
             'form' => $form->createView(),
-            'nav' => ['','active','','',''],
         ]);
     }
 
@@ -166,7 +160,6 @@ class ProductController extends AbstractController
     {
         return $this->render('components/pages/product/show.html.twig', [
             'product' => $product,
-            'nav' => ['','active','','',''],
         ]);
     }
 
@@ -219,7 +212,6 @@ class ProductController extends AbstractController
         return $this->render('components/pages/product/edit.html.twig', [
             'product' => $product,
             'form' => $form->createView(),
-            'nav' => ['','active','','',''],
         ]);
     }
 
