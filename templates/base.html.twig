@@ -35,19 +35,19 @@
                     <div class="input-group-prepend ml-auto">
                         <span class="input-group-text" id="basic-addon1"><i class="ri-search-line"></i></span>
                     </div>
-                    <input type="text" class="form-control col-5 col-md-4 col-lg-2" placeholder="Rechercher..." aria-label="Rechercher..." aria-describedby="basic-addon1" />
+                    <input type="text" class="form-control col-5 col-md-4 col-lg-3" placeholder="Rechercher..." aria-label="Rechercher..." aria-describedby="basic-addon1" />
                 </div>
-                <!-- <input type="button" class="btn btnvert text-white ml-3" value="Connexion" /> -->
                 
                 <button class="btn btnviolet ml-3"><i class="ri-shopping-cart-2-line"></i></button>
-                <div class="dropdown">
-                    <button class="btn btnvert ml-3 dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="ri-user-3-fill"></i></button>
-                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+        
 
-                        {% if app.user is null %}
-                            <a class="dropdown-item" href="{{ path('app_login') }}">Connexion</a> 
-                            <a class="dropdown-item" href="{{ path('app_register') }}">Inscription</a> 
-                        {% else %}
+                {% if app.user is null %}
+                    <a class="btn btnvert btn-sm ml-2 d-flex align-items-center" href="{{ path('app_login') }}">Connexion</a> 
+                    <a class="btn btnorange btn-sm ml-2 d-flex align-items-center" href="{{ path('app_register') }}">Inscription</a> 
+                {% else %}
+                    <div class="dropdown">
+                        <button class="btn btnvert ml-3 dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="ri-user-3-fill"></i></button>
+                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
                             <span class="dropdown-item"> {{ app.user.givenname }} {{ app.user.familyname }}</span>
                             <a class="dropdown-item" href="#">Client</a>
                             {% if is_granted('ROLE_PRODUCER') and is_granted('ROLE_USER') %}
@@ -59,13 +59,14 @@
                                 <a class="dropdown-item" href="{{ path('accessCRUD') }}">Panel Admin</a>
                             {% endif %} 
                             <a class="dropdown-item" href="{{ path('app_logout') }}">Déconnexion</a>
-                        {% endif %}
+                        </div>
                     </div>
-                </div>
+                {% endif %}
+                
             </div>
-
-            <!-- nav barre -->
         </header>
+
+        <!-- nav barre -->
         <nav class="navbar navbar-expand-md navbar-light bg-white py-3 jaune mb-4">
             <div class="container">
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
@@ -73,30 +74,44 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarText">
                     <ul class="navbar-nav mr-auto">
-                        <li class="nav-item orange mx-1 active">
-                            <a class="nav-link orange active" href="{{ path('homepage') }}">Accueil</a>
-                        </li>
-                        <li class="nav-item vert mx-1">
-                            <a class="nav-link vert" href="{{ path('front_produits') }}">Produits</a>
-                        </li>
-                        <li class="nav-item violet mx-1">
-                            <a class="nav-link violet" href="{{ path('producer_index') }}">Producteurs</a>
-                        </li>
-                        <li class="nav-item rouge mx-1">
-                            <a class="nav-link rouge" href="{{ path('concept') }}">Concept</a>
-                        </li>
-                        <li class="nav-item orange mx-1">
-                            <a class="nav-link orange" href="{{ path('contact') }}">Contact</a>
-                        </li>
-                        <li class="nav-item gris mx-1">
-                            <a class="nav-link gris" href="{{ path('faq') }}">F.A.Q</a>
-                        </li>
+                        {% if nav is defined %}
+                            <li class="nav-item orange mx-1 {{ nav[0] }} ">
+                                <a class="nav-link orange {{ nav[0] }} " href="{{ path('homepage') }}">Accueil</a>
+                            </li>
+                            <li class="nav-item vert mx-1 {{ nav[1] }} ">
+                                <a class="nav-link vert {{ nav[1] }} " href="{{ path('front_produits') }}">Produits</a>
+                            </li>
+                            <li class="nav-item violet mx-1 {{ nav[2] }} ">
+                                <a class="nav-link violet {{ nav[2] }} " href="{{ path('producer_index') }}">Producteurs</a>
+                            </li>
+                            <li class="nav-item rouge mx-1 {{ nav[3] }} ">
+                                <a class="nav-link rouge {{ nav[3] }} " href="{{ path('concept') }}">Concept</a>
+                            </li>
+                            <li class="nav-item gris mx-1 {{ nav[4] }} ">
+                                <a class="nav-link gris {{ nav[4] }} " href="{{ path('faq') }}">F.A.Q</a>
+                            </li>
+                        {% else %}
+                            <li class="nav-item orange mx-1">
+                                <a class="nav-link orange" href="{{ path('homepage') }}">Accueil</a>
+                            </li>
+                            <li class="nav-item vert mx-1">
+                                <a class="nav-link vert" href="{{ path('front_produits') }}">Produits</a>
+                            </li>
+                            <li class="nav-item violet mx-1">
+                                <a class="nav-link violet" href="{{ path('producer_index') }}">Producteurs</a>
+                            </li>
+                            <li class="nav-item rouge mx-1">
+                                <a class="nav-link rouge" href="{{ path('concept') }}">Concept</a>
+                            </li>
+                            <li class="nav-item gris mx-1">
+                                <a class="nav-link gris" href="{{ path('faq') }}">F.A.Q</a>
+                            </li>
+                        {% endif %}
                     </ul>
                 </div>
             </div>
         </nav>
 
-        <!-- FIN DU CODE -->
         
 
 

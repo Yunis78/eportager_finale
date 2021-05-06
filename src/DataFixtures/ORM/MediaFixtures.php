@@ -14,8 +14,8 @@ class MediaFixtures extends Fixture implements DependentFixtureInterface
     const DATA = [
 
         [
-            'path' => 'pomme.jpg',
             'product' => 'pomme vert-15-4',
+            'path' => 'Pomme1.jpg',
         ],
         [
             'path' => 'courgette.jpg',
@@ -39,7 +39,7 @@ class MediaFixtures extends Fixture implements DependentFixtureInterface
         ],
         [
             'path' => 'pain_pave.jpg',
-            'product' => 'pain pave-0.80-4',
+            'product' => 'pain pave-0.40-4',
         ],
         [
             'path' => 'thyme.jpg',
@@ -50,12 +50,12 @@ class MediaFixtures extends Fixture implements DependentFixtureInterface
             'product' => 'sauce tomate-25-4',
         ],
         [
-            'path' => 'saumon.jpg',
+            'path' => 'saumon.jpeg',
             'product' => 'saumon-25-4',
         ],
         [
             'path' => 'epice.jpg',
-            'categorie' => 'epices & condiments',
+            'categorie' => 'épices et condiments',
         ],
         [
             'path' => 'viande.jpg',
@@ -67,14 +67,14 @@ class MediaFixtures extends Fixture implements DependentFixtureInterface
         ],
         [
             'path' => 'legume.jpg',
-            'categorie' => 'legumes',
+            'categorie' => 'légumes',
         ],
         [
             'path' => 'poisson.jpg',
-            'categorie' => 'produits de mer',
+            'categorie' => 'produits de la mer',
         ],
         [
-            'path' => 'lait.jpg',
+            'path' => 'fromage.jpg',
             'categorie' => 'produits laitiers',
         ],
         [
@@ -83,11 +83,11 @@ class MediaFixtures extends Fixture implements DependentFixtureInterface
         ],
         [
             'path' => 'miel.jpg',
-            'categorie' => 'miel & confitures',
+            'categorie' => 'miel et confitures',
         ],
         [
             'path' => 'thym.jpg',
-            'categorie' => 'epices & condiments',
+            'categorie' => 'épices et condiments',
         ],
         [
             'path' => 'thym.jpg',

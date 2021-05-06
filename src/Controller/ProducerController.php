@@ -32,14 +32,40 @@ class ProducerController extends AbstractController
     }
 
     /**
-     * @Route("/", name="producer_index", methods={"GET"})
+     * @Route("/", name="front_producteurs")
+     */
+    public function front_producteurs(ProducerRepository $producerRepository): Response
+    {
+        return $this->render('components/pages/front_producteurs/index.html.twig', [
+            'producers' => $producerRepository->findAll(),
+            'nav' => ['','','active','',''],
+        ]);
+    }
+
+    /**
+     * @Route("/produdu", name="front_produdu")
+     */
+    public function front_porodudu (ProducerRepository $producerRepository): Response
+    {
+        return $this->render('components/pages/front_producteurs/produdu.html.twig', [
+            'producers' => $producerRepository->findAll(),
+            'nav' => ['','','active','',''],
+        ]);
+    }
+
+    // même convention de nommage que pour Product
+
+    /**
+     * @Route("/producteurs", name="producer_index", methods={"GET"})
      */
     public function index(ProducerRepository $producerRepository): Response
     {
         return $this->render('components/pages/producer/producer_list.html.twig', [
             'producers' => $producerRepository->findAll(),
+            'nav' => ['','','active','',''],
         ]);
     }
+
 
     /**
      * @Route("/new", name="producer_new", methods={"GET","POST"})
@@ -67,6 +93,7 @@ class ProducerController extends AbstractController
         return $this->render('components/pages/producer/new.html.twig', [
             'producer' => $producer,
             'form' => $form->createView(),
+            'nav' => ['','','active','',''],
         ]);
     }
 
@@ -96,6 +123,7 @@ class ProducerController extends AbstractController
             'products' => $products,
             'comments' => $this->em->getRepository(Comment::class)->findBy(['producer'=> $producer->getId()]),
             'form' => $form->createView(),
+            'nav' => ['','','active','',''],
         ]);
     }
 
@@ -116,6 +144,7 @@ class ProducerController extends AbstractController
         return $this->render('components/pages/producer/edit.html.twig', [
             'producer' => $producer,
             'form' => $form->createView(),
+            'nav' => ['','','active','',''],
         ]);
     }
 
@@ -133,4 +162,5 @@ class ProducerController extends AbstractController
 
         return $this->redirectToRoute('producer_index');
     }
+
 }

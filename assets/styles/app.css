@@ -36,6 +36,7 @@ body {
 .btnorange {
     background-color: #ff7e00;
     color: white;
+    height: 37px;
 }
 
 .btnvert {
@@ -270,4 +271,13 @@ table.table-end-fit tr td:last-child,
 table.table-end-fit tr th:last-child {
     width: 1%;
     white-space: nowrap;
+}
+
+.banniCon2 h2 {
+    text-transform: uppercase;
+    font-family: "Noteworthy";
+    font-weight: bold;
+    background-color: #ff0959;
+    border-radius: .5rem;
+    color: white;
 }

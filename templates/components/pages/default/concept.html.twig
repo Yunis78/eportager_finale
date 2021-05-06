@@ -1,20 +1,41 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello DefaultController!{% endblock %}
+{% block title %}ePotager - Concept{% endblock %} 
+{% block stylesheets %}
+{{ encore_entry_link_tags("app") }}
+{{ encore_entry_link_tags("product") }}
+{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
-
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'D:/MAMP/htdocs/projet_final/epotager/src/Controller/DefaultController.php'|file_link(0) }}">src/Controller/DefaultController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'D:/MAMP/htdocs/projet_final/epotager/templates/default/index.html.twig'|file_link(0) }}">templates/default/index.html.twig</a></code></li>
-    </ul>
+<div class="banniCon2 mb-5">
+    <div class="card text-white">
+        <div style="width:100% ; height: 300px ; background-image: url('{{ asset("img/Exploit1.jpg") }}');background-size:cover ; background-position:center;">
+        <!-- <img src="{{ asset("img/fruitLegume.jpg") }}" class="card-img" alt="..." /> -->
+    </div>
+        <div class="card-img-overlay d-flex align-items-center justify-content-center d-flex flex-column">
+            <h2 class="card-title p-3">Quelques explications</h2>
+            <!-- <p>Le meilleur de leurs produits !</p> -->
+        </div>
+    </div>
+</div>
+<div class="container">
+    <h4>E-potager est un projet idéaliste, laisse-moi te raconter notre rêve...</h4>
+    <br>
+    <p>Démocratiser le bien-manger local.</p>
+    <p>Il sera une fois, où tous les commerçants éthiques et les producteurs responsables auront créé gratuitement
+        leur boutique en ligne sur e-potager. Les eco-consommateurs se presseront sur la plateforme pour faire leurs
+        courses en circuit court. E-potager, forte de sa notoriété, pourra alors évoluer. Elle se transformera en plateforme
+        de rencontre (non, je te vois venir, pas un remake de Tinder plutôt un forum citoyen) et créera un véritable réseau,
+        duquel naîtront des discussions passionnées et des projets incroyables.</p>
+    <p>Toi aussi, tu as envie de croire à ce conte de fée ? Alors crée ton compte achète ou vends des produits locaux, et parle
+        de E-potager autour de toi !</p>
+    <p>Notre ambition est de rassembler toutes les initiatives de vente directe sur une même plateforme pour permettre d’acheter
+        directement ses produits frais chez un producteur. On veut aider les producteurs et les magasins fermiers à se faire connaitre
+        en leur donnant plus de visibilité.</p>
+    <p>E-potager a pour objectif de rendre les produits locaux accessibles au plus grand nombre.</p>
+    <p class="font-weight-bold">C’est meilleur pour ta santé, la planète et ton porte-monnaie !</p>
+<br>
+<br>
+<br>
 </div>
 {% endblock %}
