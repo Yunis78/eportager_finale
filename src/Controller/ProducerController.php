@@ -52,9 +52,6 @@ class ProducerController extends AbstractController
             'nav' => ['','','active','',''],
         ]);
     }
-
-    // même convention de nommage que pour Product
-
     /**
      * @Route("/producteurs", name="producer_index", methods={"GET"})
      */

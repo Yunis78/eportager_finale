@@ -19,14 +19,13 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 class ProductController extends AbstractController
 {
     /**
-     * @Route("/", name="front_produits")
+     * @Route("/", name="front_products")
      */
-    public function front_produits(CategorieRepository $categorieRepository): Response
+    public function front_products(CategorieRepository $categorieRepository): Response
     {
-        //return $this->render('components/pages/product/type.html.twig', [
+
         return $this->render('components/pages/product/_categ_list.html.twig', [
             'categories' => $categorieRepository->findBy(['parent' => null ]),
-            'nav' => ['','active','','',''],
         ]);
     }
 
@@ -43,13 +42,11 @@ class ProductController extends AbstractController
             return $this->redirectToRoute('product_categorie_items_show', [ 'id' => $id ]);            
         }
 
-        //return $this->render('components/pages/product/type.html.twig', [
         return $this->render('components/pages/product/_subcateg_list.html.twig', [
             'categorie' => $categorieRepository->find($id),
             'title' => 'Les sous catégories de',
             'categories' => $subCategories,
             'products' => $products,
-            'nav' => ['','active','','',''],
         ]);
     }
 
@@ -65,35 +62,27 @@ class ProductController extends AbstractController
             'categorie' => $categorieRepository->find($id),
             'title' => 'Voici les produits',
             'products' => $products,
-            'nav' => ['','active','','',''],
         ]);
     }
-
-    // la route /cat est gérée par le CategorieController
-
     /**
-     * @IsGranted("ROLE_PRODUCER")
+     * @IsGranted("ROLE_PRODUCER")product
      * 
      * @Route("/produits", name="product_index")
      */
     public function read_produits(ProductRepository $productRepository): Response
     {
         return $this->render('components/pages/product/index.html.twig', [
-            // 'controller_name' => 'ProduitsController',
             'products' => $productRepository->findAll(),
-            'nav' => ['','active','','',''],
         ]);
     }
 
     /**
-     * @Route("/produit", name="un_produit", methods={"GET"})
+     * @Route("/produit", name="un_product", methods={"GET"})
      */
     public function index(ProductRepository $productRepository): Response
     {
         return $this->render('components/pages/product/produit.html.twig', [
-            // à modifier pour aller chercher les bons
             'products' => $productRepository->findAll(),
-            'nav' => ['','active','','',''],
         ]);
     }
 
@@ -155,7 +144,6 @@ class ProductController extends AbstractController
         return $this->render('components/pages/product/new.html.twig', [
             'product' => $product,
             'form' => $form->createView(),
-            'nav' => ['','active','','',''],
         ]);
     }
 
@@ -166,7 +154,6 @@ class ProductController extends AbstractController
     {
         return $this->render('components/pages/product/show.html.twig', [
             'product' => $product,
-            'nav' => ['','active','','',''],
         ]);
     }
 
@@ -219,7 +206,6 @@ class ProductController extends AbstractController
         return $this->render('components/pages/product/edit.html.twig', [
             'product' => $product,
             'form' => $form->createView(),
-            'nav' => ['','active','','',''],
         ]);
     }
 

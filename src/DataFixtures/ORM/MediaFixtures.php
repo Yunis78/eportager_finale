@@ -3,6 +3,7 @@
 namespace App\DataFixtures\ORM;
 
 use App\DataFixtures\ORM\ProductFixtures;
+use App\DataFixtures\ORM\CategorieFixtures;
 use App\Entity\Media;
 use App\Entity\Product;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
@@ -42,7 +43,7 @@ class MediaFixtures extends Fixture implements DependentFixtureInterface
             'product' => 'pain pave-0.40-4',
         ],
         [
-            'path' => 'thyme.jpg',
+            'path' => 'thym.jpg',
             'product' => 'thym-25-4',
         ],
         [
@@ -136,7 +137,8 @@ class MediaFixtures extends Fixture implements DependentFixtureInterface
     public function getDependencies()
     {
         return [ 
-            ProductFixtures::class
+            ProductFixtures::class,
+            CategorieFixtures::class,
         ];
     }
     
