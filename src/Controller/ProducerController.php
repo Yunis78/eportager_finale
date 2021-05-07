@@ -33,11 +33,11 @@ class ProducerController extends AbstractController
     }
 
     /**
-     * @Route("/", name="front_producteurs")
+     * @Route("/", name="crud_producteurs")
      */
     public function front_producteurs(ProducerRepository $producerRepository): Response
     {
-        return $this->render('components/pages/front_producteurs/index.html.twig', [
+        return $this->render('components/pages/producer/index.html.twig', [
             'producers' => $producerRepository->findAll(),
         ]);
     }
