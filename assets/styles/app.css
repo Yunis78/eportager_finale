@@ -295,3 +295,7 @@ table.table-end-fit tr th:last-child {
     background-position:center;
     border-radius: 50px; 
 } 
+
+.liens-cruds > li{
+    width: fit-content;
+}

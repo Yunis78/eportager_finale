@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %} Votre panier {% endblock %}
+{% block title %} ePotager - Panier {% endblock %}
 
 {% block body %}
 	<div class="container">
@@ -36,15 +36,17 @@
                 <tr>
                     <td colspan="3" class="text-right font-weight-bold">Total du panier :</td>
                     <td>{{ total }}</td>
-                    <td></td>
+                    <td><button class="btn btnvert">Je valide ma commande</button></td>
                 </tr>
             </tfoot>
 
         </table>
-    {% else %}
-      <p>Votre panier est vide</p>
-    {% endif %}
 
+    {% else %}
+        <div class="alert alert-primary font-weight-bold" role="alert">
+            Votre panier est vide !
+        </div>
+    {% endif %}
 
 	</div>
     
