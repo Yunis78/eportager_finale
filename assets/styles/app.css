@@ -287,3 +287,11 @@ table.table-end-fit tr th:last-child {
     border-radius: .5rem;
     color: white;
 }
+
+.profile-avis {
+    height: 100px;
+    width: 100px;
+    background-size:cover ;
+    background-position:center;
+    border-radius: 50px; 
+} 
