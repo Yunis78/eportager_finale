@@ -5,6 +5,7 @@ namespace App\DataFixtures\ORM;
 use App\DataFixtures\ORM\UserFixtures;
 use App\DataFixtures\ORM\ProductFixtures;
 use App\DataFixtures\ORM\CategorieFixtures;
+use App\DataFixtures\ORM\ProducerFixtures;
 use App\Entity\Media;
 use App\Entity\Product;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
@@ -116,6 +117,26 @@ class MediaFixtures extends Fixture implements DependentFixtureInterface
             'email' => 'melanie.delalande@fake.com',
         ],
         [
+            'path' => 'profile2.jpg',
+            'email' => 'client@epotager.com',
+        ],
+        [
+            'path' => 'champ2.jpeg',
+            'siret' => '111111',
+        ],
+        [
+            'path' => 'champ2.jpeg',
+            'siret' => '111112',
+        ], 
+        [
+            'path' => 'champ2.jpeg',
+            'siret' => '111113',
+        ], 
+        [
+            'path' => 'champ2.jpeg',
+            'siret' => '111114',
+        ],
+        [
             'categorie' => 'Lait',
             'path' => 'lait.jpg',
         ],
@@ -157,6 +178,7 @@ class MediaFixtures extends Fixture implements DependentFixtureInterface
             ProductFixtures::class,
             CategorieFixtures::class,
             UserFixtures::class,
+            ProducerFixtures::class,
         ];
     }
     
@@ -178,6 +200,10 @@ class MediaFixtures extends Fixture implements DependentFixtureInterface
             if (isset($data['email'])) {
                 $user = $this->getReference(sprintf(UserFixtures::LABEL, \strtolower($data['email'])));
                 $media->setUser($user);
+            }
+            if (isset($data['siret'])) {
+                $producer = $this->getReference(sprintf(ProducerFixtures::LABEL, \strtolower($data['siret'])));
+                $media->setProducer($producer);
             }
 
             $media->setPath($data['path']);
