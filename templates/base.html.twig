@@ -61,7 +61,6 @@
                         </div>
                     </div>
                 {% endif %}
-                
             </div>
         </header>
 
@@ -73,31 +72,27 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarText">
                     <ul class="navbar-nav mr-auto">
-                        <li class="nav-item orange mx-1 {{ (app.request.requestUri == '/' ) ? 'active' : '' }} ">
-                            <a class="nav-link orange {{ (app.request.requestUri == '/' ) ? 'active' : '' }} " href="{{ path('homepage') }}">Accueil</a>
+                        <li class="nav-item orange mx-1 {{ ('homepage' in app.request.get('_route')) ? 'active' : '' }} ">
+                            <a class="nav-link orange {{ ('homepage' in app.request.get('_route')) ? 'active' : '' }} " href="{{ path('homepage') }}">Accueil</a>
                         </li>
-                        <li class="nav-item vert mx-1 {{ ('/product/' in app.request.requestUri) ? 'active' : '' }} ">
-                            <a class="nav-link vert {{ ('/product/' in app.request.requestUri) ? 'active' : '' }} " href="{{ path('front_products') }}">Produits</a>
+                        <li class="nav-item vert mx-1 {{ ('product' in app.request.get('_route')) ? 'active' : '' }}"  >
+                            <a class="nav-link vert {{ ('product' in app.request.get('_route')) ? 'active' : '' }}"  href="{{ path('front_products') }}">Produits</a>
                         </li>
-                        <li class="nav-item violet mx-1 {{ ('/producer/' in app.request.requestUri) ? 'active' : '' }} ">
-                            <a class="nav-link violet {{ ('/producer/' in app.request.requestUri) ? 'active' : '' }} " href="{{ path('producer_index') }}">Producteurs</a>
+                        <li class="nav-item violet mx-1 {{ ('producer' in app.request.get('_route')) ? 'active' : '' }} ">
+                            <a class="nav-link violet {{ ('producer' in app.request.get('_route')) ? 'active' : '' }} " href="{{ path('producer_index') }}">Producteurs</a>
                         </li>
-                        <li class="nav-item rouge mx-1 {{ ('/concept' == app.request.requestUri) ? 'active' : '' }} ">
-                            <a class="nav-link rouge {{ ('/concept' == app.request.requestUri) ? 'active' : '' }} " href="{{ path('concept') }}">Concept</a>
+                        <li class="nav-item rouge mx-1 {{ ('concept' in app.request.get('_route')) ? 'active' : '' }} ">
+                            <a class="nav-link rouge {{ ('concept' in app.request.get('_route')) ? 'active' : '' }} " href="{{ path('concept') }}">Concept</a>
                         </li>
-                        <li class="nav-item gris mx-1 {{ ('/faq' == app.request.requestUri) ? 'active' : '' }} ">
-                            <a class="nav-link gris {{ ('/faq' == app.request.requestUri) ? 'active' : '' }} " href="{{ path('faq') }}">F.A.Q</a>
+                        <li class="nav-item gris mx-1 {{ ('faq' in app.request.get('_route')) ? 'active' : '' }} ">
+                            <a class="nav-link gris {{ ('faq' in app.request.get('_route')) ? 'active' : '' }} " href="{{ path('faq') }}">F.A.Q</a>
                         </li>
                     </ul>
                 </div>
             </div>
         </nav>
 
-        
-
-
         {% block body %}{% endblock %} 
-        
         
         <!-- Footer ? -->
         <footer class="jaune mt-auto" style="height:100px">

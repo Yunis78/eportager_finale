@@ -10,6 +10,7 @@ use App\Form\CommentType;
 use App\Form\ProducerType;
 use App\Repository\ProducerRepository;
 use App\Repository\ProductRepository;
+use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -93,8 +94,10 @@ class ProducerController extends AbstractController
     /**
      * @Route("/{id}", name="producer_show", methods={"GET","POST"})
      */
-    public function show(Request $request, Producer $producer, int $id , ProductRepository $productRepository): Response
+    public function show(Request $request, Producer $producer, int $id): Response
     {
+
+        
         $producer = $this->em->getRepository(Producer::class)->find($id);
         $products = $this->em->getRepository(Product::class)->findBy(['producer' => $producer]);
 
@@ -102,7 +105,9 @@ class ProducerController extends AbstractController
         $comment = new Comment(); 
         $form = $this->createForm(CommentType::class, $comment);
         $form->handleRequest($request);
+
         if ($form->isSubmitted() && $form->isValid()) {
+            
             $comment->setUser($this->getUser());
             $comment->setProducer($producer);
             $this->em->persist($comment);
@@ -112,6 +117,8 @@ class ProducerController extends AbstractController
         }
 
         return $this->render('components/pages/producer/show.html.twig', [
+
+
             'producer' => $producer,
             'products' => $products,
             'comments' => $this->em->getRepository(Comment::class)->findBy(['producer'=> $producer->getId()]),

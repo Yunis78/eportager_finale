@@ -12,9 +12,12 @@
                 <th>Id</th>
                 <th>Name</th>
                 <th>Description</th>
+                <th>addressstreet</th>
+                <th>addresscountry</th>
+                <th>address complement</th>
+                <th>addresszipcode</th>
+                <th>addresscity</th>
                 <th>Siret</th>
-                <th>Addresszip</th>
-                <th>Villename</th>
                 <th>Phone</th>
                 <th>Active</th>
                 <th>actions</th>
@@ -26,8 +29,11 @@
                 <th scope="row">{{ producer.id }}</th>
                 <td>{{ producer.name }}</td>
                 <td>{{ producer.description }}</td>
-                <td>{{ producer.addresszip }}</td>
-                <td>{{ producer.villename }}</td>
+                <td>{{ producer. }}</td>
+                <td>{{ producer.addresscountry }}</td>
+                <td>{{ producer.addresscomplement }}</td>
+                <td>{{ producer.addresszipcode }}</td>
+                <td>{{ producer.addresscity }}</td>
                 <td>{{ producer.siret }}</td>
                 <td>{{ producer.phone }}</td>
                 <td>{{ producer.active ? 'Yes' : 'No' }}</td>

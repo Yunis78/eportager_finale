@@ -1,114 +1,84 @@
 {% extends 'base.html.twig' %}
+{% block title %}Hello ProduitsController!{% endblock %}
 
-{% block title %}Producer{% endblock %}
+{% block stylesheets %}
+    {{ encore_entry_link_tags("app") }}
+    {{ encore_entry_link_tags("producteur") }}
+{% endblock %}
 
 {% block body %}
-<div class="container">
-    <div class="d-flex justify-content-between">
-        <h1>Producer</h1>
-        <p>
-            <a class="btn btn-primary" href="{{ path('producer_index') }}">back to list</a>
-            <a class="btn btnorange" href="{{ path('producer_edit', {'id': producer.id}) }}">edit</a>
-        </p>
-    </div>
-
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ producer.id }}</td>
-            </tr>
-            <tr>
-                <th>Name</th>
-                <td>{{ producer.name }}</td>
-            </tr>
-            <tr>
-                <th>addressZIP</th>
-                <td>{{ producer.addressstreet }}</td>
-            </tr>
-            <tr>
-                <th>addresscountry</th>
-                <td>{{ producer.addresscountry }}</td>
-            </tr>
-            <tr>
-                <th>address complement</th>
-                <td>{{ producer.addresscomplement }}</td>
-            </tr>
-            <tr>
-                <th>addresszipcode</th>
-                <td>{{ producer.addresszipcode }}</td>
-            </tr>
-            <tr>
-                <th>addresscity</th>
-                <td>{{ producer.addresscity }}</td>
-            </tr>
-            <tr>
-                <th>Description</th>
-                <td>{{ producer.description }}</td>
-            </tr>
-            <tr>
-                <th>Siret</th>
-                <td>{{ producer.siret }}</td>
-            </tr>
-            <tr>
-                <th>Phone</th>
-                <td>{{ producer.phone }}</td>
-            </tr>
-            <tr>
-                <th>Active</th>
-                <td>{{ producer.active ? 'Yes' : 'No' }}</td>
-            </tr>
-        </tbody>
-    </table>
-
-
-    {% for product in products %}
-        <!-- card produit -->
-        <div class="col-12 col-xl-6">
-            <div class="card w-100 d-flex flex-row m-1 px-0">
-                <!-- image -->
-                <div class="imageProduit col-4 p-0">
-                    <div style="background-image: url('{{ asset("upload/" ~ product.file.0.path ) }}');"></div>
-                </div>
-                <!-- description et prix -->
-                <div class="prix col-5 d-flex flex-column justify-content-between">
-                    <h3 class="mt-3">{{- product.name -}}</h3>
-                    <p>{{- product.description -}}</p>
-                    <div class="mb-3 d-flex flex-row">
-                        <p class="btnorange-inverse m-2 font-weight-bold">{{- product.price -}}€ / kg</p>
-                        <!-- <a href="#" class="btn btnvert m-2"><i class="ri-heart-line"></i></a> -->
-                        <button class="btn btnviolet m-2"><i class="ri-shopping-cart-2-line"></i></button>
-                    </div>      
-                </div>
-                <!-- producteur -->
-                <div class="producteur col-3 d-flex flex-column justify-content-center align-items-center pb-3">
-                    <div class="mt-3" style="background-image: url('{{ asset("img/Exploit1.jpg") }}');"></div>
-                    <p class="text-center mt-2 mb-1 font-weight-bold">{{- product.producer.name -}}</p>
-                    <a href="#" class="btn btnvert m-2">Découvrir</a>
+    <div class="container">
+        <div class="row col-12 d-flex flex-column align-items-center">
+            <pre>
+                {{ dump(producer.user) }}
+            </pre>
+            <div class="col-5"> <!-- produits card 3 -->
+                <div class="card mb-3" style="width: 100% ; height:400px ; position:relative">
+                    <div style="width:100% ; height: 200px ; background-image: url('{{ asset("profile/" ~ producer.user.0.file ) }}');background-size:cover ; background-position:center">
+                    </div>
+                        <div class="card-body">
+                            <h5 class="card-title">{{ producer.user.givenname }} {{ producer.user.familyname }}</h5>
+                        </div>
                 </div>
             </div>
+        
+            <div class="col-4"> <!-- produits card 3 -->
+                        <div class="card-body">
+                            <h5 class="card-title">{{ producer.name }}</h5>
+                            <p class="card-text">{{ producer.description }}</p>
+                            <p>Adresse : {{ producer.addresscomplement }}</p>
+                            <p>{{ producer.addresszipcode }} {{ producer.addresscity }}</p>
+                            <p>Numéro siret : {{ producer.siret }}</p>
+                            <p>Numéro de telephone : {{ producer.phone }}</p>
+                        </div>
+                </div>
+            </div>        
+
+
+            {% for product in products %}
+                <!-- card produit -->
+                <div class="col-12 col-xl-6">
+                    <div class="card w-100 d-flex flex-row m-1 px-0">
+                        <!-- image -->
+                        <div class="imageProduit col-4 p-0">
+                            <div style="background-image: url('{{ asset("upload/" ~ product.file.0.path ) }}');"></div>
+                        </div>
+                        <!-- description et prix -->
+                        <div class="prix col-5 d-flex flex-column justify-content-between">
+                            <h3 class="mt-3">{{- product.name -}}</h3>
+                            <p>{{- product.description -}}</p>
+                            <div class="mb-3 d-flex flex-row">
+                                <p class="btnorange-inverse m-2 font-weight-bold">{{- product.price -}}€ / kg</p>
+                                <!-- <a href="#" class="btn btnvert m-2"><i class="ri-heart-line"></i></a> -->
+                                <button class="btn btnviolet m-2"><i class="ri-shopping-cart-2-line"></i></button>
+                            </div>      
+                        </div>
+                        <!-- producteur -->
+                        <div class="producteur col-3 d-flex flex-column justify-content-center align-items-center pb-3">
+                            <div class="mt-3" style="background-image: url('{{ asset("img/Exploit1.jpg") }}');"></div>
+                            <p class="text-center mt-2 mb-1 font-weight-bold">{{- product.producer.name -}}</p>
+                            <a href="#" class="btn btnvert m-2">Découvrir</a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+            {% for comment in comments %}
+                <div>,
+                    <div>{{- comment.rate -}}/5</div>
+                    <div>{{- comment.message -}}</div>
+                </div>
+            {% endfor %}
+
+
+            {% if is_granted('ROLE_USER') %}
+            {{ include('components/pages/comment/_form.html.twig') }}
+            {% else %}
+            connectes toi frero !
+            {% endif %}
+
+
+            {{ include('components/pages/producer/_delete_form.html.twig') }}
         </div>
-    {% endfor %}
-
-
-
-
-    {% for comment in comments %}
-        <div>
-            <div>{{- comment.rate -}}/5</div>
-            <div>{{- comment.message -}}</div>
-        </div>
-    {% endfor %}
-
-
-    {% if is_granted('ROLE_USER') %}
-    {{ include('components/pages/comment/_form.html.twig') }}
-    {% else %}
-    connectes toi frero !
-    {% endif %}
-
-
-    {{ include('components/pages/producer/_delete_form.html.twig') }}
-</div>
+    </div>
 
 {% endblock %}
