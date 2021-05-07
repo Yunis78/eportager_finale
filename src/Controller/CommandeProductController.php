@@ -49,15 +49,17 @@ class CommandeProductController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/{id}", name="commande_product_show", methods={"GET"})
-     */
-    public function show(CommandeProduct $commandeProduct): Response
-    {
-        return $this->render('components/pages/commande_product/show.html.twig', [
-            'commande_product' => $commandeProduct,
-        ]);
-    }
+    // Cette méthode génère un bug empéchant d'accéder au panier
+    // 
+    // /**
+    //  * @Route("/{id}", name="commande_product_show", methods={"GET"})
+    //  */
+    // public function show(Request $request, int $id , CommandeProduct $commandeProduct): Response
+    // {
+    //     return $this->render('components/pages/commande_product/show.html.twig', [
+    //         'commande_product' => $commandeProduct,
+    //     ]);
+    // }
 
     /**
      * @Route("/{id}/edit", name="commande_product_edit", methods={"GET","POST"})
@@ -92,12 +94,13 @@ class CommandeProductController extends AbstractController
 
         return $this->redirectToRoute('commande_product_index');
     }
+
     /**
      * @Route("/panier", name="cart_index")
      */
     public function panier(CartService $cartService): Response
     {
-        return $this->render('cart/index.html.twig', [
+        return $this->render('components/pages/cart/index.html.twig', [
             'items' => $cartService->getFullCart(),
             'total' => $cartService->getTotal()
         ]);
