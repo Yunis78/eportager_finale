@@ -1,7 +1,6 @@
-{% extends 'base.html.twig' %} {% block title %}Hello ProduitsController!{% endblock %} {% block stylesheets %}
-{{ encore_entry_link_tags("app") }}
-{{ encore_entry_link_tags("product") }}
-{% endblock %} 
+{% extends 'base.html.twig' %}
+
+{% block title %}CRUD Product{% endblock %}
 
 {% block body %}
 <div class="container">
@@ -15,7 +14,7 @@
                 <th>Stock</th>
                 <th>Description</th>
                 <th>Price</th>
-                <th>actions</th>
+                <th>Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -27,18 +26,18 @@
                 <td>{{ product.description }}</td>
                 <td>{{ product.price }}</td>
                 <td>
-                    <a class="btn btn-primary" href="{{ path('product_show', {'id': product.id}) }}">show</a>
-                    <a class="btn btnorange" href="{{ path('product_edit', {'id': product.id}) }}">edit</a>
+                    <a class="btn btn-primary" href="{{ path('product_show', {'id': product.id}) }}">Voir</a>
+                    <a class="btn btnorange" href="{{ path('product_edit', {'id': product.id}) }}">Modifier</a>
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="6">no records found</td>
+                <td colspan="6">Aucun produit</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
-    <p><a class="btn btn-success" href="{{ path('product_new') }}">Create new</a></p>
+    <p><a class="btn btnvert" href="{{ path('product_new') }}">Nouveau produit</a></p>
 </div>
 {% endblock %}

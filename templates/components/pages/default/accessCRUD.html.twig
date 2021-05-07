@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Panel ADMIN{% endblock %}
+{% block title %}ePotager - Panel ADMIN{% endblock %}
 
 {% block body %}
 <style>
@@ -9,10 +9,10 @@
 </style>
 
 <div class="example-wrapper">
-    <h1>Hello</h1>
+    <h1>Hi {{ app.user.givenname }} {{ app.user.familyname }} !</h1>
 
     Pour accéder au CRUDs :
-    <ul>
+    <ul class="liens-cruds">
         <li class="vert">
             <a class="nav-link vert" href="{{ path('product_index') }}">CRUD Produits</a>
         </li>
