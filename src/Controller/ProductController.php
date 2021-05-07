@@ -65,8 +65,7 @@ class ProductController extends AbstractController
         ]);
     }
     /**
-     * @IsGranted("ROLE_PRODUCER")product
-     * 
+     * @IsGranted("ROLE_PRODUCER")
      * @Route("/produits", name="product_index")
      */
     public function read_produits(ProductRepository $productRepository): Response
