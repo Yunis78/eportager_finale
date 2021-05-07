@@ -13,7 +13,7 @@
                 <div class="card text-white m-3">
                     <div style="background-image: url('{{ asset("upload/categories/" ~ categorie.file.0.path) }}');"></div>
                     <a href="{{ path('product_categorie_show', {'id' : categorie.id})}}">
-                        <div class="card-img-overlay d-flex align-items-center justify-content-center bgvert-hover">
+                        <div class="card-img-overlay bgvert-hover d-flex align-items-center justify-content-center">
                             <h2 class="card-title cadre-titre-vert">{{- categorie.nom -}}</h2>
                         </div>
                     </a>

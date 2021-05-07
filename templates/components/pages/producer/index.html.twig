@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Producer index{% endblock %}
+{% block title %}CRUD Producer{% endblock %}
 
 {% block body %}
 <div class="container">
@@ -20,7 +20,7 @@
                 <th>Siret</th>
                 <th>Phone</th>
                 <th>Active</th>
-                <th>actions</th>
+                <th>Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -38,18 +38,18 @@
                 <td>{{ producer.phone }}</td>
                 <td>{{ producer.active ? 'Yes' : 'No' }}</td>
                 <td>
-                    <a class="btn btn-primary" href="{{ path('producer_show', {'id': producer.id}) }}">show</a>
-                    <a class="btn btnorange" href="{{ path('producer_edit', {'id': producer.id}) }}">edit</a>
+                    <a class="btn btn-primary" href="{{ path('producer_show', {'id': producer.id}) }}">Voir</a>
+                    <a class="btn btnorange" href="{{ path('producer_edit', {'id': producer.id}) }}">Modifier</a>
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="7">no records found</td>
+                <td colspan="7">Aucun producteur</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
-    <p><a class="btn btn-success" href="{{ path('producer_new') }}">Create new</a></p>
+    <p><a class="btn btnvert" href="{{ path('producer_new') }}">Nouveau producteur</a></p>
 </div>
 {% endblock %}

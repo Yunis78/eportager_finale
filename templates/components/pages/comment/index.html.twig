@@ -1,18 +1,18 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Comment index{% endblock %}
+{% block title %}CRUD Comment{% endblock %}
 
 {% block body %}
     <h1>Comment index</h1>
 
-    <table class="table">
-        <thead>
+    <table class="table table-sm table-hover table-end-fit">
+        <thead class="table-active">
             <tr>
                 <th>Id</th>
                 <th>Status</th>
                 <th>Message</th>
                 <th>Rate</th>
-                <th>actions</th>
+                <th>Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -23,19 +23,19 @@
                 <td>{{ comment.message }}</td>
                 <td>{{ comment.rate }}</td>
                 <td>
-                    <a href="{{ path('comment_show', {'id': comment.id}) }}">show</a>
-                    <a href="{{ path('comment_edit', {'id': comment.id}) }}">edit</a>
+                    <a href="{{ path('comment_show', {'id': comment.id}) }}">Voir</a>
+                    <a href="{{ path('comment_edit', {'id': comment.id}) }}">Modifier</a>
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="5">no records found</td>
+                <td colspan="5">Aucun commentaire</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
-    <a href="{{ path('comment_new') }}">Create new</a>
+    <p><a class="btn btnvert" href="{{ path('comment_new') }}">Nouveau commentaire</a></p>
 {% endblock %}
 
 {% exit %}

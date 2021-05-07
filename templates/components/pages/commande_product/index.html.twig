@@ -1,17 +1,17 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}CommandeProduct index{% endblock %}
+{% block title %}CRUD CommandeProduct{% endblock %}
 
 {% block body %}
     <h1>CommandeProduct index</h1>
 
-    <table class="table">
-        <thead>
+    <table class="table table-sm table-hover table-end-fit">
+        <thead class="table-active">
             <tr>
                 <th>Id</th>
                 <th>Quantity</th>
                 <th>UnitPrice</th>
-                <th>actions</th>
+                <th>Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -21,17 +21,17 @@
                 <td>{{ commande_product.quantity }}</td>
                 <td>{{ commande_product.unitPrice }}</td>
                 <td>
-                    <a href="{{ path('commande_product_show', {'id': commande_product.id}) }}">show</a>
-                    <a href="{{ path('commande_product_edit', {'id': commande_product.id}) }}">edit</a>
+                    <a href="{{ path('commande_product_show', {'id': commande_product.id}) }}">Voir</a>
+                    <a href="{{ path('commande_product_edit', {'id': commande_product.id}) }}">Modifier</a>
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="4">no records found</td>
+                <td colspan="4">Aucun ticket</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
-    <a href="{{ path('commande_product_new') }}">Create new</a>
+    <a href="{{ path('commande_product_new') }}">Nouveau ticket</a>
 {% endblock %}

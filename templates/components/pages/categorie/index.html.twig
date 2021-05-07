@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Categorie index{% endblock %}
+{% block title %}CRUD Categorie{% endblock %}
 
 {% block body %}
 <div class="container">
@@ -11,8 +11,8 @@
             <tr>
                 <th>Id</th>
                 <th>Nom</th>
-                <th>categorie</th>
-                <th>actions</th>
+                <th>Categorie</th>
+                <th>Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -22,18 +22,18 @@
                 <td>{{- categorie.nom -}}</td>
                 <td>{{- (categorie.parent.nom)?? "" -}}</td>
                 <td>
-                    <a class="btn btn-primary" href="{{ path('categorie_show', {'id': categorie.id}) }}">show</a>
-                    <a class="btn btnorange" href="{{ path('categorie_edit', {'id': categorie.id}) }}">edit</a>
+                    <a class="btn btn-primary" href="{{ path('categorie_show', {'id': categorie.id}) }}">Voir</a>
+                    <a class="btn btnorange" href="{{ path('categorie_edit', {'id': categorie.id}) }}">Modifier</a>
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="3">no records found</td>
+                <td colspan="3">Aucune Catégorie</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
-    <p><a class="btn btn-success" href="{{ path('categorie_new') }}">Create new</a></p>
+    <p><a class="btn btnvert" href="{{ path('categorie_new') }}">Nouvelle catégorie</a></p>
 </div>
 {% endblock %}
