@@ -7,6 +7,7 @@ use App\Entity\Producer;
 use App\Repository\UserRepository;
 use App\Repository\ProducerRepository;
 use App\Repository\MediaRepository;
+use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
