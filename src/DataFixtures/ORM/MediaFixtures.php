@@ -2,6 +2,7 @@
 
 namespace App\DataFixtures\ORM;
 
+use App\DataFixtures\ORM\UserFixtures;
 use App\DataFixtures\ORM\ProductFixtures;
 use App\DataFixtures\ORM\CategorieFixtures;
 use App\Entity\Media;
@@ -99,6 +100,22 @@ class MediaFixtures extends Fixture implements DependentFixtureInterface
             'categorie' => 'sauce tomate',
         ],
         [
+            'path' => 'profile2.jpg',
+            'email' => 'nathalie.trubuil@fake.com',
+        ],
+        [
+            'path' => 'profile2.jpg',
+            'email' => 'paul.delau@fake.com',
+        ],
+        [
+            'path' => 'profile2.jpg',
+            'email' => 'valentin.leroy@fake.com',
+        ],
+        [
+            'path' => 'profile2.jpg',
+            'email' => 'melanie.delalande@fake.com',
+        ],
+        [
             'categorie' => 'Lait',
             'path' => 'lait.jpg',
         ],
@@ -139,6 +156,7 @@ class MediaFixtures extends Fixture implements DependentFixtureInterface
         return [ 
             ProductFixtures::class,
             CategorieFixtures::class,
+            UserFixtures::class,
         ];
     }
     
@@ -156,6 +174,10 @@ class MediaFixtures extends Fixture implements DependentFixtureInterface
             if (isset($data['categorie'])) {
                 $categorie = $this->getReference(sprintf(CategorieFixtures::LABEL, \strtolower($data['categorie'])));
                 $media->setCategorie($categorie);
+            }
+            if (isset($data['email'])) {
+                $user = $this->getReference(sprintf(UserFixtures::LABEL, \strtolower($data['email'])));
+                $media->setUser($user);
             }
 
             $media->setPath($data['path']);

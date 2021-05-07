@@ -122,7 +122,7 @@ class UserController extends AbstractController
 
                     // Move file
                     $uploaded_file->move(
-                        "./upload/",
+                        "./profile/",
                         $new_file
                     );
 
