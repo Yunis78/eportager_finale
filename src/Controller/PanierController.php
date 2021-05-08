@@ -3,22 +3,55 @@
 namespace App\Controller;
 
 use App\Service\Cart\CartService;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+
 
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Twig\Environment;
+use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Component\Routing\RouterInterface;
+use Symfony\Component\HttpFoundation\RedirectResponse;
+use Symfony\Component\Form\FormFactoryInterface;
 
-class PanierController extends AbstractController
+class PanierController
 {
+        /**
+     * @var Environment
+     */
+    private $twig;
+    
+    /**
+     * @var EntityManagerInterface
+     */
+    private $em;
+    
+    /**
+     * @var EntityManagerInterface
+     */
+    private $router;
+
+    /**
+     * @var FormFactoryInterface
+     */
+    private $formFactory;
+
+    public function __construct(Environment $twig, EntityManagerInterface $em, RouterInterface $router, FormFactoryInterface $formFactory)
+    {
+        $this->twig = $twig;
+        $this->em = $em;
+        $this->router = $router;
+        $this->formFactory = $formFactory;
+    }
+
     /**
      * @Route("/panier", name="cart_index")
      */
-    public function panier(CartService $cartService): Response
+    public function panier(CartService $cartService)
     {
-        return $this->render('components/pages/panier/index.html.twig', [
+        return new Response($this->twig->render('components/pages/panier/index.html.twig', [
             'items' => $cartService->getFullCart(),
             'total' => $cartService->getTotal()
-        ]);
+        ]));
     }
 
     /**
@@ -28,7 +61,11 @@ class PanierController extends AbstractController
         
         $cartService->add($id);
 
-        return $this->redirectToRoute("cart_index");
+        return new RedirectResponse(
+            $this->router->generate(
+                'cart_index',
+            )
+        );
     }
 
     /**
@@ -38,6 +75,10 @@ class PanierController extends AbstractController
 
         $cartService->remove($id);
 
-        return $this->redirectToRoute("cart_index");
+        return new RedirectResponse(
+            $this->router->generate(
+                'cart_index',
+            )
+        );
     }
 }
