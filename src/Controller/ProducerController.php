@@ -8,31 +8,31 @@ use App\Entity\Product;
 use App\Entity\User;
 use App\Form\CommentType;
 use App\Form\ProducerType;
+use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Routing\Annotation\Route;
-use Twig\Environment;
-use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Component\Routing\RouterInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
-use Symfony\Component\Form\FormFactoryInterface;
+use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Routing\RouterInterface;
 use Symfony\Component\Security\Core\Security;
+use Twig\Environment;
 
 /**
  * @Route("/producer")
  */
 class ProducerController
 {
-        /**
+    /**
      * @var Environment
      */
     private $twig;
-    
+
     /**
      * @var EntityManagerInterface
      */
     private $em;
-    
+
     /**
      * @var EntityManagerInterface
      */
@@ -70,7 +70,7 @@ class ProducerController
     /**
      * @Route("/produdu", name="front_produdu")
      */
-    public function front_porodudu ()
+    public function front_porodudu()
     {
         return new Response($this->twig->render('components/pages/front_producteurs/produdu.html.twig', [
             'producers' => $this->em->getRepository(Producer::class)->findAll(),
@@ -98,14 +98,12 @@ class ProducerController
 
         if ($form->isSubmitted() && $form->isValid()) {
 
-            foreach($form->get('file') as $media)
-            {
+            foreach ($form->get('file') as $media) {
                 // Get file field
                 $uploaded_file = $media->get('file')->getData();
 
                 // If has file
-                if ($uploaded_file)
-                {
+                if ($uploaded_file) {
                     // File Content
                     $file_content = file_get_contents($uploaded_file->getPathname());
 
@@ -116,7 +114,7 @@ class ProducerController
                     $file_extension = $uploaded_file->guessExtension();
 
                     // Generate new file name
-                    $new_file = $file_md5.".".$file_extension;
+                    $new_file = $file_md5 . "." . $file_extension;
 
                     // Move file
                     $uploaded_file->move(
@@ -125,16 +123,16 @@ class ProducerController
                     );
 
                     // Save the new file name in the "path" field
-                    $media->getData()->setPath( $new_file );
+                    $media->getData()->setPath($new_file);
                 }
             }
-            
+
             $user = $this->em->getRepository(User::class)->find($this->security->getUser());
             $user->setRoles(["ROLE_PRODUCER"]);
 
             $producer->setUser($this->security->getUser());
-            
-            
+
+
             $this->em->persist($producer);
             $this->em->flush();
 
@@ -157,17 +155,17 @@ class ProducerController
     public function show(Request $request, Producer $producer, int $id)
     {
 
-        
+
         $producer = $this->em->getRepository(Producer::class)->find($id);
         $products = $this->em->getRepository(Product::class)->findBy(['producer' => $producer]);
 
         // formulaire pour les commentaire
-        $comment = new Comment(); 
+        $comment = new Comment();
         $form = $this->formFactory->create(CommentType::class, $comment);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            
+
             $comment->setUser($this->security->getUser());
             $comment->setProducer($producer);
             $this->em->persist($comment);
@@ -186,7 +184,7 @@ class ProducerController
 
             'producer' => $producer,
             'products' => $products,
-            'comments' => $this->em->getRepository(Comment::class)->findBy(['producer'=> $producer->getId()]),
+            'comments' => $this->em->getRepository(Comment::class)->findBy(['producer' => $producer->getId()]),
             'form' => $form->createView(),
         ]));
     }
@@ -201,14 +199,12 @@ class ProducerController
 
         if ($form->isSubmitted() && $form->isValid()) {
 
-            foreach($form->get('file') as $media)
-            {
+            foreach ($form->get('file') as $media) {
                 // Get file field
                 $uploaded_file = $media->get('file')->getData();
 
                 // If has file
-                if ($uploaded_file)
-                {
+                if ($uploaded_file) {
                     // File Content
                     $file_content = file_get_contents($uploaded_file->getPathname());
 
@@ -219,7 +215,7 @@ class ProducerController
                     $file_extension = $uploaded_file->guessExtension();
 
                     // Generate new file name
-                    $new_file = $file_md5.".".$file_extension;
+                    $new_file = $file_md5 . "." . $file_extension;
 
                     // Move file
                     $uploaded_file->move(
@@ -228,11 +224,11 @@ class ProducerController
                     );
 
                     // Save the new file name in the "path" field
-                    $media->getData()->setPath( $new_file );
+                    $media->getData()->setPath($new_file);
                 }
             }
 
-            
+
             $this->em->flush();
 
             return new RedirectResponse(
@@ -253,9 +249,9 @@ class ProducerController
      */
     public function delete(Request $request, Producer $producer)
     {
-        if ($this->isCsrfTokenValid('delete'.$producer->getId(), $request->request->get('_token'))) {
-            
-            
+        if ($this->isCsrfTokenValid('delete' . $producer->getId(), $request->request->get('_token'))) {
+
+
             $this->em->remove($producer);
             $this->em->flush();
         }
@@ -266,5 +262,4 @@ class ProducerController
             )
         );
     }
-
 }

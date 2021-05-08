@@ -4,31 +4,30 @@ namespace App\Controller;
 
 use App\Entity\Commande;
 use App\Form\CommandeType;
-use App\Repository\CommandeRepository;
-
+use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Twig\Environment;
-use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Routing\RouterInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
-use Symfony\Component\Form\FormFactoryInterface;
+use Twig\Environment;
+
 /**
  * @Route("/commande")
  */
 class CommandeController
 {
-        /**
+    /**
      * @var Environment
      */
     private $twig;
-    
+
     /**
      * @var EntityManagerInterface
      */
     private $em;
-    
+
     /**
      * @var EntityManagerInterface
      */
@@ -50,10 +49,10 @@ class CommandeController
     /**
      * @Route("/", name="commande_index", methods={"GET"})
      */
-    public function index(CommandeRepository $commandeRepository)
+    public function index()
     {
         return new Response($this->twig->render('components/pages/commande/index.html.twig', [
-            'commandes' => $commandeRepository->findAll(),
+            'commandes' => $this->em->getRepository(Commande::class)->findAll(),
         ]));
     }
 
@@ -67,7 +66,7 @@ class CommandeController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            
+
             $this->em->persist($commande);
             $this->em->flush();
 
@@ -123,8 +122,8 @@ class CommandeController
      */
     public function delete(Request $request, Commande $commande)
     {
-        if ($this->isCsrfTokenValid('delete'.$commande->getId(), $request->request->get('_token'))) {
-            
+        if ($this->isCsrfTokenValid('delete' . $commande->getId(), $request->request->get('_token'))) {
+
             $this->em->remove($commande);
             $this->em->flush();
         }

@@ -6,34 +6,32 @@ use App\Entity\User;
 use App\Form\RegistrationFormType;
 use App\Security\EmailVerifier;
 use App\Security\UserCustomAuthenticator;
-use App\Repository\UserRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
-
+use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\Mime\Address;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Routing\RouterInterface;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\Security\Guard\GuardAuthenticatorHandler;
 use SymfonyCasts\Bundle\VerifyEmail\Exception\VerifyEmailExceptionInterface;
 use Twig\Environment;
-use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Component\Routing\RouterInterface;
-use Symfony\Component\HttpFoundation\RedirectResponse;
-use Symfony\Component\Form\FormFactoryInterface;
 
 class RegistrationController
 {
-        /**
+    /**
      * @var Environment
      */
     private $twig;
-    
+
     /**
      * @var EntityManagerInterface
      */
     private $em;
-    
+
     /**
      * @var EntityManagerInterface
      */
@@ -73,12 +71,14 @@ class RegistrationController
                 )
             );
 
-            
+
             $this->em->persist($user);
             $this->em->flush();
 
             // generate a signed url and email it to the user
-            $this->emailVerifier->sendEmailConfirmation('app_verify_email', $user,
+            $this->emailVerifier->sendEmailConfirmation(
+                'app_verify_email',
+                $user,
                 (new TemplatedEmail())
                     ->from(new Address('robotepotager@gmail.com', 'Acme mail bot'))
                     ->to($user->getEmail())
@@ -103,7 +103,7 @@ class RegistrationController
     /**
      * @Route("/verify/email", name="app_verify_email")
      */
-    public function verifyUserEmail(Request $request, UserRepository $userRepository)
+    public function verifyUserEmail(Request $request)
     {
         $id = $request->get('id');
 
@@ -115,7 +115,7 @@ class RegistrationController
             );
         }
 
-        $user = $userRepository->find($id);
+        $user = $this->em->getRepository(User::class)->find($id);
 
         if (null === $user) {
             return new RedirectResponse(

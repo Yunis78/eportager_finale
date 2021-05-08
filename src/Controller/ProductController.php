@@ -5,19 +5,16 @@ namespace App\Controller;
 use App\Entity\Categorie;
 use App\Entity\Product;
 use App\Form\ProductType;
-use App\Repository\CategorieRepository;
-use App\Repository\ProductRepository;
-
+use Doctrine\ORM\EntityManagerInterface;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+use Symfony\Component\Form\FormFactoryInterface;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
-use Twig\Environment;
-use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Routing\RouterInterface;
-use Symfony\Component\HttpFoundation\RedirectResponse;
-use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\Security\Core\Security;
+use Twig\Environment;
 
 /**
  * @Route("/product")
@@ -28,12 +25,12 @@ class ProductController
      * @var Environment
      */
     private $twig;
-    
+
     /**
      * @var EntityManagerInterface
      */
     private $em;
-    
+
     /**
      * @var EntityManagerInterface
      */
@@ -61,11 +58,11 @@ class ProductController
     /**
      * @Route("/", name="front_products")
      */
-    public function front_products(CategorieRepository $categorieRepository)
+    public function front_products()
     {
 
         return new Response($this->twig->render('components/pages/product/_categ_list.html.twig', [
-            'categories' => $categorieRepository->findBy(['parent' => null ]),
+            'categories' => $this->em->getRepository(Categorie::class)->findBy(['parent' => null]),
         ]));
     }
 
@@ -74,16 +71,16 @@ class ProductController
      */
     public function showCategorie(int $id)
     {
-        
+
         $categorie = $this->em->getRepository(Categorie::class)->find($id);
         $subCategories = $this->em->getRepository(Categorie::class)->findBy(['parent' => $categorie]);
         $products = $this->em->getRepository(Product::class)->findBy(['categorie' => $categorie]);
-        
-        if ($subCategories === [] ) {
+
+        if ($subCategories === []) {
             return new RedirectResponse(
                 $this->router->generate(
                     'product_categorie_items_show',
-                    [ 'id' => $id ]
+                    ['id' => $id]
                 )
             );
         }
@@ -99,9 +96,9 @@ class ProductController
     /**
      * @Route("/categorie/{id}/items", name="product_categorie_items_show", methods={"GET"})
      */
-    public function showCategorieItems(CategorieRepository $categorieRepository, int $id)
+    public function showCategorieItems(int $id)
     {
-        
+
         $categorie = $this->em->getRepository(Categorie::class)->find($id);
         $products = $this->em->getRepository(Product::class)->findBy(['categorie' => $categorie]);
 
@@ -116,7 +113,7 @@ class ProductController
      * @IsGranted("ROLE_PRODUCER")
      * @Route("/produits", name="product_index")
      */
-    public function read_produits(ProductRepository $productRepository)
+    public function read_produits()
     {
         return new Response($this->twig->render('components/pages/product/index.html.twig', [
             'products' => $this->em->getRepository(Product::class)->findAll(),
@@ -138,14 +135,12 @@ class ProductController
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
 
-            foreach($form->get('file') as $media)
-            {
+            foreach ($form->get('file') as $media) {
                 // Get file field
                 $uploaded_file = $media->get('file')->getData();
 
                 // If has file
-                if ($uploaded_file)
-                {
+                if ($uploaded_file) {
                     // File Content
                     $file_content = file_get_contents($uploaded_file->getPathname());
 
@@ -156,7 +151,7 @@ class ProductController
                     $file_extension = $uploaded_file->guessExtension();
 
                     // Generate new file name
-                    $new_file = $file_md5.".".$file_extension;
+                    $new_file = $file_md5 . "." . $file_extension;
 
                     // Move file
                     $uploaded_file->move(
@@ -165,13 +160,13 @@ class ProductController
                     );
 
                     // Save the new file name in the "path" field
-                    $media->getData()->setPath( $new_file );
+                    $media->getData()->setPath($new_file);
                 }
             }
-            
+
             $product->setProducer($user->getProducer());
 
-            
+
             $this->em->persist($product);
             $this->em->flush();
 
@@ -208,14 +203,12 @@ class ProductController
 
         if ($form->isSubmitted() && $form->isValid()) {
 
-            foreach($form->get('file') as $media)
-            {
+            foreach ($form->get('file') as $media) {
                 // Get file field
                 $uploaded_file = $media->get('file')->getData();
 
                 // If has file
-                if ($uploaded_file)
-                {
+                if ($uploaded_file) {
                     // File Content
                     $file_content = file_get_contents($uploaded_file->getPathname());
 
@@ -226,7 +219,7 @@ class ProductController
                     $file_extension = $uploaded_file->guessExtension();
 
                     // Generate new file name
-                    $new_file = $file_md5.".".$file_extension;
+                    $new_file = $file_md5 . "." . $file_extension;
 
                     // Move file
                     $uploaded_file->move(
@@ -235,7 +228,7 @@ class ProductController
                     );
 
                     // Save the new file name in the "path" field
-                    $media->getData()->setPath( $new_file );
+                    $media->getData()->setPath($new_file);
                 }
             }
 
@@ -259,8 +252,8 @@ class ProductController
      */
     public function delete(Request $request, Product $product)
     {
-        if ($this->isCsrfTokenValid('delete'.$product->getId(), $request->request->get('_token'))) {
-            
+        if ($this->isCsrfTokenValid('delete' . $product->getId(), $request->request->get('_token'))) {
+
             $this->em->remove($product);
             $this->em->flush();
         }
@@ -271,6 +264,4 @@ class ProductController
             )
         );
     }
-
-    
 }

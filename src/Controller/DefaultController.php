@@ -5,26 +5,24 @@ namespace App\Controller;
 use App\Entity\Product;
 use App\Entity\Producer;
 use Doctrine\ORM\EntityManagerInterface;
-
+use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Twig\Environment;
 use Symfony\Component\Routing\RouterInterface;
-use Symfony\Component\HttpFoundation\RedirectResponse;
-use Symfony\Component\Form\FormFactoryInterface;
+use Twig\Environment;
 
 class DefaultController
 {
-        /**
+    /**
      * @var Environment
      */
     private $twig;
-    
+
     /**
      * @var EntityManagerInterface
      */
     private $em;
-    
+
     /**
      * @var EntityManagerInterface
      */
@@ -48,11 +46,11 @@ class DefaultController
      */
     public function index()
     {
-        $products = $this->em->getRepository(Product::class)->findBy([],['dateCreated' => 'ASC'],4);
+        $products = $this->em->getRepository(Product::class)->findBy([], ['dateCreated' => 'ASC'], 4);
 
         return new Response($this->twig->render('components/pages/default/index.html.twig', [
             'products' => $products,
-            'producers' =>  $this->em->getRepository(Producer::class)->findBy([], ['id'=>'DESC'], 2, 0),
+            'producers' =>  $this->em->getRepository(Producer::class)->findBy([], ['id' => 'DESC'], 2, 0),
         ]));
     }
 

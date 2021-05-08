@@ -4,30 +4,30 @@ namespace App\Controller;
 
 use App\Entity\CommandeProduct;
 use App\Form\CommandeProductType;
+use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Twig\Environment;
-use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Routing\RouterInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
-use Symfony\Component\Form\FormFactoryInterface;
+use Twig\Environment;
 
 /**
  * @Route("/commande_product")
  */
 class CommandeProductController
 {
-        /**
+    /**
      * @var Environment
      */
     private $twig;
-    
+
     /**
      * @var EntityManagerInterface
      */
     private $em;
-    
+
     /**
      * @var EntityManagerInterface
      */
@@ -66,7 +66,7 @@ class CommandeProductController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            
+
             $this->em->persist($commandeProduct);
             $this->em->flush();
 
@@ -122,8 +122,8 @@ class CommandeProductController
      */
     public function delete(Request $request, CommandeProduct $commandeProduct)
     {
-        if ($this->isCsrfTokenValid('delete'.$commandeProduct->getId(), $request->request->get('_token'))) {
-            
+        if ($this->isCsrfTokenValid('delete' . $commandeProduct->getId(), $request->request->get('_token'))) {
+
             $this->em->remove($commandeProduct);
             $this->em->flush();
         }

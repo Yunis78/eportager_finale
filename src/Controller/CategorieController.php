@@ -2,18 +2,16 @@
 
 namespace App\Controller;
 
-use App\Entity\Product;
-use App\Entity\Media;
 use App\Entity\Categorie;
 use App\Form\CategorieType;
+use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\RedirectResponse;
+use Symfony\Component\Routing\RouterInterface;
 use Symfony\Component\Routing\Annotation\Route;
 use Twig\Environment;
-use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Component\Routing\RouterInterface;
-use Symfony\Component\HttpFoundation\RedirectResponse;
-use Symfony\Component\Form\FormFactoryInterface;
 
 /**
  * Class CategorieController.
@@ -22,17 +20,17 @@ use Symfony\Component\Form\FormFactoryInterface;
  */
 class CategorieController
 {
-    
+
     /**
      * @var Environment
      */
     private $twig;
-    
+
     /**
      * @var EntityManagerInterface
      */
     private $em;
-    
+
     /**
      * @var EntityManagerInterface
      */
@@ -73,16 +71,14 @@ class CategorieController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            
 
-            foreach($form->get('file') as $media)
-            {
+
+            foreach ($form->get('file') as $media) {
                 // Get file field
                 $uploaded_file = $media->get('file')->getData();
 
                 // If has file
-                if ($uploaded_file)
-                {
+                if ($uploaded_file) {
                     // File Content
                     $file_content = file_get_contents($uploaded_file->getPathname());
 
@@ -93,7 +89,7 @@ class CategorieController
                     $file_extension = $uploaded_file->guessExtension();
 
                     // Generate new file name
-                    $new_file = $file_md5.".".$file_extension;
+                    $new_file = $file_md5 . "." . $file_extension;
 
                     // Move file
                     $uploaded_file->move(
@@ -102,10 +98,10 @@ class CategorieController
                     );
 
                     // Save the new file name in the "path" field
-                    $media->getData()->setPath( $new_file );
+                    $media->getData()->setPath($new_file);
                 }
             }
-            
+
             $this->em->persist($categorie);
             $this->em->flush();
 
@@ -142,14 +138,12 @@ class CategorieController
 
         if ($form->isSubmitted() && $form->isValid()) {
 
-            foreach($form->get('file') as $media)
-            {
+            foreach ($form->get('file') as $media) {
                 // Get file field
                 $uploaded_file = $media->get('file')->getData();
 
                 // If has file
-                if ($uploaded_file)
-                {
+                if ($uploaded_file) {
                     // File Content
                     $file_content = file_get_contents($uploaded_file->getPathname());
 
@@ -160,7 +154,7 @@ class CategorieController
                     $file_extension = $uploaded_file->guessExtension();
 
                     // Generate new file name
-                    $new_file = $file_md5.".".$file_extension;
+                    $new_file = $file_md5 . "." . $file_extension;
 
                     // Move file
                     $uploaded_file->move(
@@ -169,7 +163,7 @@ class CategorieController
                     );
 
                     // Save the new file name in the "path" field
-                    $media->getData()->setPath( $new_file );
+                    $media->getData()->setPath($new_file);
                 }
             }
 
@@ -193,9 +187,9 @@ class CategorieController
      */
     public function delete(Request $request, Categorie $categorie)
     {
-        if ($this->isCsrfTokenValid('delete'.$categorie->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $categorie->getId(), $request->request->get('_token'))) {
 
-            
+
             $this->em->remove($categorie);
             $this->em->flush();
         }

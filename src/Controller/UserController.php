@@ -4,16 +4,14 @@ namespace App\Controller;
 
 use App\Entity\User;
 use App\Form\UserType;
-use App\Repository\UserRepository;
-
+use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Component\Form\FormFactoryInterface;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Twig\Environment;
-use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Routing\RouterInterface;
-use Symfony\Component\HttpFoundation\RedirectResponse;
-use Symfony\Component\Form\FormFactoryInterface;
+use Twig\Environment;
 
 /**
  * @Route("/user")
@@ -24,12 +22,12 @@ class UserController
      * @var Environment
      */
     private $twig;
-    
+
     /**
      * @var EntityManagerInterface
      */
     private $em;
-    
+
     /**
      * @var EntityManagerInterface
      */
@@ -51,10 +49,10 @@ class UserController
     /**
      * @Route("/", name="user_index", methods={"GET"})
      */
-    public function index(UserRepository $userRepository)
+    public function index()
     {
         return new Response($this->twig->render('components/pages/user/index.html.twig', [
-            'users' => $userRepository->findAll(),
+            'users' => $this->em->getRepository(User::class)->findAll(),
         ]));
     }
 
@@ -69,14 +67,12 @@ class UserController
 
         if ($form->isSubmitted() && $form->isValid()) {
 
-            foreach($form->get('file') as $media)
-            {
+            foreach ($form->get('file') as $media) {
                 // Get file field
                 $uploaded_file = $media->get('file')->getData();
 
                 // If has file
-                if ($uploaded_file)
-                {
+                if ($uploaded_file) {
                     // File Content
                     $file_content = file_get_contents($uploaded_file->getPathname());
 
@@ -87,7 +83,7 @@ class UserController
                     $file_extension = $uploaded_file->guessExtension();
 
                     // Generate new file name
-                    $new_file = $file_md5.".".$file_extension;
+                    $new_file = $file_md5 . "." . $file_extension;
 
                     // Move file
                     $uploaded_file->move(
@@ -96,10 +92,10 @@ class UserController
                     );
 
                     // Save the new file name in the "path" field
-                    $media->getData()->setPath( $new_file );
+                    $media->getData()->setPath($new_file);
                 }
             }
-            
+
             $this->em->persist($user);
             $this->em->flush();
 
@@ -136,14 +132,12 @@ class UserController
 
         if ($form->isSubmitted() && $form->isValid()) {
 
-            foreach($form->get('file') as $media)
-            {
+            foreach ($form->get('file') as $media) {
                 // Get file field
                 $uploaded_file = $media->get('file')->getData();
 
                 // If has file
-                if ($uploaded_file)
-                {
+                if ($uploaded_file) {
                     // File Content
                     $file_content = file_get_contents($uploaded_file->getPathname());
 
@@ -154,7 +148,7 @@ class UserController
                     $file_extension = $uploaded_file->guessExtension();
 
                     // Generate new file name
-                    $new_file = $file_md5.".".$file_extension;
+                    $new_file = $file_md5 . "." . $file_extension;
 
                     // Move file
                     $uploaded_file->move(
@@ -163,10 +157,10 @@ class UserController
                     );
 
                     // Save the new file name in the "path" field
-                    $media->getData()->setPath( $new_file );
+                    $media->getData()->setPath($new_file);
                 }
             }
-            
+
             $this->em->flush();
 
             return new RedirectResponse(
@@ -187,8 +181,8 @@ class UserController
      */
     public function delete(Request $request, User $user)
     {
-        if ($this->isCsrfTokenValid('delete'.$user->getId(), $request->request->get('_token'))) {
-            
+        if ($this->isCsrfTokenValid('delete' . $user->getId(), $request->request->get('_token'))) {
+
             $this->em->remove($user);
             $this->em->flush();
         }

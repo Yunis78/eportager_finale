@@ -3,28 +3,26 @@
 namespace App\Controller;
 
 use App\Service\Cart\CartService;
-
-
+use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Twig\Environment;
-use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Routing\RouterInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
-use Symfony\Component\Form\FormFactoryInterface;
+use Twig\Environment;
 
 class PanierController
 {
-        /**
+    /**
      * @var Environment
      */
     private $twig;
-    
+
     /**
      * @var EntityManagerInterface
      */
     private $em;
-    
+
     /**
      * @var EntityManagerInterface
      */
@@ -57,8 +55,9 @@ class PanierController
     /**
      * @Route("/panier/add/{id}", name="cart_add")
      */
-    public function add($id, CartService $cartService) {
-        
+    public function add($id, CartService $cartService)
+    {
+
         $cartService->add($id);
 
         return new RedirectResponse(
@@ -71,7 +70,8 @@ class PanierController
     /**
      * @Route("/panier/remove/{id}", name="cart_remove")
      */
-    public function remove($id, CartService $cartService) {
+    public function remove($id, CartService $cartService)
+    {
 
         $cartService->remove($id);
 
