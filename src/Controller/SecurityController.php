@@ -2,20 +2,64 @@
 
 namespace App\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
-class SecurityController extends AbstractController
+use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Component\Form\FormFactoryInterface;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\RedirectResponse;
+use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Routing\RouterInterface;
+use Symfony\Component\Security\Core\Security;
+use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
+use Twig\Environment;
+
+class SecurityController
 {
+    /**
+     * @var Environment
+     */
+    private $twig;
+
+    /**
+     * @var EntityManagerInterface
+     */
+    private $em;
+
+    /**
+     * @var EntityManagerInterface
+     */
+    private $router;
+
+    /**
+     * @var FormFactoryInterface
+     */
+    private $formFactory;
+
+    /**
+     * @var Security
+     */
+    private $security;
+
+    public function __construct(Environment $twig, EntityManagerInterface $em, RouterInterface $router, FormFactoryInterface $formFactory, Security $security)
+    {
+        $this->twig = $twig;
+        $this->em = $em;
+        $this->router = $router;
+        $this->formFactory = $formFactory;
+        $this->security = $security;
+    }
+
     /**
      * @Route("/login", name="app_login")
      */
-    public function login(AuthenticationUtils $authenticationUtils): Response
+    public function login(AuthenticationUtils $authenticationUtils)
     {
-        if ($this->getUser()) {
-            return $this->redirectToRoute('homepage');
+        if ($this->security->getUser()) {
+            return new RedirectResponse(
+                $this->router->generate(
+                    'homepage',
+                )
+            );
         }
 
         // get the login error if there is one
@@ -23,7 +67,7 @@ class SecurityController extends AbstractController
         // last username entered by the user
         $lastUsername = $authenticationUtils->getLastUsername();
 
-        return $this->render('components/pages/security/login.html.twig', ['last_username' => $lastUsername, 'error' => $error]);
+        return new Response($this->twig->render('components/pages/security/login.html.twig', ['last_username' => $lastUsername, 'error' => $error]));
     }
 
     /**

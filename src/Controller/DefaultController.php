@@ -3,64 +3,84 @@
 namespace App\Controller;
 
 use App\Entity\Product;
+use App\Entity\Producer;
 use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use App\Repository\ProducerRepository;
+use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Routing\RouterInterface;
+use Twig\Environment;
 
-class DefaultController extends AbstractController
+class DefaultController
 {
+    /**
+     * @var Environment
+     */
+    private $twig;
+
     /**
      * @var EntityManagerInterface
      */
     private $em;
 
-    public function __construct( EntityManagerInterface $em )
+    /**
+     * @var EntityManagerInterface
+     */
+    private $router;
+
+    /**
+     * @var FormFactoryInterface
+     */
+    private $formFactory;
+
+    public function __construct(Environment $twig, EntityManagerInterface $em, RouterInterface $router, FormFactoryInterface $formFactory)
     {
+        $this->twig = $twig;
         $this->em = $em;
+        $this->router = $router;
+        $this->formFactory = $formFactory;
     }
 
     /**
      * @Route("/", name="homepage")
      */
-    public function index(ProducerRepository $producerRepository): Response
+    public function index()
     {
-        $products = $this->em->getRepository(Product::class)->findBy([],['dateCreated' => 'ASC'],4);
+        $products = $this->em->getRepository(Product::class)->findBy([], ['dateCreated' => 'ASC'], 4);
 
-        return $this->render('components/pages/default/index.html.twig', [
+        return new Response($this->twig->render('components/pages/default/index.html.twig', [
             'products' => $products,
-            'producers' => $producerRepository->findBy([], ['id'=>'DESC'], 2, 0),
-        ]);
+            'producers' =>  $this->em->getRepository(Producer::class)->findBy([], ['id' => 'DESC'], 2, 0),
+        ]));
     }
 
     /**
      * @Route("/faq", name="faq")
      */
-    public function faq(): Response
+    public function faq()
     {
-        return $this->render('components/pages/default/faq.html.twig', [
+        return new Response($this->twig->render('components/pages/default/faq.html.twig', [
             'controller_name' => 'DefaultController',
-        ]);
+        ]));
     }
 
     /**
      * @Route("/concept", name="concept")
      */
-    public function concept(): Response
+    public function concept()
     {
-        return $this->render('components/pages/default/concept.html.twig', [
+        return new Response($this->twig->render('components/pages/default/concept.html.twig', [
             'controller_name' => 'DefaultController',
-        ]);
+        ]));
     }
 
     /**
      * @Route("/accessCRUD", name="accessCRUD")
      */
-    public function accessCRUD(): Response
+    public function accessCRUD()
     {
-        return $this->render('components/pages/default/accessCRUD.html.twig', [
+        return new Response($this->twig->render('components/pages/default/accessCRUD.html.twig', [
             'controller_name' => 'DefaultController',
-        ]);
+        ]));
     }
 }
