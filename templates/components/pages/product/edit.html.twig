@@ -1,12 +1,12 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Edit Product{% endblock %}
+{% block title %}Modification Product{% endblock %}
 
 {% block body %}
 <div class="container">
     <div class="d-flex justify-content-between">
         <h1>Edit Product</h1>
-        <p><a class="btn btn-primary" href="{{ path('product_index') }}">back to list</a></p>
+        <p><a class="btn btn-primary" href="{{ path('product_index') }}">retour</a></p>
     </div>
 
     {{ include('components/pages/product/_form.html.twig', {'button_label': 'Update', 'btn_class': 'btnorange'}) }}

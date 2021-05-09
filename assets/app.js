@@ -9,6 +9,8 @@
 import './styles/app.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'remixicon/fonts/remixicon.css';
+import './styles/custom_product.css';
+import './styles/custom_producteur.css';
 
 // start the Stimulus application
 // import './bootstrap';

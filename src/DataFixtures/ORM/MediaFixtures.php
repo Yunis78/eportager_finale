@@ -122,7 +122,7 @@ class MediaFixtures extends Fixture implements DependentFixtureInterface
         ],
         [
             'path' => 'champ2.jpeg',
-            'siret' => '111111',
+            'siret' => '111111', 
         ],
         [
             'path' => 'champ2.jpeg',
@@ -142,31 +142,31 @@ class MediaFixtures extends Fixture implements DependentFixtureInterface
         ],
         [
             'categorie' => 'Fromages',
-            'path' => 'lait.jpg',
+            'path' => 'fromage.jpg',
         ],
         [
             'categorie' => 'Miel',
-            'path' => 'lait.jpg',
+            'path' => 'miel.jpg',
         ],
         [
             'categorie' => 'pain',
-            'path' => 'lait.jpg',
+            'path' => 'pain.jpg',
         ],
         [
             'categorie' => 'poissons',
-            'path' => 'lait.jpg',
+            'path' => 'poisson.jpg',
         ],
         [
             'categorie' => 'viandes rouges',
-            'path' => 'lait.jpg',
+            'path' => 'viande.jpg',
         ],
         [
             'categorie' => 'courgette',
-            'path' => 'lait.jpg',
+            'path' => 'legume.jpg',
         ],
         [
             'categorie' => 'pomme',
-            'path' => 'lait.jpg',
+            'path' => 'pomme1.jpg',
         ],
     ];
     

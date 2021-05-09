@@ -198,7 +198,19 @@ max-height: 380px;
         text-align: center;
     }
 }
+/* bannier */
 
+.card-img-overlay {
+    padding: 0%;
+    position: absolute;
+    z-index: 4;
+    height: 100%;
+    width: 100%;
+    background-color: #00000060;
+    /* outline: 1px solid transparent; */
+}
+
+/* fin bannier */
 
 /* fin responsive img-home-card-avis-client momo*/
 
@@ -288,6 +300,15 @@ table.table-end-fit tr th:last-child {
     color: white;
 }
 
+.bannier-producer{
+    width:100% ; 
+    height: 300px ;
+}
+.img-bannier{
+    width:100% ;
+    height: 640px ; 
+}
+
 .profile-avis {
     height: 100px;
     width: 100px;
@@ -299,3 +320,17 @@ table.table-end-fit tr th:last-child {
 .liens-cruds > li{
     width: fit-content;
 }
+/* profile image */
+.img-profile{
+
+    border-radius: 50%;
+    height: 40px;
+    width: 40px;
+    
+}
+/* footer custome */
+
+.footer-taille{
+    height:100px
+}
+
