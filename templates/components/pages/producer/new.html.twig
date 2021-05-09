@@ -1,12 +1,12 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}New Producer{% endblock %}
+{% block title %}information du producteur{% endblock %}
 
 {% block body %}
 <div class="container">
     <div class="d-flex justify-content-between">
-        <h1>Create new Producer</h1>
-        <p><a class="btn btn-primary" href="{{ path('producer_index') }}">back to list</a></p>
+        <h1>information du producteur</h1>
+        <p><a class="btn btn-primary" href="{{ path('producer_index') }}">retour vers la list</a></p>
     </div>
 
     {{ include('components/pages/producer/_form.html.twig') }}

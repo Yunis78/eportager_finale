@@ -1,12 +1,4 @@
-.card-img-overlay {
-    padding: 0%;
-    position: absolute;
-    z-index: 4;
-    height: 100%;
-    width: 100%;
-    background-color: #00000060;
-    /* outline: 1px solid transparent; */
-}
+
 
 .banniProd1 h2 {
     text-transform: uppercase;
@@ -19,6 +11,21 @@
 
 .banniProd1 p {
     font-size: larger;
+}
+
+
+
+.card-taille-producer{
+    width: 100% ; 
+    height:500px ; 
+    position:relative;
+}
+
+.titreCards1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* color: #5c9c18; */
 }
 
 .titreCards1 {
@@ -133,4 +140,34 @@
     height: 1px;
     width: 40%;
     background-color: grey;
+}
+.text-producer{
+    overflow:hidden ; 
+    max-width:50ch ; 
+    text-overflow: ellipsis ;
+    white-space:nowrap
+}
+.producer-text{
+    overflow:hidden ;
+    max-width:50ch ; 
+    text-overflow: ellipsis ; 
+    white-space :nowrap;
+}
+.producer-bannier{
+    width:100% ; 
+    height: 300px ;
+}
+.img-card-producer{
+    width:100% ; 
+    height: 200px ;
+}
+.btn-discover{
+    position:absolute ; 
+    bottom:4%;
+}
+
+.card-producer {
+    width: 100% ; 
+    height:500px ; 
+    position:relative
 }

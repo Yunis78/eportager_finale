@@ -29,7 +29,7 @@
         <header class="pb-1">
             <div class="container d-flex py-2 align-items-center">
                 <div class="col-2 headerheight">
-                    <picture> <img id="logo" class="d-none d-md-block" src="{{ asset("img/LOGO4.svg") }}" alt="Logo"> <img id="logo" class="d-md-none" src="{{ asset("img/LOGO5.svg") }}" alt="Logo"> </picture>
+                    <picture href="{{ path('homepage') }}" > <img id="logo" class="d-none d-md-block" src="{{ asset("img/LOGO4.svg") }}" alt="Logo"> <img id="logo" class="d-md-none" src="{{ asset("img/LOGO5.svg") }}" alt="Logo"> </picture>
                 </div>
                 <div class="input-group">
                     <div class="input-group-prepend ml-auto">
@@ -37,7 +37,7 @@
                     </div>
                     <input type="text" class="form-control col-5 col-md-4 col-lg-3" placeholder="Rechercher..." aria-label="Rechercher..." aria-describedby="basic-addon1" />
                 </div>
-                <a href="{{path('cart_index') }}" class="btn btnviolet ml-3"><i class="ri-shopping-cart-2-line"></i></a>
+                <a href="{{ path('cart_index') }}" class="btn btnviolet ml-3"><i class="ri-shopping-cart-2-line"></i></a>
         
 
                 {% if app.user is null %}
@@ -50,7 +50,7 @@
                             <span class="dropdown-item"> {{ app.user.givenname }} {{ app.user.familyname }}</span>
                             <a class="dropdown-item" href="#">Client</a>
                             {% if is_granted('ROLE_PRODUCER') and is_granted('ROLE_USER') %}
-                                <a class="dropdown-item" href="#">Producteur</a>
+                                <a class="dropdown-item" href="{{ path('producer_show') }}">Producteur</a>
                             {% elseif is_granted('ROLE_USER') %}
                                 <a class="dropdown-item" href="{{ path('producer_new') }}">Devenir Producteur</a>
                             {% endif %}
@@ -87,6 +87,14 @@
                         <li class="nav-item gris mx-1 {{ ('faq' in app.request.get('_route')) ? 'active' : '' }} ">
                             <a class="nav-link gris {{ ('faq' in app.request.get('_route')) ? 'active' : '' }} " href="{{ path('faq') }}">F.A.Q</a>
                         </li>
+                        {% if is_granted('ROLE_PRODUCER') %}
+                            <li class="nav-item gris mx-1">
+                                <a class="btn btnvert ml-2 d-flex align-items-center justify-content-center" href="{{ path('product_new') }}">Ajouter un produit</a> 
+                            </li>
+                            <li class="nav-item gris mx-1">
+                                <a class="btn btnvert ml-2 d-flex align-items-center justify-content-center" href="{{ path('product_new') }}">Mes produits</a> 
+                            </li>
+                        {% endif %}
                     </ul>
                 </div>
             </div>
@@ -95,7 +103,7 @@
         {% block body %}{% endblock %} 
         
         <!-- Footer ? -->
-        <footer class="jaune mt-auto" style="height:100px">
+        <footer class="jaune footer-taille mt-auto">
             <p class="text-center">&copy; ePotager 2021</p>
             <div class="container d-flex justify-content-center">
                 <a href="/CGV_ePotager.pdf" download>Conditions Générales de Vente</a>
