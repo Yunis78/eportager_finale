@@ -10,9 +10,12 @@
     {% if categories is defined %}
         <div class="row my-3 justify-content-center cardsCat">
             {% for categorie in categories %}
-                <div class="card text-white m-3">
-                    <div style="background-image: url('{{ asset("upload/categories/" ~ categorie.file.0.path) }}');"></div>
+                <div class="card text-white m-3 cat-list-card">
+                    <div class="cat-list-img">
+                        <img src="{{ asset("upload/categories/" ~ categorie.file.0.path) }}" alt="" >
                     <a href="{{ path('product_categorie_show', {'id' : categorie.id})}}">
+                    </div>
+                    
                         <div class="card-img-overlay bgvert-hover d-flex align-items-center justify-content-center">
                             <h2 class="card-title cadre-titre-vert">{{- categorie.nom -}}</h2>
                         </div>

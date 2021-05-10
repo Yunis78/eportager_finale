@@ -52,7 +52,7 @@
     background-position: center;
 }
 
-.cardsCat > .card > div {
+.cardsCat > .card > img {
     width: 500px;
     height: 200px;
     background-size: cover;
@@ -161,6 +161,18 @@
     width:100% ; 
     height: 200px ;
 }
+
+.card-home-producer{
+    width:100% ; 
+    height: 400px ;
+    position:relative;
+}
+
+.card-home-producer-img,.card-producer-img{
+    width:100% ; 
+    height: 200px ;
+}
+
 .btn-discover{
     position:absolute ; 
     bottom:4%;
