@@ -328,9 +328,38 @@ table.table-end-fit tr th:last-child {
     width: 40px;
     
 }
+.img-home-profile{
+    border-radius: 50%;
+    height: 100px;
+    width: 100px;
+}
 /* footer custome */
 
 .footer-taille{
     height:100px
 }
 
+/* comment custome */
+.comment-home{
+    display: flex;
+    min-height: 124px;
+    justify-content: center;
+}
+
+.comment-home-profile{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+/* categorie custome */
+
+.cat-list-card{
+    width: 500px;
+    height: 200px;
+    overflow: hidden;
+
+}
+.cat-list-card-img{
+    width: 500px;
+    height: 500px;
+}
