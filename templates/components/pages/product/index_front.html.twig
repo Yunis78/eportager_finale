@@ -28,7 +28,7 @@
         {% for product in products %}
             <!-- card produit -->
             <div class="col-12 col-xl-6">
-                <div class="card w-100 d-flex flex-row m-1 px-0">
+                <div class="card w-100 d-flex flex-row m-1 px-0 shadow-sm p-3 mb-5 bg-white rounded">
                     <!-- image -->
                     <div class="imageProduit col-4 p-0">
                         <img src="{{ asset("upload/" ~ product.file.0.path ) }}" alt="">

@@ -164,13 +164,13 @@
 
 .card-home-producer{
     width:100% ; 
-    height: 400px ;
+    height: 500px ;
     position:relative;
 }
 
 .card-home-producer-img,.card-producer-img{
     width:100% ; 
-    height: 200px ;
+    height: 340px ;
 }
 
 .btn-discover{
@@ -182,4 +182,8 @@
     width: 100% ; 
     height:500px ; 
     position:relative
+}
+
+#myMap{
+    height: 400px;
 }

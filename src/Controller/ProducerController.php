@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+
 use App\Entity\Comment;
 use App\Entity\Producer;
 use App\Entity\Product;
@@ -9,6 +10,8 @@ use App\Entity\User;
 use App\Form\CommentType;
 use App\Form\ProducerType;
 use Doctrine\ORM\EntityManagerInterface;
+use App\Service\VerificationSiret\sfValidatorSiret;
+use Symfony\Contracts\HttpClient\HttpClientInterface;
 use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -23,6 +26,10 @@ use Twig\Environment;
  */
 class ProducerController
 {
+    /**
+     * @var Environment
+     */
+    private $siretClient;
     /**
      * @var Environment
      */
@@ -48,8 +55,9 @@ class ProducerController
      */
     private $security;
 
-    public function __construct(Environment $twig, EntityManagerInterface $em, RouterInterface $router, FormFactoryInterface $formFactory, Security $security)
+    public function __construct(Environment $twig, EntityManagerInterface $em, RouterInterface $router, FormFactoryInterface $formFactory, Security $security, HttpClientInterface $siretClient)
     {
+        $this->siretClient = $siretClient;
         $this->twig = $twig;
         $this->em = $em;
         $this->router = $router;
@@ -95,7 +103,6 @@ class ProducerController
         $producer = new Producer();
         $form = $this->formFactory->create(ProducerType::class, $producer);
         $form->handleRequest($request);
-
         if ($form->isSubmitted() && $form->isValid()) {
 
             foreach ($form->get('file') as $media) {
@@ -127,22 +134,50 @@ class ProducerController
                 }
             }
 
+            
+            
+
+            // $siret =  $form->get('siret')->getData();
+            $siren = "513738294";
+            $nic = "00026";
+            $siret = $siren.$nic;
+
+            // $url = "https://entreprise.data.gouv.fr/api/sirene/v3/unites_legales/". $siren;
+
+            $url = "https://entreprise.data.gouv.fr/api/sirene/v3/etablissements/". $siret;
+            dump($url);
+            $lol = curl_init($url);
+
+            dump($lol);
+            curl_setopt($lol, CURLOPT_URL, $url);
+            curl_setopt($lol, CURLOPT_HEADER,0);
+            curl_setopt($lol, CURLOPT_RETURNTRANSFER,true);
+
+            curl_setopt_array($lol, [
+                CURLOPT_CAINFO =>__DIR__ . DIRECTORY_SEPARATOR . 'cert.cer',
+                CURLOPT_TIMEOUT => 1,
+            ]);
+            
+                $data = curl_exec($lol);
+                dump($data);
+                $data = json_decode($data);
+                
+            
             $user = $this->em->getRepository(User::class)->find($this->security->getUser());
             $user->setRoles(["ROLE_PRODUCER"]);
 
             $producer->setUser($this->security->getUser());
 
-
             $this->em->persist($producer);
             $this->em->flush();
 
-            return new RedirectResponse(
-                $this->router->generate(
-                    'homepage',
-                )
-            );
+            // return new RedirectResponse(
+            //     $this->router->generate(
+            //         'homepage',
+            //     )
+            // );
+            
         }
-
         return new Response($this->twig->render('components/pages/producer/new.html.twig', [
             'producer' => $producer,
             'form' => $form->createView(),
