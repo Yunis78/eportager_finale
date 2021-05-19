@@ -76,7 +76,7 @@
 }
 
 
-.producteur>div {
+.producteur > img {
     height: 70px;
     width: 95%;
     background-size:cover;
@@ -97,12 +97,19 @@
     overflow: hidden;
 }
 
-@media only screen and (max-width: 743px) {
+@media only screen and (max-width: 950px) {
 
     .card-home-product{
         width: 100%;
-        height: 245px;
+        height: 500px;
         overflow: hidden;
     }
 }
+@media only screen and (max-width: 1000px) {
 
+    .card-home-product{
+        width: 100%;
+        height: 500px;
+        overflow: hidden;
+    }
+}

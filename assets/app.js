@@ -19,10 +19,11 @@ global.jQuery = $;
 global.$ = $;
 
 import 'bootstrap';
-import 'popper.js';
+
 
 require('./js/input.js');
 require('./js/collection.js');
+require('./js/map.js');
 
 $("#product-medias-collection").collection();
 window.component_input();
