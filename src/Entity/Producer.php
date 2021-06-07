@@ -75,6 +75,16 @@ class Producer
     private $phone;
 
     /**
+     * @ORM\Column(type="float", nullable=true)
+     */
+    private $longitude;
+
+    /**
+     * @ORM\Column(type="float", nullable=true)
+     */
+    private $latitude;
+
+    /**
      * @ORM\Column(type="boolean")
      */
     private $active;
@@ -185,6 +195,30 @@ class Producer
         return $this;
     }
 
+    public function getLongitude(): ?float
+    {
+        return $this->longitude;
+    }
+
+    public function setLongitude(float $longitude): self
+    {
+        $this->longitude = $longitude;
+
+        return $this;
+    }
+
+    public function getLatitude(): ?float
+    {
+        return $this->latitude;
+    }
+
+    public function setLatitude(float $latitude): self
+    {
+        $this->latitude = $latitude;
+
+        return $this;
+    }
+
     public function getActive(): ?bool
     {
         return $this->active;
@@ -289,7 +323,6 @@ class Producer
     public function setAddressCountry(?string $addressCountry): self
     {
         $this->addressCountry = $addressCountry;
-
         return $this;
     }
 

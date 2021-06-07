@@ -1,0 +1,221 @@
+.banniProd1 h2 {
+  text-transform: uppercase;
+  font-family: "Noteworthy";
+  font-weight: bold;
+  background-color: #7d4aa8;
+  border-radius: .5rem;
+  color: white;
+}
+
+.banniProd1 p {
+  font-size: larger;
+}
+
+.card-taille-producer {
+  width: 100%;
+  height: 500px;
+  position: relative;
+}
+
+.titreCards1 {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  /* color: #5c9c18; */
+}
+
+.titreCards1 {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  /* color: #5c9c18; */
+}
+
+.cardsCat h2 {
+  text-transform: uppercase;
+  font-family: "Noteworthy";
+  font-weight: bold;
+  text-align: center;
+  width: -webkit-min-content;
+  width: -moz-min-content;
+  width: min-content;
+  padding: .5rem;
+}
+
+.cardsProd .imgCard {
+  width: 300px;
+  height: 250px;
+  background-size: cover;
+  background-position: center;
+}
+
+.cardsCat > .card > img {
+  width: 500px;
+  height: 200px;
+  background-size: cover;
+  background-position: center;
+}
+
+.cardsProd .card-img-overlay {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+}
+
+.cardsProd h4 {
+  text-transform: uppercase;
+  font-family: "Noteworthy";
+  background-color: #7d4aa8;
+  border-radius: .5rem;
+  color: white;
+  padding: .5rem;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  margin-bottom: 0;
+}
+
+.cardsProd .card-img-overlay:not(:hover) p {
+  display: none;
+}
+
+.prix2 h3 {
+  background-color: #ff7e00;
+  color: white;
+  text-align: center;
+}
+
+.imageProduit > div {
+  border-top-left-radius: .25rem;
+  border-bottom-left-radius: .25rem;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+}
+
+.producteur {
+  border-left: #6c757d1a solid 1px;
+}
+
+.producteur > div {
+  height: 40px;
+  width: 40px;
+  background-size: cover;
+  background-position: center;
+  border-radius: 50%;
+}
+
+.input-product {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.ligne-grise {
+  height: 1px;
+  width: 40%;
+  background-color: grey;
+}
+
+.profil-produdu {
+  z-index: 6;
+  margin-top: -150px;
+}
+
+.img-profil-produdu {
+  width: 200px;
+  height: 200px;
+  background-size: cover;
+  background-position: center;
+  border-radius: 50%;
+  margin: 20px;
+}
+
+.ligne-grise {
+  height: 1px;
+  width: 40%;
+  background-color: grey;
+}
+
+.text-producer {
+  overflow: hidden;
+  max-width: 50ch;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.producer-text {
+  overflow: hidden;
+  max-width: 50ch;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.producer-bannier {
+  width: 100%;
+  height: 300px;
+}
+
+.img-card-producer {
+  width: 100%;
+  height: 200px;
+}
+
+.card-home-producer {
+  width: 100%;
+  height: 500px;
+  position: relative;
+}
+
+.card-home-producer-img, .card-producer-img {
+  width: 100%;
+  height: 340px;
+}
+
+.btn-discover {
+  position: absolute;
+  bottom: 4%;
+}
+
+.card-producer {
+  width: 100%;
+  height: 500px;
+  position: relative;
+}
+
+#map {
+  width: 100%;
+  height: 500px;
+  position: relative;
+}
+/*# sourceMappingURL=custom_producteur.css.map */

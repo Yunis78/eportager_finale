@@ -23,7 +23,7 @@
             let items = $(collection).children().length;
             let min = get_widgetInit($(collection));
 
-            if (min > items) 
+            if (min > items)
             {
                 min-= items;
 

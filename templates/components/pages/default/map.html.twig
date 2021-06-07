@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %} 
+{% block title %}MAP{% endblock %} 
+{% block body %}
+
+
+<div class="container">
+    <div class="row  " id="mapping">
+        <div class="col-12">
+            <div id="map" data-path="{{ asset("build/images/marker-icon.png") }}" data-positions=" {{- positions|json_encode() -}}">
+                
+            </div>       
+        </div>
+    </div>
+    <div id="cardproducer">
+    </div>  
+</div>
+
+
+
+
+{% endblock %}
