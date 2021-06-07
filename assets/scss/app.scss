@@ -1,3 +1,15 @@
+@import "~bootstrap/scss/bootstrap";
+// @import '~slick';
+@import '~remixicon/fonts/remixicon.css';
+@import 'custom_product.scss';
+@import 'custom_producteur.scss';
+@import "~leaflet";
+@import "./leafletlismarker.scss";
+@import "~@ansur/leaflet-pulse-icon/dist/L.Icon.Pulse.css";
+
+
+
+
 @font-face {
     font-family: 'Noteworthy';
     font-style: normal;
@@ -362,4 +374,132 @@ table.table-end-fit tr th:last-child {
 .cat-list-card-img{
     width: 500px;
     height: 500px;
+}
+
+    /* slider start------------------- */
+    .menu-container{
+        position: fixed;
+        z-index: 1;
+        top: 0;
+        left: 0;
+        right: 0;
+    }
+    .menu{
+        width: 100%;
+        height: 100vh;
+        position: absolute;
+        top:  0px;
+        left: 0px;
+        z-index: 2;
+        background-color: #4d4c4ba8;;
+        display: none;
+    }
+    .menu .links{
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        gap: 50px;
+    }
+    .titre{
+        text-align: center;
+    }
+    .links a{
+        text-decoration: none;
+    }
+    
+    .link{
+        transition: all 0.3s;
+        width: 220px;
+        height: 50px;
+        background-color:#c48820;
+        color: black;
+        font-weight: bolder;
+        white-space: nowrap;
+        
+    }
+    .link:hover{
+        background-color: #ffc156;
+    }
+    /* slider end------------------- */
+      /* slider icon */
+.fa-bars,.fa-times{
+    position: absolute;
+    font-size: 50px;
+    top: 20px;
+    left: 20px;
+}
+.fas{
+    color: aliceblue;
+    z-index: 4;
+    
+}
+@media screen and (max-width: 1300px) {
+    .fas{
+        color: #ffffff9f;
+        
+    }
+}
+
+#desc {
+	float: left;
+	margin-bottom: 1em;
+	position: relative;
+	white-space:nowrap;
+	font-size:1em;
+}
+#map {
+	border-radius:.125em;
+	border:2px solid #1978cf;
+	box-shadow: 0 0 8px #999;
+	float:left;
+	width:100%;
+	height:520px;	
+}
+ul {
+	font-size:.85em;
+	margin:0;
+	padding:0;
+}
+li {
+	margin:0 0 2px 18px;
+}
+#copy {
+	position:fixed;
+	z-index:1000;
+	right:150px;
+	top:-8px;
+	font-size:.85em;
+	padding:8px 8px 2px 8px;
+	background: #323b44;
+	border: 2px solid #737c85;		
+	border-radius:.7em;
+	opacity: 0.9;
+	box-shadow:0 0 8px #5f7182;
+	color:#eee
+}
+#copy a {
+	color:#ccc;
+	text-decoration:none
+}
+#copy a:hover {
+	color:#fff
+}
+#ribbon {
+	position: absolute;
+	top: 0;
+	right: 0;
+	border: 0;
+	filter: alpha(opacity=80);
+	-khtml-opacity: .8;
+	-moz-opacity: .8;
+	opacity: .8;		
+}
+.contents {
+	float:left;
+	margin:0 2em 2em 0;
+}
+#comments {
+	clear:both;
 }

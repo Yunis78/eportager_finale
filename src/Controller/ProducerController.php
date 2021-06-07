@@ -134,8 +134,19 @@ class ProducerController
                 }
             }
 
-            
-            
+            $adresszipcode = $form->get('addresszipcode')->getData();
+            $streetaddress = $form->get('addressstreet')->getData();
+            $addresscity = $form->get('addresscity')->getData();
+
+
+            $address = $streetaddress .' '. $addresscity .' '. $adresszipcode;
+
+            $json = file_get_contents('https://photon.komoot.io/api/?q='.str_replace(' ','%20',$address));
+            $obj = json_decode($json, true);
+            $longitude = $obj['features'][0]['geometry']['coordinates'][0];
+            $latitude = $obj['features'][0]['geometry']['coordinates'][1];
+
+
 
             // $siret =  $form->get('siret')->getData();
             $siren = "513738294";
@@ -146,36 +157,44 @@ class ProducerController
 
             $url = "https://entreprise.data.gouv.fr/api/sirene/v3/etablissements/". $siret;
             dump($url);
-            $lol = curl_init($url);
+            $curl = curl_init($url);
 
-            dump($lol);
-            curl_setopt($lol, CURLOPT_URL, $url);
-            curl_setopt($lol, CURLOPT_HEADER,0);
-            curl_setopt($lol, CURLOPT_RETURNTRANSFER,true);
+            dump($curl);
+            curl_setopt($curl, CURLOPT_URL, $url);
+            curl_setopt($curl, CURLOPT_HEADER,0);
+            curl_setopt($curl, CURLOPT_RETURNTRANSFER,true);
 
-            curl_setopt_array($lol, [
+            curl_setopt_array($curl, [
                 CURLOPT_CAINFO =>__DIR__ . DIRECTORY_SEPARATOR . 'cert.cer',
                 CURLOPT_TIMEOUT => 1,
             ]);
             
-                $data = curl_exec($lol);
+                $data = curl_exec($curl);
                 dump($data);
                 $data = json_decode($data);
                 
             
+
             $user = $this->em->getRepository(User::class)->find($this->security->getUser());
             $user->setRoles(["ROLE_PRODUCER"]);
 
             $producer->setUser($this->security->getUser());
-
+            
+            $producer->setLongitude($longitude);
+            $producer->setLatitude($latitude);
+            
             $this->em->persist($producer);
             $this->em->flush();
 
-            // return new RedirectResponse(
-            //     $this->router->generate(
-            //         'homepage',
-            //     )
-            // );
+            
+
+
+
+            return new RedirectResponse(
+                $this->router->generate(
+                    'homepage',
+                )
+            );
             
         }
         return new Response($this->twig->render('components/pages/producer/new.html.twig', [
@@ -189,7 +208,6 @@ class ProducerController
      */
     public function show(Request $request, Producer $producer, int $id)
     {
-
 
         $producer = $this->em->getRepository(Producer::class)->find($id);
         $products = $this->em->getRepository(Product::class)->findBy(['producer' => $producer]);
@@ -205,6 +223,8 @@ class ProducerController
             $comment->setProducer($producer);
             $this->em->persist($comment);
             $this->em->flush();
+
+        
 
             return new RedirectResponse(
                 $this->router->generate(

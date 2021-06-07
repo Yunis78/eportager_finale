@@ -1,11 +1,6 @@
-{% extends 'base.html.twig' %} {% block title %}ePotager - Accueil{% endblock %} {% block body %}
-
-{% block stylesheets %}
-    {{ encore_entry_link_tags("app") }}
-    {{ encore_entry_link_tags("producteur") }}
-    {{ encore_entry_link_tags("product") }}
-{% endblock %}
-
+{% extends 'base.html.twig' %} 
+{% block title %}ePotager - Accueil{% endblock %} 
+{% block body %}
 <!-- carousel -->
 <div id="carouselhome" class="carousel slide" data-ride="carousel">
     <div class="carouOver"></div>
@@ -178,7 +173,4 @@
     </div>
     <p class="text-center"><a href="#" class="btn btnorange text-white mb-4 mt-1">Voir tous les avis</a></p> <!-- Bouton voir tous les avis -->
 </div>
-
-
-
 {% endblock %}

@@ -54,6 +54,37 @@ class DefaultController
         ]));
     }
 
+     /**
+     * @Route("/map", name="map")
+     */
+    public function map()
+    {
+        $producers = $this->em->getRepository(Producer::class)->findAll();
+        $positions = [];
+        foreach ( $producers as $producer ) {
+            
+            $addresstreet = $producer->getAddressStreet();
+            $AddressZipcode = $producer->getAddressZipcode();
+            $AddressCity = $producer->getAddressCity();
+            $File = $producer->getFile();
+            $positions[] = [
+                'file' => $File,
+                'name' => $producer->getName(),
+                'address' => $addresstreet.' '.$AddressZipcode.' '.$AddressCity,
+                'description' => $producer->getDescription(),
+                'longitude' => $producer->getLongitude(),
+                'latitude' => $producer->getLatitude(),
+            ];
+        }
+
+        $products = $this->em->getRepository(Product::class)->findBy([], ['dateCreated' => 'ASC'], 4);
+
+        return new Response($this->twig->render('components/pages/default/map.html.twig', [
+            'positions' => $positions,
+        ]));
+    }
+
+
     /**
      * @Route("/faq", name="faq")
      */
